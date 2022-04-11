@@ -26,7 +26,11 @@
     top: 75%;
     left:11%;
     font-family: Rockwell;
-    font-size: 1vh;
+    font-size: 1.2vh;
     font-weight: normal;
     color: #D6C7EB;
+}
+.title_link{
+    text-decoration: none;
+    color: #F6B38E;
 }
