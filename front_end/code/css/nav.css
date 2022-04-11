@@ -1,0 +1,21 @@
+.nav_bg{
+    width:65%;
+    height:3.5vh;
+    background: #ffffff;
+    position: relative;
+    top:0;
+    left: 17%;
+}
+.nav_bg table{
+    position: absolute;
+    top: 15%;
+    height:3.5vh;
+    width: 65vw;
+    border-collapse: collapse;
+}
+.nav_bg td{
+    width: 10vw;
+    border: solid 1px black ;
+    text-align: center;
+    font-size: 1vh;
+}
