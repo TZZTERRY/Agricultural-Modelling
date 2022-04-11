@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <link rel="stylesheet" type="text/css" href="mystyle.css">
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script type="text/javascript">
+    var cur_i = 0;
+    var img_paths = ["resource/sample_img_1.png", "resource/sample_img_2.png"];
+
+    function switchImgFunc(isRight=true){ // to add one for the index. If out of bound, to zero
+
+      if(isRight){
+        cur_i++;
+      }
+      else {
+        cur_i+=img_paths.length;
+        cur_i--;
+      }
+
+      cur_i%=img_paths.length;
+      var switch_img = document.getElementById("switchImg");
+      switch_img.src = img_paths[cur_i];
+    }
+
+    setInterval(function (){
+      switchImgFunc();
+    }, 3000);
+
+  </script>
+</head>
+<body>
+<div id="switchImgDiv">
+  <img id="switchImg" src="code/resource/sample_img_1.png">
+  <div id="switchImgButtonsDiv">
+    <button id="switchLeft" onclick="switchImgFunc(false)"><img src="code/resource/switchArrowsL.png"></button>
+    <button id="switchRight" onclick="switchImgFunc(true)"><img src="code/resource/switchArrowsR.png"></button>
+  </div>
+</div>
+
+</body>
+</html>

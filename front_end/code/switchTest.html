@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/switchTest.css">
+    <script type="text/javascript">
+        var MAX_IMG_LENGTH = 1000;
+        var ONE_IMG_LENGTH = 500;
+        var MAX_IMG_NUM = 2
+        var index = 0;
+        var moveInterval;
+        window.onload = function (){
+            var Aid = ["a1", "a2"]
+            var cur_a = document.getElementById(Aid[index])
+            cur_a.style.backgroundColor = "black"
+            var switchImgList = document.getElementById("switchImgList")
+            //bounding click function for each a
+            for (var i=0; i<Aid.length; i++){
+                if (moveInterval!=null){
+                    clearInterval(moveInterval)
+                }
+                var t = document.getElementById(Aid[i])
+                t.num = i
+                t.onclick = function (){
+                    index=this.num
+                    switchImgList.style.left = -500*index+"px"
+                    for (var i=0; i<Aid.length; i++){ // reset the color
+                        document.getElementById(Aid[i]).style.backgroundColor=""
+                    }
+                    this.style.backgroundColor = "black"
+                };
+            }
+
+            setInterval(function () {
+                index++
+                index%=MAX_IMG_NUM
+                switchImgList.style.left = -500*index+"px"
+                for (var i=0; i<Aid.length; i++){ // reset the color
+                    document.getElementById(Aid[i]).style.backgroundColor=""
+                }
+                document.getElementById(Aid[index]).style.backgroundColor = "black"
+            }, 2000)
+
+        }
+
+    </script>
+</head>
+<body>
+    <div id="outerDiv">
+        <ul id="switchImgList">
+            <li>
+                <img src="resource/sample_img_1.png">
+            </li>
+            <li>
+                <img src="resource/sample_img_2.png">
+            </li>
+        </ul>
+        <!--    create nav bar    -->
+        <div id="switchNavDiv">
+            <a id="a1" href="javascript:"></a>
+            <a id="a2" href="javascript:"></a>
+        </div>
+    </div>
+</body>
+</html>
