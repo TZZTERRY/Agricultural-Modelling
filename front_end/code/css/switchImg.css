@@ -4,7 +4,7 @@
 }
 #outerDiv{
     width: 65%;
-    height: 300px;
+    height: 30vh;
     margin: auto;
     position: relative;
     left: -0.5%;
@@ -13,7 +13,7 @@
 #switchImgList{
     list-style: none;
     /*equal to the number * img width*/
-    width: 2000px;
+    width: 4000px;
     position: absolute;
     /*use to move*/
     left: 0px;
@@ -22,13 +22,13 @@
     float: left;
 }
 #switchImgList img{
-    width: 1000px;
-    height: 300px;
+    width: 1663px;
+    height: 100%;
 }
 #switchNavDiv{
     position: absolute;
     bottom: 15px;
-    left: 430px;
+    left: 50%;
 }
 #switchNavDiv a{
     width: 10px;
