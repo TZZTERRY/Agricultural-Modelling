@@ -10,6 +10,35 @@
     <link rel="stylesheet" href="css/logo_div.css">
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/switchImg.css">
+    <style>
+        #video{
+            width: 620px;
+            height: 350px;
+            align-content: center;
+            border: 1px;background: rebeccapurple;
+            position: relative;
+            left: 16%;
+            top:4vh;
+            opacity: initial;
+
+        }
+        #blank{
+            width: 65%;
+            height: 20px;
+            position: relative;
+            left: 17%;
+            background:#ffffff;
+            opacity: 0.5;
+        }
+        #video_outer_div{
+            width: 65%;
+            height: 410px;
+            position: relative;
+            left: 17%;
+            /*background:#ffffff;*/
+            /*opacity: 0.1;*/
+        }
+    </style>
 
     <script type="text/javascript">
         var MAX_IMG_LENGTH = 2000;
@@ -101,7 +130,17 @@
                 <a id="a2" href="javascript:"></a>
             </div>
         </div>
+
+        <div id="blank">
+        </div>
+
+        <div id="video_outer_div">
+            <div id="video">
+                <iframe width="620" height="350" src="https://www.youtube.com/embed/471N50xMjF4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
     </div>
+
 <!--content div-->
 </body>
 </html>
