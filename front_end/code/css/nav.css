@@ -19,7 +19,7 @@
     height: 3.6vh;
     line-height: 3.5vh;
     text-align: center;
-    font-size: 15px;
+    font-size: 2vh;
     color: #707070;
     list-style: none;
 }
@@ -27,9 +27,7 @@
     width:8.18vw;
     font-size: 1vw;
 }
-#about{
 
-}
 .nav_link{
     display: block;
     text-decoration: none;

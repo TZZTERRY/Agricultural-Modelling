@@ -3,10 +3,11 @@
     padding: 0;
 }
 #outerDiv{
-    width: 1000px;
+    width: 65%;
     height: 300px;
     margin: auto;
     position: relative;
+    left: -0.5%;
     overflow: hidden;
 }
 #switchImgList{
