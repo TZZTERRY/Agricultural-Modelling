@@ -1,0 +1,418 @@
+<!--This file is used to store the base code for the bar function-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta content="Agriculture modeling, yield prediction, Australia agriculture prediction" name="Keywords">
+    <meta name="Description" content="">
+    <title>Agriculture Modeling</title>
+    <link rel="stylesheet" href="css/bg.css">
+    <link rel="stylesheet" href="css/logo_div.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/Australia.js"></script>
+    <style>
+
+        /*#contentDiv{*/
+        /*    position: absolute;*/
+        /*}*/
+        #mapDiv{
+            width: 35%;
+            height: 400px;
+            position: relative;
+            top: 15px;
+            left: 18.5%;
+            background-color: #fff;
+        }
+        #yearSelectDiv{
+            position: absolute;
+            zoom: 175%;
+            left: 65%;
+            top: 16%;
+        }
+        #pieDiv{
+            width: 35%;
+            height: 400px;
+            position: absolute;
+            top: 30%;
+            left: 53%;
+        }
+    </style>
+</head>
+<body>
+<!--logo div-->
+<div class="logo_div">
+    <div>
+        <a href="http://news.qq.com/" target="_blank"  class="title_link"><img class="logo" src="img/logo.png"></a>
+    </div>
+    <div>
+        <div>
+            <p class="logo_title"><a href="http://news.qq.com/" target="_blank"  class="title_link">Agriculture&nbsp;&nbsp;Modelling</a></p>
+        </div>
+        <div>
+            <p class="logo_subtitle">Agricultural&nbsp;yield&nbsp;prediction,&nbsp;analysis,&nbsp;and&nbsp;data&nbsp;visualisation</p>
+        </div>
+    </div>
+</div>
+<!--nav div-->
+<div class="nav_bg">
+    <ul>
+        <li id="about"><a href="http://news.qq.com/" target="_blank"  class="nav_link">About</a></li>
+        <li id="total_li"><a href="http://news.qq.com/" target="_blank"  class="nav_link">Total crop yield</a></li>
+        <li id="barley"><a href="http://news.qq.com/" target="_blank"  class="nav_link">Barley</a></li>
+        <li id="wheat"><a href="http://news.qq.com/" target="_blank"  class="nav_link">Wheat</a></li>
+        <li id="canola"><a href="http://news.qq.com/" target="_blank"  class="nav_link">Canola</a></li>
+        <li id="oats"><a href="http://news.qq.com/" target="_blank"  class="nav_link">Oats</a></li>
+        <li id="rice"><a href="http://news.qq.com/" target="_blank"  class="nav_link">Rice</a></li>
+        <li id="corn"><a href="http://news.qq.com/" target="_blank"  class="nav_link">Corn</a></li>
+        <li id="chickpeas"><a href="http://news.qq.com/" target="_blank"  class="nav_link">Chickpeas</a></li>
+    </ul>
+    </table>
+</div>
+<!--    </div>-->
+<!--content div-->
+<div id="contentDiv">
+    <div id="mapDiv">
+        <div id="f8b0fcf6824c417d9d7deca1463d04b4" class="chart-container" style="width:100%; height:100%;"></div>
+        <script>
+            var chart_f8b0fcf6824c417d9d7deca1463d04b4 = echarts.init(
+                document.getElementById('f8b0fcf6824c417d9d7deca1463d04b4'), 'white', {renderer: 'canvas'});
+            var option_f8b0fcf6824c417d9d7deca1463d04b4 = {
+                "animation": true,
+                "animationThreshold": 2000,
+                "animationDuration": 1000,
+                "animationEasing": "cubicOut",
+                "animationDelay": 0,
+                "animationDurationUpdate": 300,
+                "animationEasingUpdate": "cubicOut",
+                "animationDelayUpdate": 0,
+                "color": [
+                    "#c23531",
+                    "#2f4554",
+                    "#61a0a8",
+                    "#d48265",
+                    "#749f83",
+                    "#ca8622",
+                    "#bda29a",
+                    "#6e7074",
+                    "#546570",
+                    "#c4ccd3",
+                    "#f05b72",
+                    "#ef5b9c",
+                    "#f47920",
+                    "#905a3d",
+                    "#fab27b",
+                    "#2a5caa",
+                    "#444693",
+                    "#726930",
+                    "#b2d235",
+                    "#6d8346",
+                    "#ac6767",
+                    "#1d953f",
+                    "#6950a1",
+                    "#918597"
+                ],
+                "series": [
+                    {
+                        "type": "map",
+                        "name": "total crop yield",
+                        "label": {
+                            "show": false,
+                            "position": "top",
+                            "margin": 8
+                        },
+                        "mapType": "\u6fb3\u5927\u5229\u4e9a",
+                        "data": [
+                            {
+                                "name": "Western Australia",
+                                "value": 150
+                            },
+                            {
+                                "name": "Victoria",
+                                "value": 100
+                            },
+                            {
+                                "name": "South Australia",
+                                "value": 10
+                            },
+                            {
+                                "name": "Queensland",
+                                "value": 50
+                            },
+                            {
+                                "name": "New South Wales",
+                                "value": 200
+                            },
+                            {
+                                "name": "Northern Territory",
+                                "value": 70
+                            },
+                            {
+                                "name": "Tasmania",
+                                "value": 20
+                            }
+                        ],
+                        "roam": true,
+                        "aspectScale": 0.75,
+                        "nameProperty": "name",
+                        "selectedMode": false,
+                        "zoom": 2,
+                        "left": -80,
+                        "top": 150,
+                        "mapValueCalculation": "sum",
+                        "showLegendSymbol": true,
+                        "emphasis": {},
+                        "rippleEffect": {
+                            "show": true,
+                            "brushType": "stroke",
+                            "scale": 2.5,
+                            "period": 4
+                        }
+                    }
+                ],
+                "legend": [
+                    {
+                        "data": [
+                            "total crop yield"
+                        ],
+                        "selected": {
+                            "total crop yield": true
+                        },
+                        "show": false,
+                        "padding": 5,
+                        "itemGap": 10,
+                        "itemWidth": 25,
+                        "itemHeight": 14
+                    }
+                ],
+                "tooltip": {
+                    "show": true,
+                    "trigger": "item",
+                    "triggerOn": "mousemove|click",
+                    "axisPointer": {
+                        "type": "line"
+                    },
+                    "showContent": true,
+                    "alwaysShowContent": false,
+                    "showDelay": 0,
+                    "hideDelay": 100,
+                    "textStyle": {
+                        "fontSize": 14
+                    },
+                    "borderWidth": 0,
+                    "padding": 5
+                },
+                "title": [
+                    {
+                        "text": "Australia total crop yield \uff08MT)",
+                        "padding": 5,
+                        "itemGap": 10
+                    }
+                ],
+                "visualMap": {
+                    "show": true,
+                    "type": "continuous",
+                    "min": 0,
+                    "max": 200,
+                    "inRange": {
+                        "color": [
+                            "#50a3ba",
+                            "#eac763",
+                            "#d94e5d"
+                        ]
+                    },
+                    "calculable": true,
+                    "inverse": false,
+                    "splitNumber": 5,
+                    "orient": "vertical",
+                    "showLabel": true,
+                    "itemWidth": 20,
+                    "itemHeight": 140,
+                    "borderWidth": 0
+                }
+            };
+            chart_f8b0fcf6824c417d9d7deca1463d04b4.setOption(option_f8b0fcf6824c417d9d7deca1463d04b4);
+        </script>
+    </div>
+    <div id="mapLeftSideDiv">
+        <div id="yearSelectDiv">
+            <p style="color:#635779;">Choice year:</p>
+            <br/>
+            <select>
+                <option>&nbsp&nbsp&nbsp&nbsp&nbsp 2022 &nbsp&nbsp&nbsp&nbsp&nbsp</option>
+                <option>&nbsp&nbsp&nbsp&nbsp&nbsp 2021 &nbsp&nbsp&nbsp&nbsp&nbsp</option>
+                <option>&nbsp&nbsp&nbsp&nbsp&nbsp 2020 &nbsp&nbsp&nbsp&nbsp&nbsp</option>
+                <option>&nbsp&nbsp&nbsp&nbsp&nbsp 2019 &nbsp&nbsp&nbsp&nbsp&nbsp</option>
+            </select>
+        </div>
+        <div id="pieDiv">
+            <div id="44f93428b07b40da8330dbeef7d135a2" class="chart-container" style="width:100%; height:100%;"></div>
+            <script>
+                var chart_44f93428b07b40da8330dbeef7d135a2 = echarts.init(
+                    document.getElementById('44f93428b07b40da8330dbeef7d135a2'), 'white', {renderer: 'canvas'});
+                var option_44f93428b07b40da8330dbeef7d135a2 = {
+                    "animation": true,
+                    "animationThreshold": 2000,
+                    "animationDuration": 1000,
+                    "animationEasing": "cubicOut",
+                    "animationDelay": 0,
+                    "animationDurationUpdate": 300,
+                    "animationEasingUpdate": "cubicOut",
+                    "animationDelayUpdate": 0,
+                    "color": [
+                        "#c23531",
+                        "#2f4554",
+                        "#61a0a8",
+                        "#d48265",
+                        "#749f83",
+                        "#ca8622",
+                        "#bda29a",
+                        "#6e7074",
+                        "#546570",
+                        "#c4ccd3",
+                        "#f05b72",
+                        "#ef5b9c",
+                        "#f47920",
+                        "#905a3d",
+                        "#fab27b",
+                        "#2a5caa",
+                        "#444693",
+                        "#726930",
+                        "#b2d235",
+                        "#6d8346",
+                        "#ac6767",
+                        "#1d953f",
+                        "#6950a1",
+                        "#918597"
+                    ],
+                    "series": [
+                        {
+                            "type": "pie",
+                            "name": "Crop yield\uff08MT)",
+                            "clockwise": true,
+                            "data": [
+                                {
+                                    "name": "South Australia",
+                                    "value": 10
+                                },
+                                {
+                                    "name": "Tasmania",
+                                    "value": 20
+                                },
+                                {
+                                    "name": "Queensland",
+                                    "value": 50
+                                },
+                                {
+                                    "name": "Northern Territory",
+                                    "value": 70
+                                },
+                                {
+                                    "name": "Victoria",
+                                    "value": 100
+                                },
+                                {
+                                    "name": "Western Australia",
+                                    "value": 150
+                                },
+                                {
+                                    "name": "New South Wales",
+                                    "value": 200
+                                }
+                            ],
+                            "radius": "55%",
+                            "center": [
+                                "50%",
+                                "50%"
+                            ],
+                            "roseType": "radius",
+                            "label": {
+                                "show": true,
+                                "position": "top",
+                                "color": "rgba(0, 0, 0, 1)",
+                                "margin": 8
+                            },
+                            "tooltip": {
+                                "show": true,
+                                "trigger": "item",
+                                "triggerOn": "mousemove|click",
+                                "axisPointer": {
+                                    "type": "line"
+                                },
+                                "showContent": true,
+                                "alwaysShowContent": false,
+                                "showDelay": 0,
+                                "hideDelay": 100,
+                                "formatter": "{a} <br/>{b}: {c} ({d}%)",
+                                "textStyle": {
+                                    "fontSize": 14
+                                },
+                                "borderWidth": 0,
+                                "padding": 5
+                            },
+                            "rippleEffect": {
+                                "show": true,
+                                "brushType": "stroke",
+                                "scale": 2.5,
+                                "period": 4
+                            }
+                        }
+                    ],
+                    "legend": [
+                        {
+                            "data": [
+                                "South Australia",
+                                "Tasmania",
+                                "Queensland",
+                                "Northern Territory",
+                                "Victoria",
+                                "Western Australia",
+                                "New South Wales"
+                            ],
+                            "selected": {},
+                            "show": false,
+                            "padding": 5,
+                            "itemGap": 10,
+                            "itemWidth": 25,
+                            "itemHeight": 14
+                        }
+                    ],
+                    "tooltip": {
+                        "show": true,
+                        "trigger": "item",
+                        "triggerOn": "mousemove|click",
+                        "axisPointer": {
+                            "type": "line"
+                        },
+                        "showContent": true,
+                        "alwaysShowContent": false,
+                        "showDelay": 0,
+                        "hideDelay": 100,
+                        "textStyle": {
+                            "fontSize": 14
+                        },
+                        "borderWidth": 0,
+                        "padding": 5
+                    },
+                    "title": [
+                        {
+                            "text": "Pie analysis",
+                            "left": "center",
+                            "top": "20",
+                            "padding": 5,
+                            "itemGap": 10,
+                            "textStyle": {
+                                "color": "#000"
+                            }
+                        }
+                    ]
+                };
+                chart_44f93428b07b40da8330dbeef7d135a2.setOption(option_44f93428b07b40da8330dbeef7d135a2);
+            </script></div>
+    </div>
+
+</div>
+<!--content div-->
+</body>
+</html>
