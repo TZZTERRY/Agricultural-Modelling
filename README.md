@@ -51,3 +51,4 @@ The project starts by identifying and processing publicly available sources of d
 3. [Team Charter](https://docs.google.com/document/d/1cclO7G7p3pnhXwTigUycFmEWT71LFdHP-RCo-UNr6HE/edit?usp=sharing)
 4. [TechLauncher Schedule - Semester 1](https://docs.google.com/document/d/1On0W6BCAIJ6oHPJeKMq5j55WEd-8ADKCnk-OLkhKEdk/edit?usp=sharing)
 5. [Team Meetings](https://docs.google.com/document/u/0/d/1fjGWvtqiSrWWUSTMI9ZOTAmMcRA_Q9Upqu7vYiLi-dk/edit)
+6. [UI development log](https://github.com/TZZTERRY/Agricultural-Modelling/blob/main/front_end/DEVELOPMENT_LOG.md)
