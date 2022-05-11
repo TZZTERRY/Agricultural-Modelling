@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Agriculture Modeling-WA</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/Australia.js"></script>
+
+    <style>
+        #WA_img {
+            width: 100%;
+            height: 100%;
+        }
+        .navbar-nav li:hover{
+            background-color: #FFC107;
+        }
+        #WA_titleDiv{
+            background-color: #F0F0F0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2">
+            <img src="https://firebasestorage.googleapis.com/v0/b/webapp-88d5b.appspot.com/o/Logo.png?alt=media&token=dead362f-0e36-4dd7-85da-4cd1361ee254" class="float-right d-block" style="width:60%;">
+        </div>
+        <div class="col-sm-10">
+            <p></p>
+            <h3 class="text-left text-warning">Agriculture Modeling</h3>
+            <p class="text-left text-secondary">Agriculture yield predication, analysis and visualization</p>
+        </div>
+    </div>
+
+</div>
+
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark " style="white-space:nowrap;">
+    <div class="row">
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-8">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="HomePage.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Australia overview</a>
+                </li>
+                <!-- Dropdown -->
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Region
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">NSW</a>
+                        <a class="dropdown-item" href="#">VIC</a>
+                        <a class="dropdown-item" href="#">QLD</a>
+                        <a class="dropdown-item" href="#">TAS</a>
+                        <a class="dropdown-item" href="#">WA</a>
+                        <a class="dropdown-item" href="#">SA</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</nav>
+
+<div id="WA_content" >
+    <img id="WA_img" src="https://firebasestorage.googleapis.com/v0/b/webapp-88d5b.appspot.com/o/imageWA.jpg?alt=media&token=8a284c73-a884-40d8-8c26-9165e873d862" class="mx-auto d-block">
+    <div id="WA_titleDiv">
+        <h1 class="text-center"><br>Western Australia</h1>
+        <img src="https://firebasestorage.googleapis.com/v0/b/webapp-88d5b.appspot.com/o/regionMarkL.png?alt=media&token=2db44c17-f5f9-462f-b42c-13815a978bd9" class="mx-auto d-block">
+        <p class="text-center">Perth</p>
+        <p class="text-center">
+            The Western Australian grains industry is a major contributor to the agrifood sector and the Australian economy. WA produces on average<br><br>
+            13 million tonnes of grains (cereals, oilseeds and pulses) each year. Grain exports generate more than $4 billion (five years average) for the<br><br>
+            WA economy each year – making it the largest agricultural sector in the state, and the fourth largest export industry overall after iron ore, oil<br><br>
+            and gas, and gold.<br><br>
+            WA exports about 80% of its annual grain production to more than 50 countries worldwide. Indonesia is WA’s top wheat export market<br><br>
+            worth over $0.5 billion per year. WA is the world’s leading supplier of premium malting barley to China, the major supplier of wheat for the<br><br>
+            Japanese udon noodle market, and a major feed barley supplier to the Middle East.
+        </p>
+    </div>
+
+
+</div>
+</body>
+</html>

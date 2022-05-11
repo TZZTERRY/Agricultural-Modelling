@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Agriculture Modeling-VIC</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/Australia.js"></script>
+
+    <style>
+        #VIC_img {
+            width: 100%;
+            height: 100%;
+        }
+        .navbar-nav li:hover{
+            background-color: #FFC107;
+        }
+        #VIC_titleDiv{
+            background-color: #D9E8FF ;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2">
+            <img src="https://firebasestorage.googleapis.com/v0/b/webapp-88d5b.appspot.com/o/Logo.png?alt=media&token=dead362f-0e36-4dd7-85da-4cd1361ee254" class="float-right d-block" style="width:60%;">
+        </div>
+        <div class="col-sm-10">
+            <p></p>
+            <h3 class="text-left text-warning">Agriculture Modeling</h3>
+            <p class="text-left text-secondary">Agriculture yield predication, analysis and visualization</p>
+        </div>
+    </div>
+
+</div>
+
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark " style="white-space:nowrap;">
+    <div class="row">
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-8">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="HomePage.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Australia overview</a>
+                </li>
+                <!-- Dropdown -->
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Region
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">NSW</a>
+                        <a class="dropdown-item" href="#">VIC</a>
+                        <a class="dropdown-item" href="#">QLD</a>
+                        <a class="dropdown-item" href="#">TAS</a>
+                        <a class="dropdown-item" href="#">WA</a>
+                        <a class="dropdown-item" href="#">SA</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</nav>
+
+<div id="VIC_content" >
+    <img id="VIC_img" src="https://firebasestorage.googleapis.com/v0/b/webapp-88d5b.appspot.com/o/imageVIC.jpeg?alt=media&token=02cf869b-9dd8-42b3-863c-828b18cf4604" class="mx-auto d-block">
+    <div id="VIC_titleDiv">
+        <h1 class="text-center"><br>Victoria</h1>
+        <img src="https://firebasestorage.googleapis.com/v0/b/webapp-88d5b.appspot.com/o/regionMarkL.png?alt=media&token=2db44c17-f5f9-462f-b42c-13815a978bd9" class="mx-auto d-block">
+        <p class="text-center">Melbourne</p>
+        <p class="text-center">
+            There were 21,700 farm businesses in Victoria in 2019–20, accounting for 25 per cent of farm businesses in Australia. Victoria’s farm<br><br>
+            numbers have declined by 4 per cent per annum in the past decade, falling from 32,400 in 2010–11 to 21,700 in 2019–20.<br><br>
+            Victoria is Australia's largest producer of food and fibre products, and these make up over half of Victoria's total product exports. The state<br><br>
+            represents 26 per cent of total Australian food and fibre export value. Victoria's food and fibre exports increased by $0.3 billion to reach a<br><br>
+            record $14.5 billion for the 2019–20 period.<br>
+        </p>
+    </div>
+
+
+</div>
+</body>
+</html>

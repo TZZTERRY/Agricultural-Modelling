@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Agriculture Modeling-SA</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/Australia.js"></script>
+
+    <style>
+        #SA_img {
+            width: 100%;
+            height: 100%;
+        }
+        .navbar-nav li:hover{
+            background-color: #FFC107;
+        }
+        #SA_titleDiv{
+            background-color: #D5A99C;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2">
+            <img src="https://firebasestorage.googleapis.com/v0/b/webapp-88d5b.appspot.com/o/Logo.png?alt=media&token=dead362f-0e36-4dd7-85da-4cd1361ee254" class="float-right d-block" style="width:60%;">
+        </div>
+        <div class="col-sm-10">
+            <p></p>
+            <h3 class="text-left text-warning">Agriculture Modeling</h3>
+            <p class="text-left text-secondary">Agriculture yield predication, analysis and visualization</p>
+        </div>
+    </div>
+
+</div>
+
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark " style="white-space:nowrap;">
+    <div class="row">
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-8">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="HomePage.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Australia overview</a>
+                </li>
+                <!-- Dropdown -->
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Region
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">NSW</a>
+                        <a class="dropdown-item" href="#">VIC</a>
+                        <a class="dropdown-item" href="#">QLD</a>
+                        <a class="dropdown-item" href="#">TAS</a>
+                        <a class="dropdown-item" href="#">WA</a>
+                        <a class="dropdown-item" href="#">SA</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</nav>
+
+<div id="SA_content" >
+    <img id="SA_img" src="https://firebasestorage.googleapis.com/v0/b/webapp-88d5b.appspot.com/o/imageSA.jpg?alt=media&token=7cdab857-fd61-4a97-a561-33d2f29d2681" class="mx-auto d-block">
+    <div id="SA_titleDiv">
+        <h1 class="text-center"><br>Southern Australia</h1>
+        <img src="https://firebasestorage.googleapis.com/v0/b/webapp-88d5b.appspot.com/o/regionMarkL.png?alt=media&token=2db44c17-f5f9-462f-b42c-13815a978bd9" class="mx-auto d-block">
+        <p class="text-center">Adelaide</p>
+        <p class="text-center">
+            Winter crop production in South Australia is estimated to have fallen by 2% in 2021–22 to 8.4 million tonnes, but remains 16% above the 10-<br><br>
+            year average to 2020–21.<br><br>
+            Seasonal conditions in South Australia were variable during the winter cropping season. Production in southern cropping regions is<br><br>
+            estimated to be generally well above average, supported by above average rainfall and cool conditions in late spring. However, production<br><br>
+            prospects in northern cropping regions were damaged by dry conditions in August and September, and those earlier finishing areas were<br><br>
+            generally unable to benefit from the more favourable conditions in late spring.
+        </p>
+    </div>
+
+
+</div>
+</body>
+</html>
