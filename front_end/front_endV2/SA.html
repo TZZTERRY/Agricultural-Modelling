@@ -69,7 +69,7 @@
                     <a class="nav-link" href="HomePage.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="AboutPage.html">About</a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="AustraliaOverview.html">Australia overview</a>
@@ -114,7 +114,8 @@
     <!--    -->
     <!--    -->
     <!--  the part for display analysing graph  -->
-    <div id="dataDiv" class="mx-auto" style="width: 85%; margin-top: 50px">
+    <div class="mx-auto" style="width: 1500px">
+        <div id="dataDiv" class="mx-auto" style="width: 85%; margin-top: 50px">
         <h3>Data visualization  <small>/ statistics</small></h3>
         <p>
             Two main elements influenced future yield mostly —— weather and price
@@ -1351,14 +1352,14 @@
                         </script>
                     </div>
                     <div class="tab-pane container" id="fYield">
-                        <p class="text-center text-danger">
-                            Forecast haven't merged, using NSW Historical graph as placeholder
+                        <p class="text-center">
+                            Forecast by our AI algorithm
                         </p>
-                        <div id="137c0e29817845aaa894d116527a0648" class="chart-container m-auto" style="width:900px; height:500px;"></div>
+                        <div id="85a21ea7bd8c404583eda4b692fc2b34" class="chart-container m-auto" style="width:900px; height:500px;"></div>
                         <script>
-                            var chart_137c0e29817845aaa894d116527a0648 = echarts.init(
-                                document.getElementById('137c0e29817845aaa894d116527a0648'), 'white', {renderer: 'canvas'});
-                            var option_137c0e29817845aaa894d116527a0648 = {
+                            var chart_85a21ea7bd8c404583eda4b692fc2b34 = echarts.init(
+                                document.getElementById('85a21ea7bd8c404583eda4b692fc2b34'), 'white', {renderer: 'canvas'});
+                            var option_85a21ea7bd8c404583eda4b692fc2b34 = {
                                 "animation": true,
                                 "animationThreshold": 2000,
                                 "animationDuration": 1000,
@@ -1396,7 +1397,7 @@
                                 "series": [
                                     {
                                         "type": "line",
-                                        "name": "New South Wales",
+                                        "name": "Southern Australia",
                                         "connectNulls": false,
                                         "symbolSize": 4,
                                         "showSymbol": true,
@@ -1405,136 +1406,124 @@
                                         "step": false,
                                         "data": [
                                             [
-                                                "1990",
-                                                3423.3
-                                            ],
-                                            [
-                                                "1991",
-                                                4127.6
-                                            ],
-                                            [
-                                                "1992",
-                                                2183.0
-                                            ],
-                                            [
-                                                "1993",
-                                                3582.7
-                                            ],
-                                            [
-                                                "1994",
-                                                5086.1
-                                            ],
-                                            [
-                                                "1995",
-                                                874.6
-                                            ],
-                                            [
-                                                "1996",
-                                                4508.4
-                                            ],
-                                            [
-                                                "1997",
-                                                8363.4
-                                            ],
-                                            [
-                                                "1998",
-                                                5906.4
-                                            ],
-                                            [
-                                                "1999",
-                                                6563.3
-                                            ],
-                                            [
-                                                "2000",
-                                                8601.9
-                                            ],
-                                            [
-                                                "2001",
-                                                7867.3
-                                            ],
-                                            [
-                                                "2002",
-                                                8042.8
-                                            ],
-                                            [
-                                                "2003",
-                                                2494.9
-                                            ],
-                                            [
-                                                "2004",
-                                                7288.2
-                                            ],
-                                            [
-                                                "2005",
-                                                7537.4
-                                            ],
-                                            [
-                                                "2006",
-                                                8049.0
-                                            ],
-                                            [
-                                                "2007",
-                                                2567.7
-                                            ],
-                                            [
-                                                "2008",
-                                                2477.1
-                                            ],
-                                            [
-                                                "2009",
-                                                6963.3
-                                            ],
-                                            [
-                                                "2010",
-                                                5349.8
-                                            ],
-                                            [
-                                                "2011",
-                                                10488.4
-                                            ],
-                                            [
-                                                "2012",
-                                                8472.9
-                                            ],
-                                            [
-                                                "2013",
-                                                7364.9
-                                            ],
-                                            [
-                                                "2014",
-                                                6595.6
-                                            ],
-                                            [
-                                                "2015",
-                                                6653.7
-                                            ],
-                                            [
-                                                "2016",
-                                                6897.5
-                                            ],
-                                            [
-                                                "2017",
-                                                9819.1
-                                            ],
-                                            [
-                                                "2018",
-                                                4702.8
-                                            ],
-                                            [
-                                                "2019",
-                                                1850.3
-                                            ],
-                                            [
-                                                "2020",
-                                                1772.4
-                                            ],
-                                            [
-                                                "2021",
-                                                13110.0
-                                            ],
-                                            [
                                                 "2022",
-                                                12765.0
+                                                3727.93
+                                            ],
+                                            [
+                                                "2023",
+                                                4399.88
+                                            ],
+                                            [
+                                                "2024",
+                                                4767.89
+                                            ],
+                                            [
+                                                "2025",
+                                                3878.21
+                                            ],
+                                            [
+                                                "2026",
+                                                4675.58
+                                            ],
+                                            [
+                                                "2027",
+                                                4695.21
+                                            ],
+                                            [
+                                                "2028",
+                                                4106.45
+                                            ],
+                                            [
+                                                "2029",
+                                                4895.21
+                                            ],
+                                            [
+                                                "2030",
+                                                3811.25
+                                            ],
+                                            [
+                                                "2031",
+                                                4610.48
+                                            ],
+                                            [
+                                                "2032",
+                                                4318.84
+                                            ],
+                                            [
+                                                "2033",
+                                                4349.37
+                                            ],
+                                            [
+                                                "2034",
+                                                4584.9
+                                            ],
+                                            [
+                                                "2035",
+                                                4497.5
+                                            ],
+                                            [
+                                                "2036",
+                                                3409.35
+                                            ],
+                                            [
+                                                "2037",
+                                                3742.18
+                                            ],
+                                            [
+                                                "2038",
+                                                3850.31
+                                            ],
+                                            [
+                                                "2039",
+                                                4272.59
+                                            ],
+                                            [
+                                                "2040",
+                                                4780.63
+                                            ],
+                                            [
+                                                "2041",
+                                                4920.02
+                                            ],
+                                            [
+                                                "2042",
+                                                4726.48
+                                            ],
+                                            [
+                                                "2043",
+                                                4478.18
+                                            ],
+                                            [
+                                                "2044",
+                                                3905.48
+                                            ],
+                                            [
+                                                "2045",
+                                                4981.29
+                                            ],
+                                            [
+                                                "2046",
+                                                4443.58
+                                            ],
+                                            [
+                                                "2047",
+                                                3771.6
+                                            ],
+                                            [
+                                                "2048",
+                                                4080.64
+                                            ],
+                                            [
+                                                "2049",
+                                                4999.64
+                                            ],
+                                            [
+                                                "2050",
+                                                5107.56
+                                            ],
+                                            [
+                                                "2051",
+                                                3922.65
                                             ]
                                         ],
                                         "hoverAnimation": true,
@@ -1566,10 +1555,10 @@
                                 "legend": [
                                     {
                                         "data": [
-                                            "New South Wales"
+                                            "Southern Australia"
                                         ],
                                         "selected": {
-                                            "New South Wales": true
+                                            "Southern Australia": true
                                         },
                                         "show": true,
                                         "bottom": "bottom",
@@ -1618,39 +1607,36 @@
                                             }
                                         },
                                         "data": [
-                                            "1990",
-                                            "1991",
-                                            "1992",
-                                            "1993",
-                                            "1994",
-                                            "1995",
-                                            "1996",
-                                            "1997",
-                                            "1998",
-                                            "1999",
-                                            "2000",
-                                            "2001",
-                                            "2002",
-                                            "2003",
-                                            "2004",
-                                            "2005",
-                                            "2006",
-                                            "2007",
-                                            "2008",
-                                            "2009",
-                                            "2010",
-                                            "2011",
-                                            "2012",
-                                            "2013",
-                                            "2014",
-                                            "2015",
-                                            "2016",
-                                            "2017",
-                                            "2018",
-                                            "2019",
-                                            "2020",
-                                            "2021",
-                                            "2022"
+                                            "2022",
+                                            "2023",
+                                            "2024",
+                                            "2025",
+                                            "2026",
+                                            "2027",
+                                            "2028",
+                                            "2029",
+                                            "2030",
+                                            "2031",
+                                            "2032",
+                                            "2033",
+                                            "2034",
+                                            "2035",
+                                            "2036",
+                                            "2037",
+                                            "2038",
+                                            "2039",
+                                            "2040",
+                                            "2041",
+                                            "2042",
+                                            "2043",
+                                            "2044",
+                                            "2045",
+                                            "2046",
+                                            "2047",
+                                            "2048",
+                                            "2049",
+                                            "2050",
+                                            "2051"
                                         ]
                                     }
                                 ],
@@ -1679,18 +1665,19 @@
                                 ],
                                 "title": [
                                     {
-                                        "text": "historical wheat yield (KT)",
+                                        "text": "forecast wheat yield (KT)",
                                         "padding": 5,
                                         "itemGap": 10
                                     }
                                 ]
                             };
-                            chart_137c0e29817845aaa894d116527a0648.setOption(option_137c0e29817845aaa894d116527a0648);
+                            chart_85a21ea7bd8c404583eda4b692fc2b34.setOption(option_85a21ea7bd8c404583eda4b692fc2b34);
                         </script>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <!--  end analysing graph part  -->
 

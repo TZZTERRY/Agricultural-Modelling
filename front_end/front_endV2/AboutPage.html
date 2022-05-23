@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Agriculture Modeling-SA</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/Australia.js"></script>
+
+    <style>
+        #SA_img {
+            width: 100%;
+            height: 100%;
+        }
+        .navbar-nav li:hover{
+            background-color: #FFC107;
+        }
+        #SA_titleDiv{
+            background-color: #F8F7FD;
+        }
+        #weatherDiv{
+            margin: 100px 8% 50px 8% ;
+        }
+        #lineDiv{
+            margin-top: 50px;
+        }
+        /*CSS for data analysing part*/
+        #graphSelectNav li{
+            width: 100%;
+            margin-top: 5px;
+        }
+        #predictionDiv .nav-link{
+            color: #000000;
+            background-color: #F3F3F3;
+        }
+        #predictionDiv .nav-link.active {
+            color: #fff;
+            background-color: #FFC107;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2">
+            <img src="resource/Logo.png" class="float-right d-block" style="width:60%;">
+        </div>
+        <div class="col-sm-10">
+            <p></p>
+            <h3 class="text-left text-warning">Agriculture Modeling</h3>
+            <p class="text-left text-secondary">Agriculture yield predication, analysis and visualization</p>
+        </div>
+    </div>
+
+</div>
+
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark " style="white-space:nowrap;">
+    <div class="row">
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-8">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="HomePage.html">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="AustraliaOverview.html">Australia overview</a>
+                </li>
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Region
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="NSW.html">NSW</a>
+                        <a class="dropdown-item" href="VIC.html">VIC</a>
+                        <a class="dropdown-item" href="QLD.html">QLD</a>
+                        <a class="dropdown-item" href="TAS.html">TAS</a>
+                        <a class="dropdown-item" href="WA.html">WA</a>
+                        <a class="dropdown-item" href="SA.html">SA</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</nav>
+
+<div id="SA_content" >
+    <img id="SA_img" src="resource/About.jpg" class="mx-auto d-block">
+    <div id="SA_titleDiv">
+        <h1 class="text-center"><br>About US</h1>
+        <img src="resource/regionMarkL.png" class="mx-auto d-block">
+        <p class="text-center">Agricultural Modeling</p>
+        <p class="text-center">
+            Predicting and understanding agricultural performance is highly important to help the Australian government make Australia a better country. <br><br>
+            The advent of climate change, the volatility of weather and the fluctuations of the market make agricultural predictions difficult, yet valuable. <br><br>
+            Our platform predicts the effect of these factors on yields, exports, efficiency and prices. <br><br>
+            T he Agricultural Modelling System investigates historical weather data, agricultural yield data and economic price data using AI analysis tools, algorithms and data models <br><br>
+            to understand past impacts and forecast coming challenges in the country. <br><br>
+            We examine multiple scenarios for future weather patterns to interpret their impacts on agricultural yields <br><br>
+            and economies while considering the implications of external factors (e.g. climate change).<br><br><br><br><br><br>
+        </p>
+    </div>
+
+
+    <!--    -->
+    <!--    -->
+    <!--  the part for display analysing graph  -->
+    <div class="mx-auto" style="width: 1500px">
+        <h3 class="text-center" style="margin-top: 20px">
+            Data Source
+        </h3>
+        <div class="row mx-auto" style="width: 90%; margin-top: 20px">
+            <div class="col-4">
+                <div class="card shadow p-3 mb-5 bg-white rounded" >
+                    <div class="card-body" >
+                        <div style="height: 50px">
+                            <h4 class="card-title">Weather</h4>
+                        </div>
+                        <div style="height: 145px">
+                            <div style="height: 70px">
+                                <h5 class="card-text">
+                                    Bureau of Meterology
+                                </h5>
+                            </div>
+                            <p class="card-text">
+                                Rainfall, Temperature, Wind, Humidity, Evaporation, Sunshine, Cyclones, Bushfires
+                            </p>
+                        </div>
+                        <a href="http://www.bom.gov.au/climate/change/index.shtml#tabs=Tracker&tracker=timeseries" target="_blank" class="card-link">See More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card shadow p-3 mb-5 bg-white rounded" >
+                    <div class="card-body" >
+                        <div style="height: 50px">
+                            <h4 class="card-title">Local Value</h4>
+                        </div>
+                        <div style="height: 145px">
+                            <div style="height: 70px">
+                                <h5 class="card-text">
+                                    Australian Bureau of Statistics
+                                </h5>
+                            </div>
+                            <p class="card-text">
+                                Contains final estimates of gross and local values of production of major agricultural commodities for Australia, states and territories
+                            </p>
+                        </div>
+                        <a href="https://www.abs.gov.au/statistics/industry/agriculture/value-agricultural-commodities-produced-australia" target="_blank" class="card-link">See More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card shadow p-3 mb-5 bg-white rounded" >
+                    <div class="card-body" >
+                        <div style="height: 50px">
+                            <h4 class="card-title">Local Production</h4>
+                        </div>
+                        <div style="height: 145px">
+                            <div style="height: 70px">
+                                <h5 class="card-text">
+                                    Department of Agriculture, Water and the Environment
+                                </h5>
+                            </div>
+                            <p class="card-text">
+                                Australian Crop Report: wheat, barley, chickpeas, oats, corn, etc
+                            </p>
+                        </div>
+                        <a href="https://www.awe.gov.au/abares/research-topics/agricultural-outlook/australian-crop-report#download-report" target="_blank" class="card-link">See More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center" style="margin-bottom: 50px">
+            <button type="button" class="btn btn-outline-primary">
+                Download Report
+            </button>
+        </div>
+
+
+    </div>
+    <!--  end analysing graph part  -->
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</body>
+</html>
