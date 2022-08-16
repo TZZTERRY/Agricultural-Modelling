@@ -51,5 +51,6 @@ The project starts by identifying and processing publicly available sources of d
 3. [TechLauncher Schedule - Semester 1](https://docs.google.com/document/d/1On0W6BCAIJ6oHPJeKMq5j55WEd-8ADKCnk-OLkhKEdk/edit?usp=sharing)
 4. [Team Meetings](https://docs.google.com/document/u/0/d/1fjGWvtqiSrWWUSTMI9ZOTAmMcRA_Q9Upqu7vYiLi-dk/edit)
 5. [UI development log](https://github.com/TZZTERRY/Agricultural-Modelling/blob/main/front_end/DEVELOPMENT_LOG.md)
-6. [Audit 2 slides](https://docs.google.com/presentation/d/1LyzxSDGJ3-C0_8DR_ozFFHOhTlj7Z-XnUwWkypvm3Uc/edit?usp=sharing)
-7. [Audit 3 slides](https://docs.google.com/presentation/d/1NZOf7IDNGL15VgBb6r0c-vejs8cidBZ6ZsDLxrPXPa4/edit?usp=sharing)
+6. [service development log](https://github.com/TZZTERRY/Agricultural-Modelling/blob/main/back_end/DEVELOPMENT_LOG.md)  
+7. [Audit 2 slides](https://docs.google.com/presentation/d/1LyzxSDGJ3-C0_8DR_ozFFHOhTlj7Z-XnUwWkypvm3Uc/edit?usp=sharing)
+8. [Audit 3 slides](https://docs.google.com/presentation/d/1NZOf7IDNGL15VgBb6r0c-vejs8cidBZ6ZsDLxrPXPa4/edit?usp=sharing)
