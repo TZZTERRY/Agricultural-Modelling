@@ -13,5 +13,6 @@
 | 11th May, 2022   | 1. using Bootstrap 4.6.1 rebuilt website  <br/>2. Complete new layout  <br/>3. Add images resource link to HTML file  <br/> 4. Other new features                                                                                                | 6f5a75a2b9ccf3fc384c3449160ba7e8d3d1f4c0 | Already to wait for on-line |
 | 12th May, 2022   | 1. Update the new user-friendly layout on region page  <br/>2. Add titles for the home page                                                                                                                                                      | 9b63fb9103b2ff863d8242e868a883551826bd13 |                             |
 | 23th May, 2022   | 1. create AboutPage   <br/>2. Make page adapts to different page sizes                                                                                                                                                                           | 3e6604da0d14902a6b215b67650083f0b4ac7c91 |                             |
+| 21th Aug, 2022   | 1. create DownloadPage   <br/>2. Complete download functionality in two ways                                                                                                                                                                           |  |                             |
 
 
