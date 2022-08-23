@@ -50,7 +50,7 @@ features. A tree can be seen as a piecewise constant approximation.
 Multi-layer Perceptron (MLP) is a supervised learning algorithm that learns a function by training on a dataset. Given a
 set of features and a target , it can learn a non-linear function approximator for either classification or regression.
 
-##Model details and performance
+## Model details and performance
 |Model Name|                    Model Parameters                     | Average Margin of Error |             Evaluation             |
 |:---:|:-------------------------------------------------------:|:-----------------------:|:----------------------------------:|
 |ElasticNet|               alpha: 0.025 l1_ratio: 1.0                |          19.4%          |       Simple,Fast,Inaccurate       |
