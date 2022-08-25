@@ -43,9 +43,9 @@ TA|Crop|Maize|Removed(All)
 TA|Crop|Wheat price|2018~2019
 TA|Crop|Oat price|2020
 Vic|Crop|Maize price|2008, 2010
-Vic|Crop|Rice crop area|1990~1996, 2000, 2007~2009, 2017~2021
-Vic|Crop|Rice production|1990~1996, 2000, 2008~2009, 2017~2021
-Vic|Crop|Rice local price|1990~1996, 2003, 2008~2009, 2017~2021
+Vic|Crop|Rice crop area|1990 ~ 1996, 2000, 2007 ~ 2009, 2017 ~ 2021
+Vic|Crop|Rice production|1990 ~ 1996, 2000, 2008 ~ 2009, 2017 ~ 2021
+Vic|Crop|Rice local price|1990 ~ 1996, 2003, 2008 ~ 2009, 2017 ~ 2021
 WA|Crop|Rice|Removed(All)
 WA|Crop|Maize local price|2002, 2008, 2010
 WA|Crop|Maize crop area|2002
