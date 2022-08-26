@@ -1,8 +1,14 @@
 from flask import Flask
 from flask import request
 from flask import jsonify
+from agri_service.s_weather import SWeather
+from agri_service.s_price import SPrice
+from agri_service.s_yield import SYield
+from agri_service.s_weblink import SWeblink
+from agri_service.s_resource import SResource
 
 app = Flask(__name__)
+
 
 @app.route('/')
 def index():
@@ -17,7 +23,7 @@ def get_weather_data():
     print("region: ", region)
     print("vtype: ", vtype)
 
-    return "Pass"
+    return weather_obj.get_data()
 
 
 @app.route('/price', methods=['GET', 'POST'])
@@ -34,7 +40,7 @@ def get_price_data():
     print("endy: ", endy)
     print("cropid: ", cropid)
 
-    return "Pass"
+    return price_obj.get_data()
 
 
 @app.route('/yield', methods=['GET', 'POST'])
@@ -51,12 +57,12 @@ def get_yield_data():
     print("endy: ", endy)
     print("cropid: ", cropid)
 
-    return "Pass"
+    return yield_obj.get_data()
 
 
 @app.route('/weblink', methods=['GET', 'POST'])
 def get_weblink():
-    return "Pass"
+    return weather_obj.get_data()
 
 
 @app.route('/resource', methods=['GET', 'POST'])
@@ -66,7 +72,13 @@ def get_resource():
 
     print("resourceid: ", resourceid)
     print("type: ", type)
-    return "Pass"
+    return resource_obj.get_data()
+
 
 if __name__ == "__main__":
+    weather_obj = SWeather()
+    price_obj = SPrice()
+    yield_obj = SYield()
+    weblink_obj = SWeblink()
+    resource_obj = SResource()
     app.run(port=8080, host="localhost", debug=True)
