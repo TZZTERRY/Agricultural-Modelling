@@ -1,4 +1,4 @@
-class cropData(object):
+class crop_Data(object):
     def __init__(self, name, years, values, regionname):
         self.__name = name
         self.__years = years
