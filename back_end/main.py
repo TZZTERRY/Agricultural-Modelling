@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def index():
+def hello_world():
     return '<h1>Hello World!</h1>'
 
 
@@ -81,4 +81,4 @@ if __name__ == "__main__":
     yield_obj = SYield()
     weblink_obj = SWeblink()
     resource_obj = SResource()
-    app.run(port=8080, host="localhost", debug=True)
+    app.run(host='0.0.0.0', debug=True)
