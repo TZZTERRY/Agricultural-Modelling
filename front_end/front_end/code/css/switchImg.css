@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#outerDiv{
+    width: 65%;
+    height: 30vh;
+    margin: auto;
+    position: relative;
+    left: -0.5%;
+    overflow: hidden;
+}
+#switchImgList{
+    list-style: none;
+    /*equal to the number * img width*/
+    width: 4000px;
+    position: absolute;
+    /*use to move*/
+    left: 0px;
+}
+#switchImgList li{
+    float: left;
+}
+#switchImgList img{
+    width: 1663px;
+    height: 100%;
+}
+#switchNavDiv{
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+}
+#switchNavDiv a{
+    width: 10px;
+    height: 10px;
+    float: left;
+    background-color: #CD7879;
+    margin: 0 10px;
+    opacity: 0.8;
+    /* set a round button; the value must be the half of the width/height */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+#switchNavDiv a:hover{
+    background: black;
+}

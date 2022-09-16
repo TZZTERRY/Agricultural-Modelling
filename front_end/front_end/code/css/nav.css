@@ -1,0 +1,44 @@
+.nav_bg{
+    width:65%;
+    height:3.5vh;
+    background: #ffffff;
+    position: relative;
+    top:0;
+    left: 17%;
+}
+.nav_bg ul{
+    position: absolute;
+    height:3.5vh;
+    width: 65vw;
+    border-collapse: collapse;
+
+}
+.nav_bg li{
+    float: left;
+    width: 7.1vw;
+    height: 3.6vh;
+    line-height: 3.5vh;
+    text-align: center;
+    font-size: 2vh;
+    color: #707070;
+    list-style: none;
+}
+#total_li{
+    width:8.18vw;
+    font-size: 1vw;
+}
+
+.nav_link{
+    display: block;
+    text-decoration: none;
+}
+.nav_link:link{
+    color:#707070;
+}
+.nav_link:visited{
+    color: #2C386B;
+}
+.nav_link:hover{
+    background: #C3C3C3;
+    color: red;
+}

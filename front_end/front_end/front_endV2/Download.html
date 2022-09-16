@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agriculture Modeling</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="fontawesome-free-6.1.2-web/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+</head>
+<style>
+    /* Make the image fully responsive */
+    .carousel-inner img {
+        width: 100%;
+        height: 100%;
+    }
+    .navbar-nav li:hover{
+        background-color: #FFC107;
+    }
+    #download_img {
+        width: 100%;
+        height: 100%;
+        background-position: center 0;
+    }
+    .file a{
+        text-decoration: none;
+        color: dimgray;
+    }
+    .m-auto{
+        font-size: 18px;
+    }
+    .nav-item{
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+
+</style>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2">
+            <img src="resource/Logo.png" class="float-right d-block" style="width:60%;">
+        </div>
+        <div class="col-sm-10">
+            <p></p>
+            <h3 class="text-left text-warning">Agriculture Modeling</h3>
+            <p class="text-left text-secondary">Agriculture yield predication, analysis and visualization</p>
+        </div>
+    </div>
+</div>
+
+<nav class="nav-fill  navbar-nav navbar-expand-sm bg-dark navbar-dark" style="white-space:nowrap;">
+    <div class="row">
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-8">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="HomePage.html"><p class="m-auto">Home</p></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="AboutPage.html"><p class="m-auto">About</p></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="AustraliaOverview.html"><p class="m-auto">Australia overview</p></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="Download.html"><p class="m-auto">Download</p></a>
+                </li>
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><span class="m-auto">Region</span></a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="NSW.html">NSW</a>
+                        <a class="dropdown-item" href="VIC.html">VIC</a>
+                        <a class="dropdown-item" href="QLD.html">QLD</a>
+                        <a class="dropdown-item" href="TAS.html">TAS</a>
+                        <a class="dropdown-item" href="WA.html">WA</a>
+                        <a class="dropdown-item" href="SA.html">SA</a>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+</nav>
+<div id="WA_content" >
+    <img id="download_img" src="resource/download_bg.png" class="mx-auto d-block">
+</div>
+
+</div>
+<div class="container" style="background-color: white">
+    <div class="row">
+        <div class="col-md-6">
+            <p class="text-left" style=" font-family: 'STHeiti'; font-weight: bolder; font-size: 50px; color: #ffc107"><br>General&nbsp;<span class="text-left" style=" font-family: 'STIXSizeFiveSym'; font-weight: lighter; font-size: 30px; color:gold" >resource</span></p>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-4 file">
+            <h5><a href="WA.html" download="WA">test.pdf</a></h5>
+        </div>
+        <div class="col-md-8 float-right" style="background-color: white">
+            <a href="WA.html" download="WA"><i class="fa-solid fa-cloud-arrow-down fa-pull-right" style="font-size: 20px"></i></a>
+        </div>
+    </div>
+
+    <hr>
+    <div class="row">
+        <div class="col-md-4 file">
+            <h5><a href="WA.html" download="WA">test.pdf</a></h5>
+        </div>
+        <div class="col-md-8 float-right" style="background-color: white">
+            <a href="WA.html" download="WA"><i class="fa-solid fa-cloud-arrow-down fa-pull-right" style="font-size: 20px"></i></a>
+        </div>
+    </div>
+
+    <hr>
+    <div class="row">
+        <div class="col-md-4 file">
+            <h5><a onclick="openFile()">test.pdf</a></h5>
+        </div>
+        <div class="col-md-8 float-right" style="background-color: white">
+            <a href="resource/test.pdf" download="test"><i class="fa-solid fa-cloud-arrow-down fa-pull-right" style="font-size: 20px"></i></a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <p class="text-left" style=" font-family: 'STHeiti'; font-weight: bolder; font-size: 50px; color: #ffc107"><br>Others</p>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-4 file">
+                <h5><a href="WA.html" download="WA">test.pdf</a></h5>
+            </div>
+            <div class="col-md-8 float-right" style="background-color: white">
+                <a href="WA.html" download="WA"><i class="fa-solid fa-cloud-arrow-down fa-pull-right" style="font-size: 20px"></i></a>
+            </div>
+        </div>
+
+        <hr>
+        <div class="row">
+            <div class="col-md-4 file">
+                <h5><a href="WA.html" download="WA">test.pdf</a></h5>
+            </div>
+            <div class="col-md-8 float-right" style="background-color: white">
+                <a href="WA.html" download="WA"><i class="fa-solid fa-cloud-arrow-down fa-pull-right" style="font-size: 20px"></i></a>
+            </div>
+        </div>
+
+        <hr>
+        <div class="row">
+            <div class="col-md-4 file">
+                <h5><a onclick="openFile()">test.pdf</a></h5>
+            </div>
+            <div class="col-md-8 float-right" style="background-color: white">
+                <a href="resource/test.pdf" download="test"><i class="fa-solid fa-cloud-arrow-down fa-pull-right" style="font-size: 20px"></i></a>
+            </div>
+        </div>
+</div>
+
+
+<script>
+    function openFile(){
+        window.open('resource/test.pdf')
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+#marquee-box{
+    width:100%;
+    overflow: hidden;
+    height:232px
+}
+#marquee-con{
+    width:500%;
+    float:left;
+}
+#marquee,#marquee-1{
+    float:left;
+}
+.marquee-img{
+    float:left;
+    height:232px;
+    width: 186px;
+    margin-left:16px
+}
