@@ -31,7 +31,7 @@ Covid|0,1|binary|Yearly
 global production by continents|Kt|numeric|Yearly
 global trade volume by continents|Kt|numeric|Yearly
 global exports value by continents|$(USD)|numeric|Yearly
-Crude oil price|$(USD)|numeric|Yearly
+Crude oil price|$(USD)/barrel|numeric|Yearly
 Fertiliser cost|$(AUD)|numeric|Yearly
 Baltic dry index|$(USD)|numeric|Monthly
 global container freight index|$(AUD)|numeric|Monthly
