@@ -14,12 +14,39 @@ from flask import render_template
 
 app = Flask(__name__)
 
-image_path = "image_resource/"
+REGION_SHORT_NAME = (("nsw", "NSW.html"),
+                     ("vic", "VIC.html"),
+                     ("qld", "QLD.html"),
+                     ("tas", "TAS.html"),
+                     ("wa", "WA.html"),
+                     ("sa", "SA.html"))
 
 
-@app.route('/home')
+@app.route('/home/')
 def hello_world():
     return render_template("HomePage.html")
+
+
+@app.route('/about/')
+def about_page():
+    return render_template("AboutPage.html")
+
+
+@app.route('/overview/')
+def overview_page():
+    return render_template("AustraliaOverview.html")
+
+
+@app.route('/region/<short_name>/')
+def region_page(short_name):
+    short_name_lower = short_name.lower()
+
+    for n, html_file in REGION_SHORT_NAME:
+        if short_name_lower == n:
+            return render_template(html_file)
+
+    raise Exception("No such region short name: "+short_name)
+
 
 @app.route('/weather', methods=['GET', 'POST'])
 def get_weather_data():
