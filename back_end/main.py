@@ -10,17 +10,16 @@ from agri_service.s_yield import SYield
 from agri_service.s_weblink import SWeblink
 from agri_service.s_resource import SResource
 from flask import send_from_directory
+from flask import render_template
 
 app = Flask(__name__)
 
 image_path = "image_resource/"
 
 
-@app.route('/HomePage')
+@app.route('/home')
 def hello_world():
-    return send_from_directory("", "HomePage.html")
-    # return '<h1>Hello World!</h1>'
-
+    return render_template("HomePage.html")
 
 @app.route('/weather', methods=['GET', 'POST'])
 def get_weather_data():
@@ -75,17 +74,11 @@ def get_weblink():
 @app.route('/resource', methods=['GET', 'POST'])
 def get_resource():
     resourceid = request.args.get('resourceid')
-    type = request.args.get('type')
+    type_num = int(request.args.get('type'))
     file_format = request.args.get('file_format')
 
-    print("resourceid: ", resourceid)
-    print("type: ", type)
-    resource_path = ""
-    if int(type) == 1:
-        resource_path = "image_resource/"+resourceid+"."+file_format
-    print(resource_path)
-
-    return send_from_directory("", resource_path)
+    return resource_obj.get_data(resourceid, type_num, file_format)
+    # return send_from_directory("", resource_path)
 
 
 if __name__ == "__main__":
