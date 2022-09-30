@@ -1,4 +1,7 @@
+import os
+
 from flask import Flask
+from flask import render_template
 from flask import request
 from flask import jsonify
 from agri_service.s_weather import SWeather
@@ -6,13 +9,17 @@ from agri_service.s_price import SPrice
 from agri_service.s_yield import SYield
 from agri_service.s_weblink import SWeblink
 from agri_service.s_resource import SResource
+from flask import send_from_directory
 
 app = Flask(__name__)
 
+image_path = "image_resource/"
 
-@app.route('/')
+
+@app.route('/HomePage')
 def hello_world():
-    return '<h1>Hello World!</h1>'
+    return send_from_directory("", "HomePage.html")
+    # return '<h1>Hello World!</h1>'
 
 
 @app.route('/weather', methods=['GET', 'POST'])
@@ -69,10 +76,16 @@ def get_weblink():
 def get_resource():
     resourceid = request.args.get('resourceid')
     type = request.args.get('type')
+    file_format = request.args.get('file_format')
 
     print("resourceid: ", resourceid)
     print("type: ", type)
-    return resource_obj.get_data()
+    resource_path = ""
+    if int(type) == 1:
+        resource_path = "image_resource/"+resourceid+"."+file_format
+    print(resource_path)
+
+    return send_from_directory("", resource_path)
 
 
 if __name__ == "__main__":
