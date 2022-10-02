@@ -12,7 +12,7 @@ def create_weather_table(dynamodb=None):
         TableName='Weather',
         KeySchema=[
             {
-                'AttributeName': 'title',
+                'AttributeName': 'region_name',
                 'KeyType': 'HASH'
             },
             {
@@ -22,7 +22,7 @@ def create_weather_table(dynamodb=None):
         ],
         AttributeDefinitions=[
             {
-                'AttributeName': 'title',
+                'AttributeName': 'region_name',
                 'AttributeType': 'S'
             },
             {
@@ -41,15 +41,18 @@ def create_weather_table(dynamodb=None):
 if __name__ == '__main__':
     book_table = create_weather_table()
     # print("Tablestatus:", book_table.table_status)
+
+    # TODO: Add all temperature with different regions and years
     dynamodb = boto3.resource('dynamodb')
     table = dynamodb.Table("Weather")
     table.put_item(
         Item={
-            'title': '02',
+            'title': 'QLD',
             'year': 1999,
             "value": '34'
         }
     )
+
     print(table.get_item(
         Key={
             'title': '02',
