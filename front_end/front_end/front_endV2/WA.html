@@ -4,6 +4,7 @@
     <title>Agriculture Modeling-WA</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="fontawesome-free-6.1.2-web/css/all.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
@@ -27,6 +28,15 @@
         #weatherDiv{
             margin: 100px 8% 50px 8% ;
         }
+        .m-auto{
+            font-size: 18px;
+        }
+        .nav-item{
+            padding-left: 4px;
+            padding-right: 4px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+        }
         /*CSS for data analysing part*/
         #graphSelectNav li{
             width: 100%;
@@ -40,6 +50,19 @@
             color: #fff;
             background-color: #FFC107;
         }
+        .h6{
+            color: #F0F0F0;
+        }
+        .foot_link{
+            color:#E8E8E8;
+            font-weight: lighter;
+        }
+        .nav-link{
+            color: #8B4513;
+        }
+        .footer-link{
+            color: #8B4513;
+        }
     </style>
 </head>
 <body>
@@ -47,7 +70,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-2">
-            <img src="resource/Logo.png" class="float-right d-block" style="width:60%;">
+            <img src="http://13.211.157.235:5000//resource?resourceid=logo&type=1&file_format=png" class="float-right d-block" style="width:60%;">
         </div>
         <div class="col-sm-10">
             <p></p>
@@ -59,35 +82,37 @@
 </div>
 
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark " style="white-space:nowrap;">
+<nav class="nav-fill  navbar-nav navbar-expand-sm bg-dark navbar-dark" style="white-space:nowrap;">
     <div class="row">
         <div class="col-sm-4">
         </div>
         <div class="col-sm-8">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="HomePage.html">Home</a>
+                    <a class="nav-link" href="HomePage.html"><p class="m-auto">Home</p></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="AboutPage.html"><p class="m-auto">About</p></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="AboutPage.html">About</a>
+                    <a class="nav-link" href="AustraliaOverview.html"><p class="m-auto">Australia overview</p></a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="AustraliaOverview.html">Australia overview</a>
+                    <a class="nav-link" href="Download.html"><p class="m-auto">Download</p></a>
                 </li>
                 <!-- Dropdown -->
-                <li class="nav-item dropdown active">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                        Region
-                    </a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><span class="m-auto">Region</span></a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="NSW.html">NSW</a>
                         <a class="dropdown-item" href="VIC.html">VIC</a>
                         <a class="dropdown-item" href="QLD.html">QLD</a>
                         <a class="dropdown-item" href="TAS.html">TAS</a>
-                        <a class="dropdown-item" href="#">WA</a>
+                        <a class="dropdown-item" href="WA.html">WA</a>
                         <a class="dropdown-item" href="SA.html">SA</a>
                     </div>
                 </li>
+
             </ul>
         </div>
     </div>
@@ -95,10 +120,10 @@
 </nav>
 
 <div id="WA_content" >
-    <img id="WA_img" src="resource/imageWA.jpg" class="mx-auto d-block">
+    <img id="WA_img" src="http://13.211.157.235:5000//resource?resourceid=imagewa&type=1&file_format=jpg"  class="mx-auto d-block">
     <div id="WA_titleDiv">
         <h1 class="text-center"><br>Western Australia</h1>
-        <img src="resource/regionMarkL.png" class="mx-auto d-block">
+        <img src="http://13.211.157.235:5000//resource?resourceid=regionmarkl&type=1&file_format=png"  class="mx-auto d-block">
         <p class="text-center">Perth</p>
         <p class="text-center">
             The Western Australian grains industry is a major contributor to the agrifood sector and the Australian economy. WA produces on average<br><br>
@@ -987,14 +1012,14 @@
 
         <div id="lineDiv" class="row">
             <div class="col-4">
-                <img src="resource/LineImg.png" class="mx-auto d-block">
+                <img src="http://13.211.157.235:5000//resource?resourceid=lineimg&type=1&file_format=png" class="mx-auto d-block">
             </div>
             <div class="col-4">
                 <h3 class="text-center">Yield Prediction</h3>
                 <p class="text-center">WA</p>
             </div>
             <div class="col-4">
-                <img src="resource/LineImg.png" class="mx-auto d-block">
+                <img src="http://13.211.157.235:5000//resource?resourceid=lineimg&type=1&file_format=png" class="mx-auto d-block">
             </div>
         </div>
 
@@ -1683,5 +1708,64 @@
     </div>
     <!--  end analysing graph part  -->
 </div>
+<footer class="pt-3 pb-1 " style="margin-top: 100px; background-color: #8B7E66" >
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="pr-lg-5">
+                    <h1 class="heading h6 text-uppercase font-weight-700 mb-3"><strong>Agriculture</strong>&nbsp;<lighter style="background-color: white; color: black">Modeling</lighter></h1>
+                    <p style="font-size: 13px; color: #CDBA96">In NSW, winter crops commonly include cereals such as wheat, barley, oats and triticale; oilseeds such as canola, mustard and safflower and
+
+                        pulses such as lupins, chickpeas, fababeans and fieldpeas.
+
+                        The Winter crop variety sowing guide helps to select the most suitable variety and contains updated technical information from the latest
+
+                        research, extension and industry programs.</p>
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-2">
+                <h5 class="heading h6 text-uppercase font-weight-700 mb-3">Main Pages</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="foot_link" href="HomePage.html">Home</a></li>
+                    <li><a class="foot_link" href="AboutPage.html">About</a></li>
+                    <li><a class="foot_link" href="AustraliaOverview.html">Australia Overview</a></li>
+                    <li><a class="foot_link" href="Download.html">Download</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5 class="heading h6 text-uppercase font-weight-700 mb-3">Regions</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="foot_link" href="NSW.html">New South Wales</a></li>
+                    <li><a class="foot_link" href="QLD.html">Queens Land</a></li>
+                    <li><a class="foot_link" href="VIC.html">Victoria</a></li>
+                    <li><a class="foot_link" href="TAS.html">Tasmania</a></li>
+                    <li><a class="foot_link" href="SA.html">South Australia</a></li>
+                    <li><a class="foot_link" href="WA.html">West Australia</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <div class="d-flex align-items-center">
+          <span class="">
+            &copy; 2022 <a href="#" class="footer-link" target="_blank">Agriculture Modeling</a>. All rights reserved.
+          </span>
+            <ul class="nav ml-lg-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" target="_blank"><i class="fab fa-github"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" target="_blank"><i class="fab fa-dribbble"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
