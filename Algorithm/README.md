@@ -3,7 +3,7 @@
 ## Introduction
 
 The algorithms used to predict crop yields are all machine learning algorithms including ElasticNet, Support Vector
-Machine, KNeighborsRegressor, GaussianProcessRegressor, DecisionTree and DeepNeuralNetwork. We will mainly evaluate the
+Machine, KNeighborsRegressor, GaussianProcessRegressor, DecisionTree, DeepNeuralNetwork, ConvolutionalNeuralNetwork and RecurrentNeuralNetwork. We will mainly evaluate the
 model from two aspects: performance and efficiency. We will use average margin of error as the measurement of
 performance. As for efficiency, calculation speed will be taken into consideration.
 
@@ -50,12 +50,24 @@ features. A tree can be seen as a piecewise constant approximation.
 Multi-layer Perceptron (MLP) is a supervised learning algorithm that learns a function by training on a dataset. Given a
 set of features and a target , it can learn a non-linear function approximator for either classification or regression.
 
+### Convolutional Neural Network
+
+CNN is normally used in Computer Vision to extract features from 2D images. Reshape our input data to 
+make it a 2D matrix and then use CNN to extract features.
+
+### Recurrent Neural Network
+
+RNN is normally used in Nature Language Precessing. The input of RNN is normally a set of vectors. If we regard 
+monthly data as a vector, we can use RNN to make prediction.
+
 ##Model details and performance
-|Model Name|                    Model Parameters                     | Average Margin of Error |             Evaluation             |
-|:---:|:-------------------------------------------------------:|:-----------------------:|:----------------------------------:|
-|ElasticNet|               alpha: 0.025 l1_ratio: 1.0                |          19.4%          |       Simple,Fast,Inaccurate       |
-|Support Vector Machine|                         C: 0.7                          |          11.9%          |       Simple, Fast, Accurate       |
-|KNeighborsRegressor|                 Number of neighbors: 7                  |          25.3%          | No need to train, Slow, Inaccurate |
-|GaussianProcessRegressor|                Prior:0 Kernel:DotProduct                |          13.2%          |      Complex, Fast, Accurate       |
-|Decision Tree| max_depth: 10 min_samples_split: 8  min_samples_leaf: 2 |          12.8%          |       Simple, Fast, Accurate       |
-|Deep Neural Network|              please review the source code              |          8.3%           |      Complex, Fast, Accurate       |
+|          Model Name          |                    Model Parameters                     | Average Margin of Error |             Evaluation             |
+|:----------------------------:|:-------------------------------------------------------:|:-----------------------:|:----------------------------------:|
+|          ElasticNet          |               alpha: 0.025 l1_ratio: 1.0                |          19.4%          |       Simple,Fast,Inaccurate       |
+|    Support Vector Machine    |                         C: 0.7                          |          11.9%          |       Simple, Fast, Accurate       |
+|     KNeighborsRegressor      |                 Number of neighbors: 7                  |          25.3%          | No need to train, Slow, Inaccurate |
+|   GaussianProcessRegressor   |                Prior:0 Kernel:DotProduct                |          13.2%          |      Complex, Fast, Accurate       |
+|        Decision Tree         | max_depth: 10 min_samples_split: 8  min_samples_leaf: 2 |          12.8%          |       Simple, Fast, Accurate       |
+|     Deep Neural Network      |              please review the source code              |          8.3%           |      Complex, Fast, Accurate       |
+| Convolutional Neural Network |              please review the source code              |          18.8%          |      Complex, Fast, Accurate       |
+|   Recurrent Neural Network   |              please review the source code              |          13.3%          |      Complex, Fast, Accurate       |
