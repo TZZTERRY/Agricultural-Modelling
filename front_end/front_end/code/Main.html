@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta content="Agriculture modeling, yield prediction, Australia agriculture prediction" name="Keywords">
+    <meta name="Description" content="">
+    <title>Agriculture Modeling</title>
+    <link rel="stylesheet" href="css/bg.css">
+    <link rel="stylesheet" href="css/logo_div.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/switchImg.css">
+    <style>
+        #video{
+            width: 50vw;
+            height: 50vh;
+            align-content: center;
+            border: 1px;background: rebeccapurple;
+            position: relative;
+            left: 14%;
+            top:4vh;
+        }
+        #blank{
+            width: 65%;
+            height: 20px;
+            position: relative;
+            left: 17%;
+            background:#ffffff;
+            opacity: 0.5;
+        }
+        #video_outer_div{
+            width: 65%;
+            height: 410px;
+            position: relative;
+            left: 17%;
+            /*background:#ffffff;*/
+            /*opacity: 0.1;*/
+        }
+    </style>
+
+    <script type="text/javascript">
+        var MAX_IMG_LENGTH = 2000;
+        var ONE_IMG_LENGTH = 1663;
+        var MAX_IMG_NUM = 2
+        var index = 0;
+        var moveInterval;
+        window.onload = function (){
+            var Aid = ["a1", "a2"]
+            var cur_a = document.getElementById(Aid[index])
+            cur_a.style.backgroundColor = "black"
+            var switchImgList = document.getElementById("switchImgList")
+            //bounding click function for each a
+            for (var i=0; i<Aid.length; i++){
+                if (moveInterval!=null){
+                    clearInterval(moveInterval)
+                }
+                var t = document.getElementById(Aid[i])
+                t.num = i
+                t.onclick = function (){
+                    index=this.num
+                    switchImgList.style.left = -ONE_IMG_LENGTH*index+"px"
+                    for (var i=0; i<Aid.length; i++){ // reset the color
+                        document.getElementById(Aid[i]).style.backgroundColor=""
+                    }
+                    this.style.backgroundColor = "black"
+                };
+            }
+
+            setInterval(function () {
+                index++
+                index%=MAX_IMG_NUM
+                switchImgList.style.left = -ONE_IMG_LENGTH*index+"px"
+                for (var i=0; i<Aid.length; i++){ // reset the color
+                    document.getElementById(Aid[i]).style.backgroundColor=""
+                }
+                document.getElementById(Aid[index]).style.backgroundColor = "black"
+            }, 2000)
+
+        }
+
+    </script>
+</head>
+<body>
+<!--logo div-->
+    <div class="logo_div">
+        <div>
+            <a href="Main.html" target="_blank"  class="title_link"><img class="logo" src="img/logo.png"></a>
+        </div>
+        <div>
+            <div>
+                <p class="logo_title"><a href="Main.html" target="_blank"  class="title_link">Agriculture&nbsp;&nbsp;Modelling</a></p>
+            </div>
+            <div>
+                <p class="logo_subtitle">Agricultural&nbsp;yield&nbsp;prediction,&nbsp;analysis,&nbsp;and&nbsp;data&nbsp;visualisation</p>
+            </div>
+        </div>
+    </div>
+<!--nav div-->
+    <div class="nav_bg">
+        <ul>
+            <li id="about"><a href="About.html" target="_blank"  class="nav_link">About</a></li>
+            <li id="total_li"><a href="TotalYearCrop.html" target="_blank" class="nav_link">Total crop yield</a></li>
+            <li id="barley"><a href="http://news.qq.com/" target="_blank"  class="nav_link">Barley</a></li>
+            <li id="wheat"><a href="http://news.qq.com/" target="_blank"  class="nav_link">Wheat</a></li>
+            <li id="canola"><a href="http://news.qq.com/" target="_blank"  class="nav_link">Canola</a></li>
+            <li id="oats"><a href="http://news.qq.com/" target="_blank"  class="nav_link">Oats</a></li>
+            <li id="rice"><a href="http://news.qq.com/" target="_blank"  class="nav_link">Rice</a></li>
+            <li id="corn"><a href="http://news.qq.com/" target="_blank"  class="nav_link">Corn</a></li>
+            <li id="chickpeas"><a href="http://news.qq.com/" target="_blank"  class="nav_link">Chickpeas</a></li>
+        </ul>
+        </table>
+    </div>
+<!--    </div>-->
+<!--content div-->
+    <div>
+        <div id="outerDiv">
+            <ul id="switchImgList">
+                <li>
+                    <img src="resource/switchImg1.jpg">
+                </li>
+                <li>
+                    <img src="resource/switchImg2.jpg">
+                </li>
+            </ul>
+            <!--    create nav bar    -->
+            <div id="switchNavDiv">
+                <a id="a1" href="javascript:"></a>
+                <a id="a2" href="javascript:"></a>
+            </div>
+        </div>
+
+        <div id="blank">
+        </div>
+
+        <div id="video_outer_div">
+            <div id="video">
+                <iframe width=100% height=100% src="https://www.youtube.com/embed/471N50xMjF4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+<!--content div-->
+</body>
+</html>

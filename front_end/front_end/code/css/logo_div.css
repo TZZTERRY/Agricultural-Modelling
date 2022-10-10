@@ -1,0 +1,36 @@
+.logo_div{
+    width:65%;
+    height:8.5vh;
+    background: #2C386B;
+    position: relative;
+    top:0;
+    left: 17%;
+}
+.logo{
+    width: 8vh;
+    position: absolute;
+    top: 3%;
+    left: 2.5%;
+}
+.logo_title{
+    position: absolute;
+    top: 18%;
+    left:11%;
+    font-family: Arial;
+    font-size: 3vh;
+    font-weight: bolder;
+    color: #F6B38E;
+}
+.logo_subtitle{
+    position: absolute;
+    top: 75%;
+    left:11%;
+    font-family: Rockwell;
+    font-size: 1.2vh;
+    font-weight: normal;
+    color: #D6C7EB;
+}
+.title_link{
+    text-decoration: none;
+    color: #F6B38E;
+}

@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Agriculture Modeling-VIC</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="fontawesome-free-6.1.2-web/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/Australia.js"></script>
+
+    <style>
+        #VIC_img {
+            width: 100%;
+            height: 100%;
+        }
+        .navbar-nav li:hover{
+            background-color: #FFC107;
+        }
+        #VIC_titleDiv{
+            background-color: #D9E8FF ;
+        }
+        #lineDiv{
+            margin-top: 50px;
+        }
+        #weatherDiv{
+            margin: 100px 8% 50px 8% ;
+        }
+
+        /*CSS for data analysing part*/
+        #graphSelectNav li{
+            width: 100%;
+            margin-top: 5px;
+        }
+        #predictionDiv .nav-link{
+            color: #000000;
+            background-color: #F3F3F3;
+        }
+        #predictionDiv .nav-link.active {
+            color: #fff;
+            background-color: #FFC107;
+        }
+        .m-auto{
+            font-size: 18px;
+        }
+        .nav-item{
+            padding-left: 4px;
+            padding-right: 4px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+        }
+        .h6{
+            color: #F0F0F0;
+        }
+        .foot_link{
+            color:#E8E8E8;
+            font-weight: lighter;
+        }
+        .nav-link{
+            color: #8B4513;
+        }
+        .footer-link{
+            color: #8B4513;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2">
+            <img src="http://13.211.157.235:5000//resource?resourceid=logo&type=1&file_format=png" class="float-right d-block" style="width:60%;">
+        </div>
+        <div class="col-sm-10">
+            <p></p>
+            <h3 class="text-left text-warning">Agriculture Modeling</h3>
+            <p class="text-left text-secondary">Agriculture yield predication, analysis and visualization</p>
+        </div>
+    </div>
+
+</div>
+
+
+<nav class="nav-fill  navbar-nav navbar-expand-sm bg-dark navbar-dark" style="white-space:nowrap;">
+    <div class="row">
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-8">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="http://13.211.157.235:5000/home/"><p class="m-auto">Home</p></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://13.211.157.235:5000/about/"><p class="m-auto">About</p></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="http://13.211.157.235:5000/overview/"><p class="m-auto">Australia overview</p></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://13.211.157.235:5000/download/"><p class="m-auto">Download</p></a>
+                </li>
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><span class="m-auto">Region</span></a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="http://13.211.157.235:5000/region/nsw/">NSW</a>
+                        <a class="dropdown-item" href="http://13.211.157.235:5000/region/vic/">VIC</a>
+                        <a class="dropdown-item" href="http://13.211.157.235:5000/region/qld/">QLD</a>
+                        <a class="dropdown-item" href="http://13.211.157.235:5000/region/tas/">TAS</a>
+                        <a class="dropdown-item" href="http://13.211.157.235:5000/region/wa/">WA</a>
+                        <a class="dropdown-item" href="http://13.211.157.235:5000/region/sa/">SA</a>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+</nav>
+<div id="VIC_content" >
+    <img src="http://13.211.157.235:5000//resource?resourceid=imagevic&type=1&file_format=jpeg"  class="mx-auto d-block">
+    <div id="VIC_titleDiv">
+        <h1 class="text-center"><br>Victoria</h1>
+        <img src="http://13.211.157.235:5000//resource?resourceid=regionmarkl&type=1&file_format=png"  class="mx-auto d-block">
+        <p class="text-center">Melbourne</p>
+        <p class="text-center">
+            There were 21,700 farm businesses in Victoria in 2019–20, accounting for 25 per cent of farm businesses in Australia. Victoria’s farm<br><br>
+            numbers have declined by 4 per cent per annum in the past decade, falling from 32,400 in 2010–11 to 21,700 in 2019–20.<br><br>
+            Victoria is Australia's largest producer of food and fibre products, and these make up over half of Victoria's total product exports. The state<br><br>
+            represents 26 per cent of total Australian food and fibre export value. Victoria's food and fibre exports increased by $0.3 billion to reach a<br><br>
+            record $14.5 billion for the 2019–20 period.<br><br><br><br><br><br>
+        </p>
+    </div>
+
+
+    <!--    -->
+    <!--    -->
+    <!--  the part for display analysing graph  -->
+    <div class="mx-auto" style="width: 1500px">
+        <div id="dataDiv" class="mx-auto" style="width: 85%; margin-top: 50px">
+        <h3>Data visualization  <small>/ statistics</small></h3>
+        <p>
+            Two main elements influenced future yield mostly —— weather and price
+        </p>
+        <div id="priceDiv" class="row align-items-center" style="height: 500px">
+            <div class="col-8">
+                <div id="68e7bc40188942e48a9a94ca1dadedcc" class="chart-container m-auto" style="width:900px; height:500px;"></div>
+                <script>
+                    var chart_68e7bc40188942e48a9a94ca1dadedcc = echarts.init(
+                        document.getElementById('68e7bc40188942e48a9a94ca1dadedcc'), 'white', {renderer: 'canvas'});
+                    var option_68e7bc40188942e48a9a94ca1dadedcc = {
+                        "animation": true,
+                        "animationThreshold": 2000,
+                        "animationDuration": 1000,
+                        "animationEasing": "cubicOut",
+                        "animationDelay": 0,
+                        "animationDurationUpdate": 300,
+                        "animationEasingUpdate": "cubicOut",
+                        "animationDelayUpdate": 0,
+                        "color": [
+                            "#c23531",
+                            "#2f4554",
+                            "#61a0a8",
+                            "#d48265",
+                            "#749f83",
+                            "#ca8622",
+                            "#bda29a",
+                            "#6e7074",
+                            "#546570",
+                            "#c4ccd3",
+                            "#f05b72",
+                            "#ef5b9c",
+                            "#f47920",
+                            "#905a3d",
+                            "#fab27b",
+                            "#2a5caa",
+                            "#444693",
+                            "#726930",
+                            "#b2d235",
+                            "#6d8346",
+                            "#ac6767",
+                            "#1d953f",
+                            "#6950a1",
+                            "#918597"
+                        ],
+                        "series": [
+                            {
+                                "type": "line",
+                                "name": "Victoria",
+                                "connectNulls": false,
+                                "symbolSize": 4,
+                                "showSymbol": true,
+                                "smooth": false,
+                                "clip": true,
+                                "step": false,
+                                "data": [
+                                    [
+                                        "1990",
+                                        159733
+                                    ],
+                                    [
+                                        "1991",
+                                        97053
+                                    ],
+                                    [
+                                        "1992",
+                                        115090
+                                    ],
+                                    [
+                                        "1993",
+                                        132748
+                                    ],
+                                    [
+                                        "1994",
+                                        128938
+                                    ],
+                                    [
+                                        "1995",
+                                        187661
+                                    ],
+                                    [
+                                        "1996",
+                                        217833
+                                    ],
+                                    [
+                                        "1997",
+                                        170092
+                                    ],
+                                    [
+                                        "1998",
+                                        181227
+                                    ],
+                                    [
+                                        "1999",
+                                        192361
+                                    ],
+                                    [
+                                        "2000",
+                                        203496
+                                    ],
+                                    [
+                                        "2001",
+                                        214630
+                                    ],
+                                    [
+                                        "2002",
+                                        225765
+                                    ],
+                                    [
+                                        "2003",
+                                        260054
+                                    ],
+                                    [
+                                        "2004",
+                                        176061
+                                    ],
+                                    [
+                                        "2005",
+                                        155519
+                                    ],
+                                    [
+                                        "2006",
+                                        160164
+                                    ],
+                                    [
+                                        "2007",
+                                        219834
+                                    ],
+                                    [
+                                        "2008",
+                                        323647
+                                    ],
+                                    [
+                                        "2009",
+                                        264747
+                                    ],
+                                    [
+                                        "2010",
+                                        196935
+                                    ],
+                                    [
+                                        "2011",
+                                        222283
+                                    ],
+                                    [
+                                        "2012",
+                                        197296
+                                    ],
+                                    [
+                                        "2013",
+                                        279807
+                                    ],
+                                    [
+                                        "2014",
+                                        299880
+                                    ],
+                                    [
+                                        "2015",
+                                        271579
+                                    ],
+                                    [
+                                        "2016",
+                                        247542
+                                    ],
+                                    [
+                                        "2017",
+                                        202748
+                                    ],
+                                    [
+                                        "2018",
+                                        236732
+                                    ],
+                                    [
+                                        "2019",
+                                        345568
+                                    ],
+                                    [
+                                        "2020",
+                                        315816
+                                    ]
+                                ],
+                                "hoverAnimation": true,
+                                "label": {
+                                    "show": false,
+                                    "position": "top",
+                                    "margin": 8
+                                },
+                                "lineStyle": {
+                                    "show": true,
+                                    "width": 1,
+                                    "opacity": 1,
+                                    "curveness": 0,
+                                    "type": "solid"
+                                },
+                                "areaStyle": {
+                                    "opacity": 0
+                                },
+                                "zlevel": 0,
+                                "z": 0,
+                                "rippleEffect": {
+                                    "show": true,
+                                    "brushType": "stroke",
+                                    "scale": 2.5,
+                                    "period": 4
+                                }
+                            }
+                        ],
+                        "legend": [
+                            {
+                                "data": [
+                                    "Victoria"
+                                ],
+                                "selected": {
+                                    "Victoria": true
+                                },
+                                "show": true,
+                                "bottom": "bottom",
+                                "padding": 5,
+                                "itemGap": 10,
+                                "itemWidth": 25,
+                                "itemHeight": 14
+                            }
+                        ],
+                        "tooltip": {
+                            "show": true,
+                            "trigger": "item",
+                            "triggerOn": "mousemove|click",
+                            "axisPointer": {
+                                "type": "line"
+                            },
+                            "showContent": true,
+                            "alwaysShowContent": false,
+                            "showDelay": 0,
+                            "hideDelay": 100,
+                            "textStyle": {
+                                "fontSize": 14
+                            },
+                            "borderWidth": 0,
+                            "padding": 5
+                        },
+                        "xAxis": [
+                            {
+                                "show": true,
+                                "scale": false,
+                                "nameLocation": "end",
+                                "nameGap": 15,
+                                "gridIndex": 0,
+                                "inverse": false,
+                                "offset": 0,
+                                "splitNumber": 5,
+                                "minInterval": 0,
+                                "splitLine": {
+                                    "show": false,
+                                    "lineStyle": {
+                                        "show": true,
+                                        "width": 1,
+                                        "opacity": 1,
+                                        "curveness": 0,
+                                        "type": "solid"
+                                    }
+                                },
+                                "data": [
+                                    "1990",
+                                    "1991",
+                                    "1992",
+                                    "1993",
+                                    "1994",
+                                    "1995",
+                                    "1996",
+                                    "1997",
+                                    "1998",
+                                    "1999",
+                                    "2000",
+                                    "2001",
+                                    "2002",
+                                    "2003",
+                                    "2004",
+                                    "2005",
+                                    "2006",
+                                    "2007",
+                                    "2008",
+                                    "2009",
+                                    "2010",
+                                    "2011",
+                                    "2012",
+                                    "2013",
+                                    "2014",
+                                    "2015",
+                                    "2016",
+                                    "2017",
+                                    "2018",
+                                    "2019",
+                                    "2020",
+                                    "2021"
+                                ]
+                            }
+                        ],
+                        "yAxis": [
+                            {
+                                "show": true,
+                                "scale": false,
+                                "nameLocation": "end",
+                                "nameGap": 15,
+                                "gridIndex": 0,
+                                "inverse": false,
+                                "offset": 0,
+                                "splitNumber": 5,
+                                "minInterval": 0,
+                                "splitLine": {
+                                    "show": false,
+                                    "lineStyle": {
+                                        "show": true,
+                                        "width": 1,
+                                        "opacity": 1,
+                                        "curveness": 0,
+                                        "type": "solid"
+                                    }
+                                }
+                            }
+                        ],
+                        "title": [
+                            {
+                                "text": "historical wheat price (AUD/KT)",
+                                "padding": 5,
+                                "itemGap": 10
+                            }
+                        ]
+                    };
+                    chart_68e7bc40188942e48a9a94ca1dadedcc.setOption(option_68e7bc40188942e48a9a94ca1dadedcc);
+                </script>
+            </div>
+            <div class="col-4">
+                <h3 style="color: #FFC107">
+                    Historical wheat price (AUD/KT)<br>
+                    ——
+                </h3>
+                <p>
+                    The price in the past is important information to reflect agricultural
+                </p>
+            </div>
+        </div>
+
+        <div id="regionWeatherDiv" class="row align-items-center" style="height: 500px; margin-top: 50px">
+            <div class="col-5">
+                <h3 style="color: #FFC107">
+                    Historical weather data<br>
+                    ——
+                </h3>
+                We currently consider three main elements that influence crop yield most.<br>
+                Weather element includes Evaporation, Rainfall and temperature.<br>
+                The graph on the left shows the three main elements,<br>
+                and the trend vary from year to year.
+            </div>
+            <div class="col-7">
+                <div id="dd39e0ecfe3a473889b60610f1258f30" class="chart-container" style="width:100%; height:500px;"></div>
+                <script>
+                    var chart_dd39e0ecfe3a473889b60610f1258f30 = echarts.init(
+                        document.getElementById('dd39e0ecfe3a473889b60610f1258f30'), 'white', {renderer: 'canvas'});
+                    var option_dd39e0ecfe3a473889b60610f1258f30 = {
+                        "animation": true,
+                        "animationThreshold": 2000,
+                        "animationDuration": 1000,
+                        "animationEasing": "cubicOut",
+                        "animationDelay": 0,
+                        "animationDurationUpdate": 300,
+                        "animationEasingUpdate": "cubicOut",
+                        "animationDelayUpdate": 0,
+                        "color": [
+                            "#427CC6",
+                            "#14DACA",
+                            "#c23531",
+                            "#2f4554",
+                            "#61a0a8",
+                            "#d48265",
+                            "#749f83",
+                            "#ca8622",
+                            "#bda29a",
+                            "#6e7074",
+                            "#546570",
+                            "#c4ccd3",
+                            "#f05b72",
+                            "#ef5b9c",
+                            "#f47920",
+                            "#905a3d",
+                            "#fab27b",
+                            "#2a5caa",
+                            "#444693",
+                            "#726930",
+                            "#b2d235",
+                            "#6d8346",
+                            "#ac6767",
+                            "#1d953f",
+                            "#6950a1",
+                            "#918597"
+                        ],
+                        "series": [
+                            {
+                                "type": "bar",
+                                "name": "Evaporation",
+                                "legendHoverLink": true,
+                                "data": [
+                                    241.1,
+                                    245.1,
+                                    250.8,
+                                    234,
+                                    234.9,
+                                    254.9,
+                                    230.5,
+                                    255.2,
+                                    229.8,
+                                    241.4,
+                                    219.1,
+                                    210.5,
+                                    216.9,
+                                    247.2,
+                                    247.7,
+                                    233.5,
+                                    255.3,
+                                    231.3,
+                                    248.6,
+                                    246.6,
+                                    243.5,
+                                    236.1,
+                                    210.9,
+                                    229.8,
+                                    233,
+                                    237.2,
+                                    241.1,
+                                    236.7,
+                                    231.3,
+                                    223
+                                ],
+                                "showBackground": false,
+                                "barMinHeight": 0,
+                                "barCategoryGap": "20%",
+                                "barGap": "30%",
+                                "large": false,
+                                "largeThreshold": 400,
+                                "seriesLayoutBy": "column",
+                                "datasetIndex": 0,
+                                "clip": true,
+                                "zlevel": 0,
+                                "z": 2,
+                                "label": {
+                                    "show": false,
+                                    "position": "top",
+                                    "margin": 8
+                                }
+                            },
+                            {
+                                "type": "bar",
+                                "name": "Rainfall",
+                                "legendHoverLink": true,
+                                "data": [
+                                    279.5,
+                                    193.3,
+                                    243.4,
+                                    331.2,
+                                    351.2,
+                                    242.1,
+                                    423,
+                                    351.7,
+                                    344.3,
+                                    402.7,
+                                    453.3,
+                                    499.7,
+                                    415,
+                                    270.9,
+                                    311.6,
+                                    371.8,
+                                    275,
+                                    323.4,
+                                    297.2,
+                                    350.1,
+                                    246.6,
+                                    287,
+                                    499.9,
+                                    277.2,
+                                    345.3,
+                                    284.6,
+                                    280.8,
+                                    341.7,
+                                    341.6,
+                                    248.6,
+                                    142.9,
+                                    283.7,
+                                    311.9
+                                ],
+                                "showBackground": false,
+                                "barMinHeight": 0,
+                                "barCategoryGap": "20%",
+                                "barGap": "30%",
+                                "large": false,
+                                "largeThreshold": 400,
+                                "seriesLayoutBy": "column",
+                                "datasetIndex": 0,
+                                "clip": true,
+                                "zlevel": 0,
+                                "z": 2,
+                                "label": {
+                                    "show": false,
+                                    "position": "top",
+                                    "margin": 8
+                                }
+                            },
+                            {
+                                "type": "line",
+                                "name": "Average Temperature",
+                                "connectNulls": false,
+                                "yAxisIndex": 1,
+                                "symbolSize": 4,
+                                "showSymbol": true,
+                                "smooth": false,
+                                "clip": true,
+                                "step": false,
+                                "data": [
+                                    [
+                                        "1989",
+                                        21.71
+                                    ],
+                                    [
+                                        "1990",
+                                        22.39
+                                    ],
+                                    [
+                                        "1991",
+                                        22.37
+                                    ],
+                                    [
+                                        "1992",
+                                        21.88
+                                    ],
+                                    [
+                                        "1993",
+                                        22.19
+                                    ],
+                                    [
+                                        "1994",
+                                        22.07
+                                    ],
+                                    [
+                                        "1995",
+                                        22.03
+                                    ],
+                                    [
+                                        "1996",
+                                        22.38
+                                    ],
+                                    [
+                                        "1997",
+                                        22.01
+                                    ],
+                                    [
+                                        "1998",
+                                        22.74
+                                    ],
+                                    [
+                                        "1999",
+                                        22.23
+                                    ],
+                                    [
+                                        "2000",
+                                        21.7
+                                    ],
+                                    [
+                                        "2001",
+                                        21.93
+                                    ],
+                                    [
+                                        "2002",
+                                        22.57
+                                    ],
+                                    [
+                                        "2003",
+                                        22.49
+                                    ],
+                                    [
+                                        "2004",
+                                        22.32
+                                    ],
+                                    [
+                                        "2005",
+                                        22.96
+                                    ],
+                                    [
+                                        "2006",
+                                        22.36
+                                    ],
+                                    [
+                                        "2007",
+                                        22.43
+                                    ],
+                                    [
+                                        "2008",
+                                        22.41
+                                    ],
+                                    [
+                                        "2009",
+                                        22.74
+                                    ],
+                                    [
+                                        "2010",
+                                        22.14
+                                    ],
+                                    [
+                                        "2011",
+                                        21.89
+                                    ],
+                                    [
+                                        "2012",
+                                        22.08
+                                    ],
+                                    [
+                                        "2013",
+                                        23.24
+                                    ],
+                                    [
+                                        "2014",
+                                        22.93
+                                    ],
+                                    [
+                                        "2015",
+                                        22.6
+                                    ],
+                                    [
+                                        "2016",
+                                        22.74
+                                    ],
+                                    [
+                                        "2017",
+                                        22.88
+                                    ],
+                                    [
+                                        "2018",
+                                        22.95
+                                    ],
+                                    [
+                                        "2019",
+                                        23.43
+                                    ],
+                                    [
+                                        "2020",
+                                        22.97
+                                    ],
+                                    [
+                                        "2021",
+                                        22.4
+                                    ]
+                                ],
+                                "hoverAnimation": true,
+                                "label": {
+                                    "show": false,
+                                    "position": "top",
+                                    "margin": 8
+                                },
+                                "lineStyle": {
+                                    "show": true,
+                                    "width": 1,
+                                    "opacity": 1,
+                                    "curveness": 0,
+                                    "type": "solid"
+                                },
+                                "areaStyle": {
+                                    "opacity": 0
+                                },
+                                "zlevel": 0,
+                                "z": 0
+                            }
+                        ],
+                        "legend": [
+                            {
+                                "data": [
+                                    "Evaporation",
+                                    "Rainfall",
+                                    "Average Temperature"
+                                ],
+                                "selected": {
+                                    "Evaporation": true,
+                                    "Rainfall": true,
+                                    "Average Temperature": true
+                                },
+                                "show": true,
+                                "padding": 5,
+                                "itemGap": 10,
+                                "itemWidth": 25,
+                                "itemHeight": 14
+                            }
+                        ],
+                        "tooltip": {
+                            "show": true,
+                            "trigger": "axis",
+                            "triggerOn": "mousemove|click",
+                            "axisPointer": {
+                                "type": "cross"
+                            },
+                            "showContent": true,
+                            "alwaysShowContent": false,
+                            "showDelay": 0,
+                            "hideDelay": 100,
+                            "textStyle": {
+                                "fontSize": 14
+                            },
+                            "borderWidth": 0,
+                            "padding": 5
+                        },
+                        "xAxis": [
+                            {
+                                "type": "category",
+                                "show": true,
+                                "scale": false,
+                                "nameLocation": "end",
+                                "nameGap": 15,
+                                "gridIndex": 0,
+                                "axisPointer": {
+                                    "show": true,
+                                    "type": "shadow"
+                                },
+                                "inverse": false,
+                                "offset": 0,
+                                "splitNumber": 5,
+                                "minInterval": 0,
+                                "splitLine": {
+                                    "show": false,
+                                    "lineStyle": {
+                                        "show": true,
+                                        "width": 1,
+                                        "opacity": 1,
+                                        "curveness": 0,
+                                        "type": "solid"
+                                    }
+                                },
+                                "data": [
+                                    "1989",
+                                    "1990",
+                                    "1991",
+                                    "1992",
+                                    "1993",
+                                    "1994",
+                                    "1995",
+                                    "1996",
+                                    "1997",
+                                    "1998",
+                                    "1999",
+                                    "2000",
+                                    "2001",
+                                    "2002",
+                                    "2003",
+                                    "2004",
+                                    "2005",
+                                    "2006",
+                                    "2007",
+                                    "2008",
+                                    "2009",
+                                    "2010",
+                                    "2011",
+                                    "2012",
+                                    "2013",
+                                    "2014",
+                                    "2015",
+                                    "2016",
+                                    "2017",
+                                    "2018",
+                                    "2019",
+                                    "2020",
+                                    "2021"
+                                ]
+                            }
+                        ],
+                        "yAxis": [
+                            {
+                                "type": "value",
+                                "name": "Evaporation/Rainfall",
+                                "show": true,
+                                "scale": false,
+                                "nameLocation": "end",
+                                "nameGap": 15,
+                                "interval": 50,
+                                "gridIndex": 0,
+                                "axisTick": {
+                                    "show": true,
+                                    "alignWithLabel": false,
+                                    "inside": false
+                                },
+                                "axisLabel": {
+                                    "show": true,
+                                    "position": "top",
+                                    "margin": 8,
+                                    "formatter": "{value} ml"
+                                },
+                                "inverse": false,
+                                "offset": 0,
+                                "splitNumber": 5,
+                                "min": 0,
+                                "max": 550,
+                                "minInterval": 0,
+                                "splitLine": {
+                                    "show": true,
+                                    "lineStyle": {
+                                        "show": true,
+                                        "width": 1,
+                                        "opacity": 1,
+                                        "curveness": 0,
+                                        "type": "solid"
+                                    }
+                                }
+                            },
+                            {
+                                "type": "value",
+                                "name": "Temperature",
+                                "show": true,
+                                "scale": false,
+                                "nameLocation": "end",
+                                "nameGap": 15,
+                                "interval": 5,
+                                "gridIndex": 0,
+                                "axisLabel": {
+                                    "show": true,
+                                    "position": "top",
+                                    "margin": 8,
+                                    "formatter": "{value} \u00b0C"
+                                },
+                                "inverse": false,
+                                "offset": 0,
+                                "splitNumber": 5,
+                                "min": -10,
+                                "max": 25,
+                                "minInterval": 0,
+                                "splitLine": {
+                                    "show": false,
+                                    "lineStyle": {
+                                        "show": true,
+                                        "width": 1,
+                                        "opacity": 1,
+                                        "curveness": 0,
+                                        "type": "solid"
+                                    }
+                                }
+                            }
+                        ],
+                        "dataZoom": [
+                            {
+                                "show": true,
+                                "type": "slider",
+                                "realtime": true,
+                                "start": 80,
+                                "end": 100,
+                                "orient": "horizontal",
+                                "zoomLock": false,
+                                "filterMode": "filter"
+                            },
+                            {
+                                "show": true,
+                                "type": "inside",
+                                "realtime": true,
+                                "start": 20,
+                                "end": 80,
+                                "orient": "horizontal",
+                                "zoomLock": false,
+                                "filterMode": "filter"
+                            }
+                        ]
+                    };
+                    chart_dd39e0ecfe3a473889b60610f1258f30.setOption(option_dd39e0ecfe3a473889b60610f1258f30);
+                </script>
+            </div>
+        </div>
+
+        <div id="lineDiv" class="row">
+            <div class="col-4">
+                <img src="http://13.211.157.235:5000//resource?resourceid=lineimg&type=1&file_format=png"  class="mx-auto d-block">
+            </div>
+            <div class="col-4">
+                <h3 class="text-center">Yield Prediction</h3>
+                <p class="text-center">VIC</p>
+            </div>
+            <div class="col-4">
+                <img src="http://13.211.157.235:5000//resource?resourceid=lineimg&type=1&file_format=png"  class="mx-auto d-block">
+            </div>
+        </div>
+
+        <div id="predictionDiv" class="row" style="height: 500px">
+            <div class="col-2">
+                <ul id="graphSelectNav" class="nav justify-content-center text-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#hYield">
+                            Historical Yield
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#fYield">
+                            Forecast Yield
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-10">
+                <div id="tabGraphDiv" class="tab-content">
+                    <div class="tab-pane active container" id="hYield">
+                        <p class="text-center">
+                            Through the line graph can be intuitive discovery of the history of agricultural output potential law
+                        </p>
+                        <div id="6029a18d18a14999a963b81de80ce880" class="chart-container m-auto" style="width:900px; height:500px;"></div>
+                        <script>
+                            var chart_6029a18d18a14999a963b81de80ce880 = echarts.init(
+                                document.getElementById('6029a18d18a14999a963b81de80ce880'), 'white', {renderer: 'canvas'});
+                            var option_6029a18d18a14999a963b81de80ce880 = {
+                                "animation": true,
+                                "animationThreshold": 2000,
+                                "animationDuration": 1000,
+                                "animationEasing": "cubicOut",
+                                "animationDelay": 0,
+                                "animationDurationUpdate": 300,
+                                "animationEasingUpdate": "cubicOut",
+                                "animationDelayUpdate": 0,
+                                "color": [
+                                    "#c23531",
+                                    "#2f4554",
+                                    "#61a0a8",
+                                    "#d48265",
+                                    "#749f83",
+                                    "#ca8622",
+                                    "#bda29a",
+                                    "#6e7074",
+                                    "#546570",
+                                    "#c4ccd3",
+                                    "#f05b72",
+                                    "#ef5b9c",
+                                    "#f47920",
+                                    "#905a3d",
+                                    "#fab27b",
+                                    "#2a5caa",
+                                    "#444693",
+                                    "#726930",
+                                    "#b2d235",
+                                    "#6d8346",
+                                    "#ac6767",
+                                    "#1d953f",
+                                    "#6950a1",
+                                    "#918597"
+                                ],
+                                "series": [
+                                    {
+                                        "type": "line",
+                                        "name": "Victoria",
+                                        "connectNulls": false,
+                                        "symbolSize": 4,
+                                        "showSymbol": true,
+                                        "smooth": false,
+                                        "clip": true,
+                                        "step": false,
+                                        "data": [
+                                            [
+                                                "1990",
+                                                1961.4
+                                            ],
+                                            [
+                                                "1991",
+                                                1493.0
+                                            ],
+                                            [
+                                                "1992",
+                                                1150.4
+                                            ],
+                                            [
+                                                "1993",
+                                                2015.1
+                                            ],
+                                            [
+                                                "1994",
+                                                2021.9
+                                            ],
+                                            [
+                                                "1995",
+                                                933.6
+                                            ],
+                                            [
+                                                "1996",
+                                                1921.2
+                                            ],
+                                            [
+                                                "1997",
+                                                2262.3
+                                            ],
+                                            [
+                                                "1998",
+                                                1502.8
+                                            ],
+                                            [
+                                                "1999",
+                                                1462.3
+                                            ],
+                                            [
+                                                "2000",
+                                                2642.1
+                                            ],
+                                            [
+                                                "2001",
+                                                3079.7
+                                            ],
+                                            [
+                                                "2002",
+                                                2791.4
+                                            ],
+                                            [
+                                                "2003",
+                                                890.2
+                                            ],
+                                            [
+                                                "2004",
+                                                3145.5
+                                            ],
+                                            [
+                                                "2005",
+                                                1927.1
+                                            ],
+                                            [
+                                                "2006",
+                                                2908.9
+                                            ],
+                                            [
+                                                "2007",
+                                                879.3
+                                            ],
+                                            [
+                                                "2008",
+                                                1995.3
+                                            ],
+                                            [
+                                                "2009",
+                                                1755.7
+                                            ],
+                                            [
+                                                "2010",
+                                                2994.9
+                                            ],
+                                            [
+                                                "2011",
+                                                4412.4
+                                            ],
+                                            [
+                                                "2012",
+                                                3943.3
+                                            ],
+                                            [
+                                                "2013",
+                                                3422.9
+                                            ],
+                                            [
+                                                "2014",
+                                                3395.9
+                                            ],
+                                            [
+                                                "2015",
+                                                2631.3
+                                            ],
+                                            [
+                                                "2016",
+                                                1814.9
+                                            ],
+                                            [
+                                                "2017",
+                                                4664.8
+                                            ],
+                                            [
+                                                "2018",
+                                                3682.1
+                                            ],
+                                            [
+                                                "2019",
+                                                2276.6
+                                            ],
+                                            [
+                                                "2020",
+                                                3714.3
+                                            ],
+                                            [
+                                                "2021",
+                                                4768.0
+                                            ],
+                                            [
+                                                "2022",
+                                                4171.5
+                                            ]
+                                        ],
+                                        "hoverAnimation": true,
+                                        "label": {
+                                            "show": false,
+                                            "position": "top",
+                                            "margin": 8
+                                        },
+                                        "lineStyle": {
+                                            "show": true,
+                                            "width": 1,
+                                            "opacity": 1,
+                                            "curveness": 0,
+                                            "type": "solid"
+                                        },
+                                        "areaStyle": {
+                                            "opacity": 0
+                                        },
+                                        "zlevel": 0,
+                                        "z": 0,
+                                        "rippleEffect": {
+                                            "show": true,
+                                            "brushType": "stroke",
+                                            "scale": 2.5,
+                                            "period": 4
+                                        }
+                                    }
+                                ],
+                                "legend": [
+                                    {
+                                        "data": [
+                                            "Victoria"
+                                        ],
+                                        "selected": {
+                                            "Victoria": true
+                                        },
+                                        "show": true,
+                                        "bottom": "bottom",
+                                        "padding": 5,
+                                        "itemGap": 10,
+                                        "itemWidth": 25,
+                                        "itemHeight": 14
+                                    }
+                                ],
+                                "tooltip": {
+                                    "show": true,
+                                    "trigger": "item",
+                                    "triggerOn": "mousemove|click",
+                                    "axisPointer": {
+                                        "type": "line"
+                                    },
+                                    "showContent": true,
+                                    "alwaysShowContent": false,
+                                    "showDelay": 0,
+                                    "hideDelay": 100,
+                                    "textStyle": {
+                                        "fontSize": 14
+                                    },
+                                    "borderWidth": 0,
+                                    "padding": 5
+                                },
+                                "xAxis": [
+                                    {
+                                        "show": true,
+                                        "scale": false,
+                                        "nameLocation": "end",
+                                        "nameGap": 15,
+                                        "gridIndex": 0,
+                                        "inverse": false,
+                                        "offset": 0,
+                                        "splitNumber": 5,
+                                        "minInterval": 0,
+                                        "splitLine": {
+                                            "show": false,
+                                            "lineStyle": {
+                                                "show": true,
+                                                "width": 1,
+                                                "opacity": 1,
+                                                "curveness": 0,
+                                                "type": "solid"
+                                            }
+                                        },
+                                        "data": [
+                                            "1990",
+                                            "1991",
+                                            "1992",
+                                            "1993",
+                                            "1994",
+                                            "1995",
+                                            "1996",
+                                            "1997",
+                                            "1998",
+                                            "1999",
+                                            "2000",
+                                            "2001",
+                                            "2002",
+                                            "2003",
+                                            "2004",
+                                            "2005",
+                                            "2006",
+                                            "2007",
+                                            "2008",
+                                            "2009",
+                                            "2010",
+                                            "2011",
+                                            "2012",
+                                            "2013",
+                                            "2014",
+                                            "2015",
+                                            "2016",
+                                            "2017",
+                                            "2018",
+                                            "2019",
+                                            "2020",
+                                            "2021",
+                                            "2022"
+                                        ]
+                                    }
+                                ],
+                                "yAxis": [
+                                    {
+                                        "show": true,
+                                        "scale": false,
+                                        "nameLocation": "end",
+                                        "nameGap": 15,
+                                        "gridIndex": 0,
+                                        "inverse": false,
+                                        "offset": 0,
+                                        "splitNumber": 5,
+                                        "minInterval": 0,
+                                        "splitLine": {
+                                            "show": false,
+                                            "lineStyle": {
+                                                "show": true,
+                                                "width": 1,
+                                                "opacity": 1,
+                                                "curveness": 0,
+                                                "type": "solid"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "title": [
+                                    {
+                                        "text": "historical wheat yield (KT)",
+                                        "padding": 5,
+                                        "itemGap": 10
+                                    }
+                                ]
+                            };
+                            chart_6029a18d18a14999a963b81de80ce880.setOption(option_6029a18d18a14999a963b81de80ce880);
+                        </script>
+                    </div>
+                    <div class="tab-pane container" id="fYield">
+                        <p class="text-center text-danger">
+                            Forecast haven't merged, using NSW Historical graph as placeholder
+                        </p>
+                        <div id="137c0e29817845aaa894d116527a0648" class="chart-container m-auto" style="width:900px; height:500px;"></div>
+                        <script>
+                            var chart_137c0e29817845aaa894d116527a0648 = echarts.init(
+                                document.getElementById('137c0e29817845aaa894d116527a0648'), 'white', {renderer: 'canvas'});
+                            var option_137c0e29817845aaa894d116527a0648 = {
+                                "animation": true,
+                                "animationThreshold": 2000,
+                                "animationDuration": 1000,
+                                "animationEasing": "cubicOut",
+                                "animationDelay": 0,
+                                "animationDurationUpdate": 300,
+                                "animationEasingUpdate": "cubicOut",
+                                "animationDelayUpdate": 0,
+                                "color": [
+                                    "#c23531",
+                                    "#2f4554",
+                                    "#61a0a8",
+                                    "#d48265",
+                                    "#749f83",
+                                    "#ca8622",
+                                    "#bda29a",
+                                    "#6e7074",
+                                    "#546570",
+                                    "#c4ccd3",
+                                    "#f05b72",
+                                    "#ef5b9c",
+                                    "#f47920",
+                                    "#905a3d",
+                                    "#fab27b",
+                                    "#2a5caa",
+                                    "#444693",
+                                    "#726930",
+                                    "#b2d235",
+                                    "#6d8346",
+                                    "#ac6767",
+                                    "#1d953f",
+                                    "#6950a1",
+                                    "#918597"
+                                ],
+                                "series": [
+                                    {
+                                        "type": "line",
+                                        "name": "New South Wales",
+                                        "connectNulls": false,
+                                        "symbolSize": 4,
+                                        "showSymbol": true,
+                                        "smooth": false,
+                                        "clip": true,
+                                        "step": false,
+                                        "data": [
+                                            [
+                                                "1990",
+                                                3423.3
+                                            ],
+                                            [
+                                                "1991",
+                                                4127.6
+                                            ],
+                                            [
+                                                "1992",
+                                                2183.0
+                                            ],
+                                            [
+                                                "1993",
+                                                3582.7
+                                            ],
+                                            [
+                                                "1994",
+                                                5086.1
+                                            ],
+                                            [
+                                                "1995",
+                                                874.6
+                                            ],
+                                            [
+                                                "1996",
+                                                4508.4
+                                            ],
+                                            [
+                                                "1997",
+                                                8363.4
+                                            ],
+                                            [
+                                                "1998",
+                                                5906.4
+                                            ],
+                                            [
+                                                "1999",
+                                                6563.3
+                                            ],
+                                            [
+                                                "2000",
+                                                8601.9
+                                            ],
+                                            [
+                                                "2001",
+                                                7867.3
+                                            ],
+                                            [
+                                                "2002",
+                                                8042.8
+                                            ],
+                                            [
+                                                "2003",
+                                                2494.9
+                                            ],
+                                            [
+                                                "2004",
+                                                7288.2
+                                            ],
+                                            [
+                                                "2005",
+                                                7537.4
+                                            ],
+                                            [
+                                                "2006",
+                                                8049.0
+                                            ],
+                                            [
+                                                "2007",
+                                                2567.7
+                                            ],
+                                            [
+                                                "2008",
+                                                2477.1
+                                            ],
+                                            [
+                                                "2009",
+                                                6963.3
+                                            ],
+                                            [
+                                                "2010",
+                                                5349.8
+                                            ],
+                                            [
+                                                "2011",
+                                                10488.4
+                                            ],
+                                            [
+                                                "2012",
+                                                8472.9
+                                            ],
+                                            [
+                                                "2013",
+                                                7364.9
+                                            ],
+                                            [
+                                                "2014",
+                                                6595.6
+                                            ],
+                                            [
+                                                "2015",
+                                                6653.7
+                                            ],
+                                            [
+                                                "2016",
+                                                6897.5
+                                            ],
+                                            [
+                                                "2017",
+                                                9819.1
+                                            ],
+                                            [
+                                                "2018",
+                                                4702.8
+                                            ],
+                                            [
+                                                "2019",
+                                                1850.3
+                                            ],
+                                            [
+                                                "2020",
+                                                1772.4
+                                            ],
+                                            [
+                                                "2021",
+                                                13110.0
+                                            ],
+                                            [
+                                                "2022",
+                                                12765.0
+                                            ]
+                                        ],
+                                        "hoverAnimation": true,
+                                        "label": {
+                                            "show": false,
+                                            "position": "top",
+                                            "margin": 8
+                                        },
+                                        "lineStyle": {
+                                            "show": true,
+                                            "width": 1,
+                                            "opacity": 1,
+                                            "curveness": 0,
+                                            "type": "solid"
+                                        },
+                                        "areaStyle": {
+                                            "opacity": 0
+                                        },
+                                        "zlevel": 0,
+                                        "z": 0,
+                                        "rippleEffect": {
+                                            "show": true,
+                                            "brushType": "stroke",
+                                            "scale": 2.5,
+                                            "period": 4
+                                        }
+                                    }
+                                ],
+                                "legend": [
+                                    {
+                                        "data": [
+                                            "New South Wales"
+                                        ],
+                                        "selected": {
+                                            "New South Wales": true
+                                        },
+                                        "show": true,
+                                        "bottom": "bottom",
+                                        "padding": 5,
+                                        "itemGap": 10,
+                                        "itemWidth": 25,
+                                        "itemHeight": 14
+                                    }
+                                ],
+                                "tooltip": {
+                                    "show": true,
+                                    "trigger": "item",
+                                    "triggerOn": "mousemove|click",
+                                    "axisPointer": {
+                                        "type": "line"
+                                    },
+                                    "showContent": true,
+                                    "alwaysShowContent": false,
+                                    "showDelay": 0,
+                                    "hideDelay": 100,
+                                    "textStyle": {
+                                        "fontSize": 14
+                                    },
+                                    "borderWidth": 0,
+                                    "padding": 5
+                                },
+                                "xAxis": [
+                                    {
+                                        "show": true,
+                                        "scale": false,
+                                        "nameLocation": "end",
+                                        "nameGap": 15,
+                                        "gridIndex": 0,
+                                        "inverse": false,
+                                        "offset": 0,
+                                        "splitNumber": 5,
+                                        "minInterval": 0,
+                                        "splitLine": {
+                                            "show": false,
+                                            "lineStyle": {
+                                                "show": true,
+                                                "width": 1,
+                                                "opacity": 1,
+                                                "curveness": 0,
+                                                "type": "solid"
+                                            }
+                                        },
+                                        "data": [
+                                            "1990",
+                                            "1991",
+                                            "1992",
+                                            "1993",
+                                            "1994",
+                                            "1995",
+                                            "1996",
+                                            "1997",
+                                            "1998",
+                                            "1999",
+                                            "2000",
+                                            "2001",
+                                            "2002",
+                                            "2003",
+                                            "2004",
+                                            "2005",
+                                            "2006",
+                                            "2007",
+                                            "2008",
+                                            "2009",
+                                            "2010",
+                                            "2011",
+                                            "2012",
+                                            "2013",
+                                            "2014",
+                                            "2015",
+                                            "2016",
+                                            "2017",
+                                            "2018",
+                                            "2019",
+                                            "2020",
+                                            "2021",
+                                            "2022"
+                                        ]
+                                    }
+                                ],
+                                "yAxis": [
+                                    {
+                                        "show": true,
+                                        "scale": false,
+                                        "nameLocation": "end",
+                                        "nameGap": 15,
+                                        "gridIndex": 0,
+                                        "inverse": false,
+                                        "offset": 0,
+                                        "splitNumber": 5,
+                                        "minInterval": 0,
+                                        "splitLine": {
+                                            "show": false,
+                                            "lineStyle": {
+                                                "show": true,
+                                                "width": 1,
+                                                "opacity": 1,
+                                                "curveness": 0,
+                                                "type": "solid"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "title": [
+                                    {
+                                        "text": "historical wheat yield (KT)",
+                                        "padding": 5,
+                                        "itemGap": 10
+                                    }
+                                ]
+                            };
+                            chart_137c0e29817845aaa894d116527a0648.setOption(option_137c0e29817845aaa894d116527a0648);
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!--  end analysing graph part  -->
+
+</div>
+<footer class="pt-3 pb-1 " style="margin-top: 100px; background-color: #8B7E66" >
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="pr-lg-5">
+                    <h1 class="heading h6 text-uppercase font-weight-700 mb-3"><strong>Agriculture</strong>&nbsp;<lighter style="background-color: white; color: black">Modeling</lighter></h1>
+                    <p style="font-size: 13px; color: #CDBA96">In NSW, winter crops commonly include cereals such as wheat, barley, oats and triticale; oilseeds such as canola, mustard and safflower and
+
+                        pulses such as lupins, chickpeas, fababeans and fieldpeas.
+
+                        The Winter crop variety sowing guide helps to select the most suitable variety and contains updated technical information from the latest
+
+                        research, extension and industry programs.</p>
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-2">
+                <h5 class="heading h6 text-uppercase font-weight-700 mb-3">Main Pages</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="foot_link" href="http://13.211.157.235:5000/home/">Home</a></li>
+                    <li><a class="foot_link" href="http://13.211.157.235:5000/about/">About</a></li>
+                    <li><a class="foot_link" href="http://13.211.157.235:5000/overview/">Australia Overview</a></li>
+                    <li><a class="foot_link" href="http://13.211.157.235:5000/download/">Download</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5 class="heading h6 text-uppercase font-weight-700 mb-3">Regions</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="foot_link" href="http://13.211.157.235:5000/region/nsw/">New South Wales</a></li>
+                    <li><a class="foot_link" href="http://13.211.157.235:5000/region/qld/">Queens Land</a></li>
+                    <li><a class="foot_link" href="http://13.211.157.235:5000/region/vic/">Victoria</a></li>
+                    <li><a class="foot_link" href="http://13.211.157.235:5000/region/tas/">Tasmania</a></li>
+                    <li><a class="foot_link" href="http://13.211.157.235:5000/region/sa/">South Australia</a></li>
+                    <li><a class="foot_link" href="http://13.211.157.235:5000/region/wa/">West Australia</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <div class="d-flex align-items-center">
+          <span class="">
+            &copy; 2022 <a href="#" class="footer-link" target="_blank">Agriculture Modeling</a>. All rights reserved.
+          </span>
+            <ul class="nav ml-lg-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" target="_blank"><i class="fab fa-github"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" target="_blank"><i class="fab fa-dribbble"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

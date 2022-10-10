@@ -1,0 +1,3044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Agriculture Modeling</title>
+    <style>
+        body{
+            /*background-color: #D6C7EB;*/
+
+            background-image: url("resource/background_02.jpg");
+            margin: 0 auto;
+        }
+        #mainDiv{
+            width: 90%;
+            left: 5%;
+            height: 300%;
+            position: absolute;
+        }
+        #summaryDiv{
+            width: 100%;
+            height: 30%;
+            /*background-color: #73B613;*/
+        }
+        #s_leftDiv{
+            width: 50%;
+            height: 100%;
+            /*background-color: #2C386B;*/
+            float: left;
+        }
+        #s_rightDiv{
+            width: 50%;
+            height: 100%;
+            /*background-color: #5C386B;*/
+            float: left;
+        }
+        #cropDiagramDiv{
+            width: 100%;
+            height: 30%;
+            /*background-color: #ffffff;*/
+        }
+        #weatherDiv{
+            width: 100%;
+            height: 30%;
+            margin: 5% 0;
+            /*line-height:10%;*/
+            background-color: #ffffff;
+        }
+        #bushfireDiv{
+            width: 100%;
+            height: 8%;
+            position: relative;
+            background-color: #fff;
+            opacity: 0.8;
+            margin: -2% 0;
+            /*background: url("resource/arrows.png") repeat;*/
+        }
+        #graphSelectButtonDiv{
+            width: 25%;
+            height: 100%;
+            float: left;
+            /*background-color: #707070;*/
+        }
+        #graphTabUl{
+            list-style: none;
+            width: 100%;
+            height: 100%;
+            line-height:25px
+        }
+        #graphTab li{
+            width: 80%;
+            height: 25%;
+        }
+        #graphTabContentDiv{
+            width: 75%;
+            height: 100%;
+            margin: 0 25%;
+        }
+
+        /*the css for mouse hover*/
+
+
+    </style>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+</head>
+<body>
+    <div id="mainDiv">
+        <div id="summaryDiv">
+            <div id="s_leftDiv">
+                <p style="zoom:200%; color:#fff;">Western Austrlia:</p>
+                <div style="width: 100%; height:10%; position: relative; left: 5%">
+                    <p style="color:#fff; zoom: 120%; top: 10%; float: left">Year:</p>
+                    <select style="left: 20%;zoom: 150%; top: 30%; position: absolute;">
+                        <option>&nbsp&nbsp&nbsp&nbsp&nbsp 2022 &nbsp&nbsp&nbsp&nbsp&nbsp</option>
+                        <option>&nbsp&nbsp&nbsp&nbsp&nbsp 2021 &nbsp&nbsp&nbsp&nbsp&nbsp</option>
+                        <option>&nbsp&nbsp&nbsp&nbsp&nbsp 2020 &nbsp&nbsp&nbsp&nbsp&nbsp</option>
+                        <option>&nbsp&nbsp&nbsp&nbsp&nbsp 2019 &nbsp&nbsp&nbsp&nbsp&nbsp</option>
+                    </select>
+                </div>
+                <div style="background-color:#fff; width: 90%; height: 65%; opacity: 0.8">
+
+                </div>
+            </div>
+            <div id="s_rightDiv">
+                <img src="resource/regionMap.png" style="width: 100%; height: 90%;">
+            </div>
+        </div>
+        <div id="cropDiagramDiv">
+            <div id="graphSelectButtonDiv">
+                <ul id="graphTabUl">
+                    <li class="active">
+                        <a href="#tab0" data-toggle="tab">
+                            <img src="resource/button01.png" style="width: 80%; height: 100%">
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="#tab1" data-toggle="tab">
+                            <img src="resource/button01.png" style="width: 80%; height: 100%">
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="#tab2" data-toggle="tab">
+                            <img src="resource/button01.png" style="width: 80%; height: 100%">
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="#tab3" data-toggle="tab">
+                            <img src="resource/button01.png" style="width: 80%; height: 100%">
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+            <div id="graphTabContentDiv" class="tab-content" style="background-color:#fff;">
+                <div id="076a9ab5cd4a4815a694b0b2de22f66d" class="chart-container" style="width:90%; height:90%; top: 5%; left: 5%"></div>
+                <script>
+                    var chart_076a9ab5cd4a4815a694b0b2de22f66d = echarts.init(
+                        document.getElementById('076a9ab5cd4a4815a694b0b2de22f66d'), 'white', {renderer: 'canvas'});
+                    var option_076a9ab5cd4a4815a694b0b2de22f66d = {
+                        "animation": true,
+                        "animationThreshold": 2000,
+                        "animationDuration": 1000,
+                        "animationEasing": "cubicOut",
+                        "animationDelay": 0,
+                        "animationDurationUpdate": 300,
+                        "animationEasingUpdate": "cubicOut",
+                        "animationDelayUpdate": 0,
+                        "color": [
+                            "#c23531",
+                            "#2f4554",
+                            "#61a0a8",
+                            "#d48265",
+                            "#749f83",
+                            "#ca8622",
+                            "#bda29a",
+                            "#6e7074",
+                            "#546570",
+                            "#c4ccd3",
+                            "#f05b72",
+                            "#ef5b9c",
+                            "#f47920",
+                            "#905a3d",
+                            "#fab27b",
+                            "#2a5caa",
+                            "#444693",
+                            "#726930",
+                            "#b2d235",
+                            "#6d8346",
+                            "#ac6767",
+                            "#1d953f",
+                            "#6950a1",
+                            "#918597"
+                        ],
+                        "series": [
+                            {
+                                "type": "line",
+                                "name": "Western Australia",
+                                "connectNulls": false,
+                                "symbolSize": 1,
+                                "showSymbol": true,
+                                "smooth": false,
+                                "clip": true,
+                                "step": false,
+                                "data": [
+                                    [
+                                        "1950",
+                                        95
+                                    ],
+                                    [
+                                        "1951",
+                                        100
+                                    ],
+                                    [
+                                        "1952",
+                                        108
+                                    ],
+                                    [
+                                        "1953",
+                                        106
+                                    ],
+                                    [
+                                        "1954",
+                                        108
+                                    ],
+                                    [
+                                        "1955",
+                                        109
+                                    ],
+                                    [
+                                        "1956",
+                                        104
+                                    ],
+                                    [
+                                        "1957",
+                                        114
+                                    ],
+                                    [
+                                        "1958",
+                                        105
+                                    ],
+                                    [
+                                        "1959",
+                                        113
+                                    ],
+                                    [
+                                        "1960",
+                                        115
+                                    ],
+                                    [
+                                        "1961",
+                                        117
+                                    ],
+                                    [
+                                        "1962",
+                                        117
+                                    ],
+                                    [
+                                        "1963",
+                                        119
+                                    ],
+                                    [
+                                        "1964",
+                                        110
+                                    ],
+                                    [
+                                        "1965",
+                                        110
+                                    ],
+                                    [
+                                        "1966",
+                                        122
+                                    ],
+                                    [
+                                        "1967",
+                                        121
+                                    ],
+                                    [
+                                        "1968",
+                                        117
+                                    ],
+                                    [
+                                        "1969",
+                                        124
+                                    ],
+                                    [
+                                        "1970",
+                                        123
+                                    ],
+                                    [
+                                        "1971",
+                                        126
+                                    ],
+                                    [
+                                        "1972",
+                                        129
+                                    ],
+                                    [
+                                        "1973",
+                                        121
+                                    ],
+                                    [
+                                        "1974",
+                                        120
+                                    ],
+                                    [
+                                        "1975",
+                                        127
+                                    ],
+                                    [
+                                        "1976",
+                                        126
+                                    ],
+                                    [
+                                        "1977",
+                                        128
+                                    ],
+                                    [
+                                        "1978",
+                                        130
+                                    ],
+                                    [
+                                        "1979",
+                                        131
+                                    ],
+                                    [
+                                        "1980",
+                                        127
+                                    ],
+                                    [
+                                        "1981",
+                                        137
+                                    ],
+                                    [
+                                        "1982",
+                                        130
+                                    ],
+                                    [
+                                        "1983",
+                                        137
+                                    ],
+                                    [
+                                        "1984",
+                                        139
+                                    ],
+                                    [
+                                        "1985",
+                                        135
+                                    ],
+                                    [
+                                        "1986",
+                                        133
+                                    ],
+                                    [
+                                        "1987",
+                                        141
+                                    ],
+                                    [
+                                        "1988",
+                                        149
+                                    ],
+                                    [
+                                        "1989",
+                                        137
+                                    ],
+                                    [
+                                        "1990",
+                                        148
+                                    ],
+                                    [
+                                        "1991",
+                                        142
+                                    ],
+                                    [
+                                        "1992",
+                                        151
+                                    ],
+                                    [
+                                        "1993",
+                                        151
+                                    ],
+                                    [
+                                        "1994",
+                                        139
+                                    ],
+                                    [
+                                        "1995",
+                                        153
+                                    ],
+                                    [
+                                        "1996",
+                                        155
+                                    ],
+                                    [
+                                        "1997",
+                                        157
+                                    ],
+                                    [
+                                        "1998",
+                                        150
+                                    ],
+                                    [
+                                        "1999",
+                                        145
+                                    ],
+                                    [
+                                        "2000",
+                                        162
+                                    ],
+                                    [
+                                        "2001",
+                                        153
+                                    ],
+                                    [
+                                        "2002",
+                                        162
+                                    ],
+                                    [
+                                        "2003",
+                                        150
+                                    ],
+                                    [
+                                        "2004",
+                                        150
+                                    ],
+                                    [
+                                        "2005",
+                                        152
+                                    ],
+                                    [
+                                        "2006",
+                                        153
+                                    ],
+                                    [
+                                        "2007",
+                                        164
+                                    ],
+                                    [
+                                        "2008",
+                                        161
+                                    ],
+                                    [
+                                        "2009",
+                                        172
+                                    ],
+                                    [
+                                        "2010",
+                                        161
+                                    ],
+                                    [
+                                        "2011",
+                                        169
+                                    ],
+                                    [
+                                        "2012",
+                                        172
+                                    ],
+                                    [
+                                        "2013",
+                                        175
+                                    ],
+                                    [
+                                        "2014",
+                                        160
+                                    ],
+                                    [
+                                        "2015",
+                                        179
+                                    ],
+                                    [
+                                        "2016",
+                                        174
+                                    ],
+                                    [
+                                        "2017",
+                                        175
+                                    ],
+                                    [
+                                        "2018",
+                                        165
+                                    ],
+                                    [
+                                        "2019",
+                                        168
+                                    ],
+                                    [
+                                        "2020",
+                                        165
+                                    ],
+                                    [
+                                        "2021",
+                                        186
+                                    ],
+                                    [
+                                        "2022",
+                                        184
+                                    ]
+                                ],
+                                "hoverAnimation": true,
+                                "label": {
+                                    "show": false,
+                                    "position": "top",
+                                    "margin": 8
+                                },
+                                "lineStyle": {
+                                    "show": true,
+                                    "width": 1,
+                                    "opacity": 1,
+                                    "curveness": 0,
+                                    "type": "solid"
+                                },
+                                "areaStyle": {
+                                    "opacity": 0
+                                },
+                                "zlevel": 0,
+                                "z": 0,
+                                "rippleEffect": {
+                                    "show": true,
+                                    "brushType": "stroke",
+                                    "scale": 2.5,
+                                    "period": 4
+                                }
+                            },
+                            {
+                                "type": "line",
+                                "name": "Victoria",
+                                "connectNulls": false,
+                                "symbolSize": 1,
+                                "showSymbol": true,
+                                "smooth": false,
+                                "clip": true,
+                                "step": false,
+                                "data": [
+                                    [
+                                        "1950",
+                                        81
+                                    ],
+                                    [
+                                        "1951",
+                                        84
+                                    ],
+                                    [
+                                        "1952",
+                                        85
+                                    ],
+                                    [
+                                        "1953",
+                                        89
+                                    ],
+                                    [
+                                        "1954",
+                                        88
+                                    ],
+                                    [
+                                        "1955",
+                                        89
+                                    ],
+                                    [
+                                        "1956",
+                                        90
+                                    ],
+                                    [
+                                        "1957",
+                                        95
+                                    ],
+                                    [
+                                        "1958",
+                                        100
+                                    ],
+                                    [
+                                        "1959",
+                                        99
+                                    ],
+                                    [
+                                        "1960",
+                                        98
+                                    ],
+                                    [
+                                        "1961",
+                                        104
+                                    ],
+                                    [
+                                        "1962",
+                                        110
+                                    ],
+                                    [
+                                        "1963",
+                                        108
+                                    ],
+                                    [
+                                        "1964",
+                                        102
+                                    ],
+                                    [
+                                        "1965",
+                                        113
+                                    ],
+                                    [
+                                        "1966",
+                                        115
+                                    ],
+                                    [
+                                        "1967",
+                                        105
+                                    ],
+                                    [
+                                        "1968",
+                                        113
+                                    ],
+                                    [
+                                        "1969",
+                                        117
+                                    ],
+                                    [
+                                        "1970",
+                                        122
+                                    ],
+                                    [
+                                        "1971",
+                                        113
+                                    ],
+                                    [
+                                        "1972",
+                                        120
+                                    ],
+                                    [
+                                        "1973",
+                                        122
+                                    ],
+                                    [
+                                        "1974",
+                                        117
+                                    ],
+                                    [
+                                        "1975",
+                                        129
+                                    ],
+                                    [
+                                        "1976",
+                                        125
+                                    ],
+                                    [
+                                        "1977",
+                                        131
+                                    ],
+                                    [
+                                        "1978",
+                                        124
+                                    ],
+                                    [
+                                        "1979",
+                                        132
+                                    ],
+                                    [
+                                        "1980",
+                                        129
+                                    ],
+                                    [
+                                        "1981",
+                                        137
+                                    ],
+                                    [
+                                        "1982",
+                                        137
+                                    ],
+                                    [
+                                        "1983",
+                                        133
+                                    ],
+                                    [
+                                        "1984",
+                                        140
+                                    ],
+                                    [
+                                        "1985",
+                                        145
+                                    ],
+                                    [
+                                        "1986",
+                                        146
+                                    ],
+                                    [
+                                        "1987",
+                                        151
+                                    ],
+                                    [
+                                        "1988",
+                                        142
+                                    ],
+                                    [
+                                        "1989",
+                                        140
+                                    ],
+                                    [
+                                        "1990",
+                                        156
+                                    ],
+                                    [
+                                        "1991",
+                                        143
+                                    ],
+                                    [
+                                        "1992",
+                                        155
+                                    ],
+                                    [
+                                        "1993",
+                                        152
+                                    ],
+                                    [
+                                        "1994",
+                                        146
+                                    ],
+                                    [
+                                        "1995",
+                                        155
+                                    ],
+                                    [
+                                        "1996",
+                                        157
+                                    ],
+                                    [
+                                        "1997",
+                                        167
+                                    ],
+                                    [
+                                        "1998",
+                                        155
+                                    ],
+                                    [
+                                        "1999",
+                                        158
+                                    ],
+                                    [
+                                        "2000",
+                                        157
+                                    ],
+                                    [
+                                        "2001",
+                                        168
+                                    ],
+                                    [
+                                        "2002",
+                                        162
+                                    ],
+                                    [
+                                        "2003",
+                                        160
+                                    ],
+                                    [
+                                        "2004",
+                                        174
+                                    ],
+                                    [
+                                        "2005",
+                                        167
+                                    ],
+                                    [
+                                        "2006",
+                                        179
+                                    ],
+                                    [
+                                        "2007",
+                                        179
+                                    ],
+                                    [
+                                        "2008",
+                                        186
+                                    ],
+                                    [
+                                        "2009",
+                                        172
+                                    ],
+                                    [
+                                        "2010",
+                                        185
+                                    ],
+                                    [
+                                        "2011",
+                                        177
+                                    ],
+                                    [
+                                        "2012",
+                                        185
+                                    ],
+                                    [
+                                        "2013",
+                                        183
+                                    ],
+                                    [
+                                        "2014",
+                                        182
+                                    ],
+                                    [
+                                        "2015",
+                                        198
+                                    ],
+                                    [
+                                        "2016",
+                                        182
+                                    ],
+                                    [
+                                        "2017",
+                                        192
+                                    ],
+                                    [
+                                        "2018",
+                                        202
+                                    ],
+                                    [
+                                        "2019",
+                                        203
+                                    ],
+                                    [
+                                        "2020",
+                                        192
+                                    ],
+                                    [
+                                        "2021",
+                                        202
+                                    ],
+                                    [
+                                        "2022",
+                                        203
+                                    ]
+                                ],
+                                "hoverAnimation": true,
+                                "label": {
+                                    "show": false,
+                                    "position": "top",
+                                    "margin": 8
+                                },
+                                "lineStyle": {
+                                    "show": true,
+                                    "width": 1,
+                                    "opacity": 1,
+                                    "curveness": 0,
+                                    "type": "solid"
+                                },
+                                "areaStyle": {
+                                    "opacity": 0
+                                },
+                                "zlevel": 0,
+                                "z": 0,
+                                "rippleEffect": {
+                                    "show": true,
+                                    "brushType": "stroke",
+                                    "scale": 2.5,
+                                    "period": 4
+                                }
+                            },
+                            {
+                                "type": "line",
+                                "name": "South Australia",
+                                "connectNulls": false,
+                                "symbolSize": 1,
+                                "showSymbol": true,
+                                "smooth": false,
+                                "clip": true,
+                                "step": false,
+                                "data": [
+                                    [
+                                        "1950",
+                                        67
+                                    ],
+                                    [
+                                        "1951",
+                                        75
+                                    ],
+                                    [
+                                        "1952",
+                                        73
+                                    ],
+                                    [
+                                        "1953",
+                                        78
+                                    ],
+                                    [
+                                        "1954",
+                                        78
+                                    ],
+                                    [
+                                        "1955",
+                                        86
+                                    ],
+                                    [
+                                        "1956",
+                                        87
+                                    ],
+                                    [
+                                        "1957",
+                                        89
+                                    ],
+                                    [
+                                        "1958",
+                                        90
+                                    ],
+                                    [
+                                        "1959",
+                                        96
+                                    ],
+                                    [
+                                        "1960",
+                                        106
+                                    ],
+                                    [
+                                        "1961",
+                                        100
+                                    ],
+                                    [
+                                        "1962",
+                                        109
+                                    ],
+                                    [
+                                        "1963",
+                                        108
+                                    ],
+                                    [
+                                        "1964",
+                                        116
+                                    ],
+                                    [
+                                        "1965",
+                                        123
+                                    ],
+                                    [
+                                        "1966",
+                                        124
+                                    ],
+                                    [
+                                        "1967",
+                                        128
+                                    ],
+                                    [
+                                        "1968",
+                                        123
+                                    ],
+                                    [
+                                        "1969",
+                                        126
+                                    ],
+                                    [
+                                        "1970",
+                                        139
+                                    ],
+                                    [
+                                        "1971",
+                                        132
+                                    ],
+                                    [
+                                        "1972",
+                                        136
+                                    ],
+                                    [
+                                        "1973",
+                                        135
+                                    ],
+                                    [
+                                        "1974",
+                                        153
+                                    ],
+                                    [
+                                        "1975",
+                                        155
+                                    ],
+                                    [
+                                        "1976",
+                                        152
+                                    ],
+                                    [
+                                        "1977",
+                                        154
+                                    ],
+                                    [
+                                        "1978",
+                                        152
+                                    ],
+                                    [
+                                        "1979",
+                                        161
+                                    ],
+                                    [
+                                        "1980",
+                                        174
+                                    ],
+                                    [
+                                        "1981",
+                                        163
+                                    ],
+                                    [
+                                        "1982",
+                                        169
+                                    ],
+                                    [
+                                        "1983",
+                                        169
+                                    ],
+                                    [
+                                        "1984",
+                                        180
+                                    ],
+                                    [
+                                        "1985",
+                                        172
+                                    ],
+                                    [
+                                        "1986",
+                                        177
+                                    ],
+                                    [
+                                        "1987",
+                                        185
+                                    ],
+                                    [
+                                        "1988",
+                                        189
+                                    ],
+                                    [
+                                        "1989",
+                                        202
+                                    ],
+                                    [
+                                        "1990",
+                                        204
+                                    ],
+                                    [
+                                        "1991",
+                                        188
+                                    ],
+                                    [
+                                        "1992",
+                                        203
+                                    ],
+                                    [
+                                        "1993",
+                                        217
+                                    ],
+                                    [
+                                        "1994",
+                                        214
+                                    ],
+                                    [
+                                        "1995",
+                                        208
+                                    ],
+                                    [
+                                        "1996",
+                                        212
+                                    ],
+                                    [
+                                        "1997",
+                                        217
+                                    ],
+                                    [
+                                        "1998",
+                                        225
+                                    ],
+                                    [
+                                        "1999",
+                                        235
+                                    ],
+                                    [
+                                        "2000",
+                                        220
+                                    ],
+                                    [
+                                        "2001",
+                                        240
+                                    ],
+                                    [
+                                        "2002",
+                                        230
+                                    ],
+                                    [
+                                        "2003",
+                                        224
+                                    ],
+                                    [
+                                        "2004",
+                                        230
+                                    ],
+                                    [
+                                        "2005",
+                                        232
+                                    ],
+                                    [
+                                        "2006",
+                                        234
+                                    ],
+                                    [
+                                        "2007",
+                                        259
+                                    ],
+                                    [
+                                        "2008",
+                                        245
+                                    ],
+                                    [
+                                        "2009",
+                                        251
+                                    ],
+                                    [
+                                        "2010",
+                                        260
+                                    ],
+                                    [
+                                        "2011",
+                                        252
+                                    ],
+                                    [
+                                        "2012",
+                                        260
+                                    ],
+                                    [
+                                        "2013",
+                                        277
+                                    ],
+                                    [
+                                        "2014",
+                                        268
+                                    ],
+                                    [
+                                        "2015",
+                                        274
+                                    ],
+                                    [
+                                        "2016",
+                                        293
+                                    ],
+                                    [
+                                        "2017",
+                                        285
+                                    ],
+                                    [
+                                        "2018",
+                                        283
+                                    ],
+                                    [
+                                        "2019",
+                                        279
+                                    ],
+                                    [
+                                        "2020",
+                                        289
+                                    ],
+                                    [
+                                        "2021",
+                                        287
+                                    ],
+                                    [
+                                        "2022",
+                                        294
+                                    ]
+                                ],
+                                "hoverAnimation": true,
+                                "label": {
+                                    "show": false,
+                                    "position": "top",
+                                    "margin": 8
+                                },
+                                "lineStyle": {
+                                    "show": true,
+                                    "width": 1,
+                                    "opacity": 1,
+                                    "curveness": 0,
+                                    "type": "solid"
+                                },
+                                "areaStyle": {
+                                    "opacity": 0
+                                },
+                                "zlevel": 0,
+                                "z": 0,
+                                "rippleEffect": {
+                                    "show": true,
+                                    "brushType": "stroke",
+                                    "scale": 2.5,
+                                    "period": 4
+                                }
+                            },
+                            {
+                                "type": "line",
+                                "name": "Queensland",
+                                "connectNulls": false,
+                                "symbolSize": 1,
+                                "showSymbol": true,
+                                "smooth": false,
+                                "clip": true,
+                                "step": false,
+                                "data": [
+                                    [
+                                        "1950",
+                                        15
+                                    ],
+                                    [
+                                        "1951",
+                                        21
+                                    ],
+                                    [
+                                        "1952",
+                                        27
+                                    ],
+                                    [
+                                        "1953",
+                                        31
+                                    ],
+                                    [
+                                        "1954",
+                                        39
+                                    ],
+                                    [
+                                        "1955",
+                                        41
+                                    ],
+                                    [
+                                        "1956",
+                                        47
+                                    ],
+                                    [
+                                        "1957",
+                                        52
+                                    ],
+                                    [
+                                        "1958",
+                                        57
+                                    ],
+                                    [
+                                        "1959",
+                                        63
+                                    ],
+                                    [
+                                        "1960",
+                                        71
+                                    ],
+                                    [
+                                        "1961",
+                                        74
+                                    ],
+                                    [
+                                        "1962",
+                                        83
+                                    ],
+                                    [
+                                        "1963",
+                                        88
+                                    ],
+                                    [
+                                        "1964",
+                                        88
+                                    ],
+                                    [
+                                        "1965",
+                                        92
+                                    ],
+                                    [
+                                        "1966",
+                                        100
+                                    ],
+                                    [
+                                        "1967",
+                                        100
+                                    ],
+                                    [
+                                        "1968",
+                                        116
+                                    ],
+                                    [
+                                        "1969",
+                                        111
+                                    ],
+                                    [
+                                        "1970",
+                                        120
+                                    ],
+                                    [
+                                        "1971",
+                                        124
+                                    ],
+                                    [
+                                        "1972",
+                                        130
+                                    ],
+                                    [
+                                        "1973",
+                                        133
+                                    ],
+                                    [
+                                        "1974",
+                                        145
+                                    ],
+                                    [
+                                        "1975",
+                                        142
+                                    ],
+                                    [
+                                        "1976",
+                                        146
+                                    ],
+                                    [
+                                        "1977",
+                                        158
+                                    ],
+                                    [
+                                        "1978",
+                                        160
+                                    ],
+                                    [
+                                        "1979",
+                                        168
+                                    ],
+                                    [
+                                        "1980",
+                                        166
+                                    ],
+                                    [
+                                        "1981",
+                                        175
+                                    ],
+                                    [
+                                        "1982",
+                                        194
+                                    ],
+                                    [
+                                        "1983",
+                                        188
+                                    ],
+                                    [
+                                        "1984",
+                                        190
+                                    ],
+                                    [
+                                        "1985",
+                                        211
+                                    ],
+                                    [
+                                        "1986",
+                                        219
+                                    ],
+                                    [
+                                        "1987",
+                                        207
+                                    ],
+                                    [
+                                        "1988",
+                                        225
+                                    ],
+                                    [
+                                        "1989",
+                                        221
+                                    ],
+                                    [
+                                        "1990",
+                                        240
+                                    ],
+                                    [
+                                        "1991",
+                                        220
+                                    ],
+                                    [
+                                        "1992",
+                                        232
+                                    ],
+                                    [
+                                        "1993",
+                                        244
+                                    ],
+                                    [
+                                        "1994",
+                                        260
+                                    ],
+                                    [
+                                        "1995",
+                                        243
+                                    ],
+                                    [
+                                        "1996",
+                                        261
+                                    ],
+                                    [
+                                        "1997",
+                                        267
+                                    ],
+                                    [
+                                        "1998",
+                                        260
+                                    ],
+                                    [
+                                        "1999",
+                                        271
+                                    ],
+                                    [
+                                        "2000",
+                                        281
+                                    ],
+                                    [
+                                        "2001",
+                                        290
+                                    ],
+                                    [
+                                        "2002",
+                                        284
+                                    ],
+                                    [
+                                        "2003",
+                                        293
+                                    ],
+                                    [
+                                        "2004",
+                                        310
+                                    ],
+                                    [
+                                        "2005",
+                                        305
+                                    ],
+                                    [
+                                        "2006",
+                                        298
+                                    ],
+                                    [
+                                        "2007",
+                                        312
+                                    ],
+                                    [
+                                        "2008",
+                                        308
+                                    ],
+                                    [
+                                        "2009",
+                                        347
+                                    ],
+                                    [
+                                        "2010",
+                                        331
+                                    ],
+                                    [
+                                        "2011",
+                                        349
+                                    ],
+                                    [
+                                        "2012",
+                                        326
+                                    ],
+                                    [
+                                        "2013",
+                                        345
+                                    ],
+                                    [
+                                        "2014",
+                                        365
+                                    ],
+                                    [
+                                        "2015",
+                                        353
+                                    ],
+                                    [
+                                        "2016",
+                                        352
+                                    ],
+                                    [
+                                        "2017",
+                                        361
+                                    ],
+                                    [
+                                        "2018",
+                                        380
+                                    ],
+                                    [
+                                        "2019",
+                                        396
+                                    ],
+                                    [
+                                        "2020",
+                                        371
+                                    ],
+                                    [
+                                        "2021",
+                                        411
+                                    ],
+                                    [
+                                        "2022",
+                                        420
+                                    ]
+                                ],
+                                "hoverAnimation": true,
+                                "label": {
+                                    "show": false,
+                                    "position": "top",
+                                    "margin": 8
+                                },
+                                "lineStyle": {
+                                    "show": true,
+                                    "width": 1,
+                                    "opacity": 1,
+                                    "curveness": 0,
+                                    "type": "solid"
+                                },
+                                "areaStyle": {
+                                    "opacity": 0
+                                },
+                                "zlevel": 0,
+                                "z": 0,
+                                "rippleEffect": {
+                                    "show": true,
+                                    "brushType": "stroke",
+                                    "scale": 2.5,
+                                    "period": 4
+                                }
+                            },
+                            {
+                                "type": "line",
+                                "name": "New South Wales",
+                                "connectNulls": false,
+                                "symbolSize": 1,
+                                "showSymbol": true,
+                                "smooth": false,
+                                "clip": true,
+                                "step": false,
+                                "data": [
+                                    [
+                                        "1950",
+                                        131
+                                    ],
+                                    [
+                                        "1951",
+                                        133
+                                    ],
+                                    [
+                                        "1952",
+                                        148
+                                    ],
+                                    [
+                                        "1953",
+                                        141
+                                    ],
+                                    [
+                                        "1954",
+                                        142
+                                    ],
+                                    [
+                                        "1955",
+                                        143
+                                    ],
+                                    [
+                                        "1956",
+                                        146
+                                    ],
+                                    [
+                                        "1957",
+                                        145
+                                    ],
+                                    [
+                                        "1958",
+                                        156
+                                    ],
+                                    [
+                                        "1959",
+                                        156
+                                    ],
+                                    [
+                                        "1960",
+                                        150
+                                    ],
+                                    [
+                                        "1961",
+                                        149
+                                    ],
+                                    [
+                                        "1962",
+                                        152
+                                    ],
+                                    [
+                                        "1963",
+                                        167
+                                    ],
+                                    [
+                                        "1964",
+                                        164
+                                    ],
+                                    [
+                                        "1965",
+                                        161
+                                    ],
+                                    [
+                                        "1966",
+                                        160
+                                    ],
+                                    [
+                                        "1967",
+                                        159
+                                    ],
+                                    [
+                                        "1968",
+                                        167
+                                    ],
+                                    [
+                                        "1969",
+                                        168
+                                    ],
+                                    [
+                                        "1970",
+                                        178
+                                    ],
+                                    [
+                                        "1971",
+                                        169
+                                    ],
+                                    [
+                                        "1972",
+                                        178
+                                    ],
+                                    [
+                                        "1973",
+                                        167
+                                    ],
+                                    [
+                                        "1974",
+                                        177
+                                    ],
+                                    [
+                                        "1975",
+                                        184
+                                    ],
+                                    [
+                                        "1976",
+                                        174
+                                    ],
+                                    [
+                                        "1977",
+                                        182
+                                    ],
+                                    [
+                                        "1978",
+                                        175
+                                    ],
+                                    [
+                                        "1979",
+                                        180
+                                    ],
+                                    [
+                                        "1980",
+                                        186
+                                    ],
+                                    [
+                                        "1981",
+                                        182
+                                    ],
+                                    [
+                                        "1982",
+                                        183
+                                    ],
+                                    [
+                                        "1983",
+                                        191
+                                    ],
+                                    [
+                                        "1984",
+                                        195
+                                    ],
+                                    [
+                                        "1985",
+                                        200
+                                    ],
+                                    [
+                                        "1986",
+                                        199
+                                    ],
+                                    [
+                                        "1987",
+                                        203
+                                    ],
+                                    [
+                                        "1988",
+                                        193
+                                    ],
+                                    [
+                                        "1989",
+                                        206
+                                    ],
+                                    [
+                                        "1990",
+                                        202
+                                    ],
+                                    [
+                                        "1991",
+                                        211
+                                    ],
+                                    [
+                                        "1992",
+                                        209
+                                    ],
+                                    [
+                                        "1993",
+                                        210
+                                    ],
+                                    [
+                                        "1994",
+                                        203
+                                    ],
+                                    [
+                                        "1995",
+                                        198
+                                    ],
+                                    [
+                                        "1996",
+                                        202
+                                    ],
+                                    [
+                                        "1997",
+                                        221
+                                    ],
+                                    [
+                                        "1998",
+                                        210
+                                    ],
+                                    [
+                                        "1999",
+                                        214
+                                    ],
+                                    [
+                                        "2000",
+                                        216
+                                    ],
+                                    [
+                                        "2001",
+                                        208
+                                    ],
+                                    [
+                                        "2002",
+                                        228
+                                    ],
+                                    [
+                                        "2003",
+                                        214
+                                    ],
+                                    [
+                                        "2004",
+                                        214
+                                    ],
+                                    [
+                                        "2005",
+                                        235
+                                    ],
+                                    [
+                                        "2006",
+                                        236
+                                    ],
+                                    [
+                                        "2007",
+                                        239
+                                    ],
+                                    [
+                                        "2008",
+                                        219
+                                    ],
+                                    [
+                                        "2009",
+                                        221
+                                    ],
+                                    [
+                                        "2010",
+                                        239
+                                    ],
+                                    [
+                                        "2011",
+                                        235
+                                    ],
+                                    [
+                                        "2012",
+                                        246
+                                    ],
+                                    [
+                                        "2013",
+                                        226
+                                    ],
+                                    [
+                                        "2014",
+                                        237
+                                    ],
+                                    [
+                                        "2015",
+                                        231
+                                    ],
+                                    [
+                                        "2016",
+                                        251
+                                    ],
+                                    [
+                                        "2017",
+                                        254
+                                    ],
+                                    [
+                                        "2018",
+                                        245
+                                    ],
+                                    [
+                                        "2019",
+                                        256
+                                    ],
+                                    [
+                                        "2020",
+                                        255
+                                    ],
+                                    [
+                                        "2021",
+                                        248
+                                    ],
+                                    [
+                                        "2022",
+                                        240
+                                    ]
+                                ],
+                                "hoverAnimation": true,
+                                "label": {
+                                    "show": false,
+                                    "position": "top",
+                                    "margin": 8
+                                },
+                                "lineStyle": {
+                                    "show": true,
+                                    "width": 1,
+                                    "opacity": 1,
+                                    "curveness": 0,
+                                    "type": "solid"
+                                },
+                                "areaStyle": {
+                                    "opacity": 0
+                                },
+                                "zlevel": 0,
+                                "z": 0,
+                                "rippleEffect": {
+                                    "show": true,
+                                    "brushType": "stroke",
+                                    "scale": 2.5,
+                                    "period": 4
+                                }
+                            },
+                            {
+                                "type": "line",
+                                "name": "Northern Territory",
+                                "connectNulls": false,
+                                "symbolSize": 1,
+                                "showSymbol": true,
+                                "smooth": false,
+                                "clip": true,
+                                "step": false,
+                                "data": [
+                                    [
+                                        "1950",
+                                        56
+                                    ],
+                                    [
+                                        "1951",
+                                        59
+                                    ],
+                                    [
+                                        "1952",
+                                        61
+                                    ],
+                                    [
+                                        "1953",
+                                        63
+                                    ],
+                                    [
+                                        "1954",
+                                        60
+                                    ],
+                                    [
+                                        "1955",
+                                        64
+                                    ],
+                                    [
+                                        "1956",
+                                        68
+                                    ],
+                                    [
+                                        "1957",
+                                        67
+                                    ],
+                                    [
+                                        "1958",
+                                        70
+                                    ],
+                                    [
+                                        "1959",
+                                        65
+                                    ],
+                                    [
+                                        "1960",
+                                        70
+                                    ],
+                                    [
+                                        "1961",
+                                        73
+                                    ],
+                                    [
+                                        "1962",
+                                        74
+                                    ],
+                                    [
+                                        "1963",
+                                        72
+                                    ],
+                                    [
+                                        "1964",
+                                        71
+                                    ],
+                                    [
+                                        "1965",
+                                        73
+                                    ],
+                                    [
+                                        "1966",
+                                        77
+                                    ],
+                                    [
+                                        "1967",
+                                        72
+                                    ],
+                                    [
+                                        "1968",
+                                        73
+                                    ],
+                                    [
+                                        "1969",
+                                        78
+                                    ],
+                                    [
+                                        "1970",
+                                        82
+                                    ],
+                                    [
+                                        "1971",
+                                        76
+                                    ],
+                                    [
+                                        "1972",
+                                        83
+                                    ],
+                                    [
+                                        "1973",
+                                        84
+                                    ],
+                                    [
+                                        "1974",
+                                        86
+                                    ],
+                                    [
+                                        "1975",
+                                        81
+                                    ],
+                                    [
+                                        "1976",
+                                        85
+                                    ],
+                                    [
+                                        "1977",
+                                        87
+                                    ],
+                                    [
+                                        "1978",
+                                        87
+                                    ],
+                                    [
+                                        "1979",
+                                        90
+                                    ],
+                                    [
+                                        "1980",
+                                        86
+                                    ],
+                                    [
+                                        "1981",
+                                        92
+                                    ],
+                                    [
+                                        "1982",
+                                        93
+                                    ],
+                                    [
+                                        "1983",
+                                        90
+                                    ],
+                                    [
+                                        "1984",
+                                        96
+                                    ],
+                                    [
+                                        "1985",
+                                        94
+                                    ],
+                                    [
+                                        "1986",
+                                        99
+                                    ],
+                                    [
+                                        "1987",
+                                        93
+                                    ],
+                                    [
+                                        "1988",
+                                        95
+                                    ],
+                                    [
+                                        "1989",
+                                        103
+                                    ],
+                                    [
+                                        "1990",
+                                        102
+                                    ],
+                                    [
+                                        "1991",
+                                        103
+                                    ],
+                                    [
+                                        "1992",
+                                        102
+                                    ],
+                                    [
+                                        "1993",
+                                        106
+                                    ],
+                                    [
+                                        "1994",
+                                        106
+                                    ],
+                                    [
+                                        "1995",
+                                        104
+                                    ],
+                                    [
+                                        "1996",
+                                        109
+                                    ],
+                                    [
+                                        "1997",
+                                        114
+                                    ],
+                                    [
+                                        "1998",
+                                        111
+                                    ],
+                                    [
+                                        "1999",
+                                        108
+                                    ],
+                                    [
+                                        "2000",
+                                        111
+                                    ],
+                                    [
+                                        "2001",
+                                        113
+                                    ],
+                                    [
+                                        "2002",
+                                        116
+                                    ],
+                                    [
+                                        "2003",
+                                        118
+                                    ],
+                                    [
+                                        "2004",
+                                        120
+                                    ],
+                                    [
+                                        "2005",
+                                        112
+                                    ],
+                                    [
+                                        "2006",
+                                        121
+                                    ],
+                                    [
+                                        "2007",
+                                        115
+                                    ],
+                                    [
+                                        "2008",
+                                        124
+                                    ],
+                                    [
+                                        "2009",
+                                        124
+                                    ],
+                                    [
+                                        "2010",
+                                        115
+                                    ],
+                                    [
+                                        "2011",
+                                        129
+                                    ],
+                                    [
+                                        "2012",
+                                        118
+                                    ],
+                                    [
+                                        "2013",
+                                        120
+                                    ],
+                                    [
+                                        "2014",
+                                        122
+                                    ],
+                                    [
+                                        "2015",
+                                        121
+                                    ],
+                                    [
+                                        "2016",
+                                        122
+                                    ],
+                                    [
+                                        "2017",
+                                        135
+                                    ],
+                                    [
+                                        "2018",
+                                        135
+                                    ],
+                                    [
+                                        "2019",
+                                        133
+                                    ],
+                                    [
+                                        "2020",
+                                        130
+                                    ],
+                                    [
+                                        "2021",
+                                        141
+                                    ],
+                                    [
+                                        "2022",
+                                        141
+                                    ]
+                                ],
+                                "hoverAnimation": true,
+                                "label": {
+                                    "show": false,
+                                    "position": "top",
+                                    "margin": 8
+                                },
+                                "lineStyle": {
+                                    "show": true,
+                                    "width": 1,
+                                    "opacity": 1,
+                                    "curveness": 0,
+                                    "type": "solid"
+                                },
+                                "areaStyle": {
+                                    "opacity": 0
+                                },
+                                "zlevel": 0,
+                                "z": 0,
+                                "rippleEffect": {
+                                    "show": true,
+                                    "brushType": "stroke",
+                                    "scale": 2.5,
+                                    "period": 4
+                                }
+                            },
+                            {
+                                "type": "line",
+                                "name": "Tasmania",
+                                "connectNulls": false,
+                                "symbolSize": 1,
+                                "showSymbol": true,
+                                "smooth": false,
+                                "clip": true,
+                                "step": false,
+                                "data": [
+                                    [
+                                        "1950",
+                                        70
+                                    ],
+                                    [
+                                        "1951",
+                                        77
+                                    ],
+                                    [
+                                        "1952",
+                                        79
+                                    ],
+                                    [
+                                        "1953",
+                                        85
+                                    ],
+                                    [
+                                        "1954",
+                                        85
+                                    ],
+                                    [
+                                        "1955",
+                                        94
+                                    ],
+                                    [
+                                        "1956",
+                                        92
+                                    ],
+                                    [
+                                        "1957",
+                                        92
+                                    ],
+                                    [
+                                        "1958",
+                                        96
+                                    ],
+                                    [
+                                        "1959",
+                                        105
+                                    ],
+                                    [
+                                        "1960",
+                                        104
+                                    ],
+                                    [
+                                        "1961",
+                                        103
+                                    ],
+                                    [
+                                        "1962",
+                                        107
+                                    ],
+                                    [
+                                        "1963",
+                                        112
+                                    ],
+                                    [
+                                        "1964",
+                                        121
+                                    ],
+                                    [
+                                        "1965",
+                                        116
+                                    ],
+                                    [
+                                        "1966",
+                                        124
+                                    ],
+                                    [
+                                        "1967",
+                                        125
+                                    ],
+                                    [
+                                        "1968",
+                                        139
+                                    ],
+                                    [
+                                        "1969",
+                                        131
+                                    ],
+                                    [
+                                        "1970",
+                                        141
+                                    ],
+                                    [
+                                        "1971",
+                                        133
+                                    ],
+                                    [
+                                        "1972",
+                                        141
+                                    ],
+                                    [
+                                        "1973",
+                                        150
+                                    ],
+                                    [
+                                        "1974",
+                                        143
+                                    ],
+                                    [
+                                        "1975",
+                                        159
+                                    ],
+                                    [
+                                        "1976",
+                                        153
+                                    ],
+                                    [
+                                        "1977",
+                                        168
+                                    ],
+                                    [
+                                        "1978",
+                                        164
+                                    ],
+                                    [
+                                        "1979",
+                                        166
+                                    ],
+                                    [
+                                        "1980",
+                                        169
+                                    ],
+                                    [
+                                        "1981",
+                                        171
+                                    ],
+                                    [
+                                        "1982",
+                                        177
+                                    ],
+                                    [
+                                        "1983",
+                                        178
+                                    ],
+                                    [
+                                        "1984",
+                                        189
+                                    ],
+                                    [
+                                        "1985",
+                                        175
+                                    ],
+                                    [
+                                        "1986",
+                                        182
+                                    ],
+                                    [
+                                        "1987",
+                                        186
+                                    ],
+                                    [
+                                        "1988",
+                                        198
+                                    ],
+                                    [
+                                        "1989",
+                                        196
+                                    ],
+                                    [
+                                        "1990",
+                                        194
+                                    ],
+                                    [
+                                        "1991",
+                                        199
+                                    ],
+                                    [
+                                        "1992",
+                                        203
+                                    ],
+                                    [
+                                        "1993",
+                                        207
+                                    ],
+                                    [
+                                        "1994",
+                                        205
+                                    ],
+                                    [
+                                        "1995",
+                                        219
+                                    ],
+                                    [
+                                        "1996",
+                                        225
+                                    ],
+                                    [
+                                        "1997",
+                                        227
+                                    ],
+                                    [
+                                        "1998",
+                                        238
+                                    ],
+                                    [
+                                        "1999",
+                                        241
+                                    ],
+                                    [
+                                        "2000",
+                                        222
+                                    ],
+                                    [
+                                        "2001",
+                                        243
+                                    ],
+                                    [
+                                        "2002",
+                                        239
+                                    ],
+                                    [
+                                        "2003",
+                                        249
+                                    ],
+                                    [
+                                        "2004",
+                                        233
+                                    ],
+                                    [
+                                        "2005",
+                                        259
+                                    ],
+                                    [
+                                        "2006",
+                                        247
+                                    ],
+                                    [
+                                        "2007",
+                                        249
+                                    ],
+                                    [
+                                        "2008",
+                                        256
+                                    ],
+                                    [
+                                        "2009",
+                                        266
+                                    ],
+                                    [
+                                        "2010",
+                                        252
+                                    ],
+                                    [
+                                        "2011",
+                                        282
+                                    ],
+                                    [
+                                        "2012",
+                                        268
+                                    ],
+                                    [
+                                        "2013",
+                                        281
+                                    ],
+                                    [
+                                        "2014",
+                                        282
+                                    ],
+                                    [
+                                        "2015",
+                                        286
+                                    ],
+                                    [
+                                        "2016",
+                                        291
+                                    ],
+                                    [
+                                        "2017",
+                                        286
+                                    ],
+                                    [
+                                        "2018",
+                                        281
+                                    ],
+                                    [
+                                        "2019",
+                                        293
+                                    ],
+                                    [
+                                        "2020",
+                                        308
+                                    ],
+                                    [
+                                        "2021",
+                                        309
+                                    ],
+                                    [
+                                        "2022",
+                                        320
+                                    ]
+                                ],
+                                "hoverAnimation": true,
+                                "label": {
+                                    "show": false,
+                                    "position": "top",
+                                    "margin": 8
+                                },
+                                "lineStyle": {
+                                    "show": true,
+                                    "width": 1,
+                                    "opacity": 1,
+                                    "curveness": 0,
+                                    "type": "solid"
+                                },
+                                "areaStyle": {
+                                    "opacity": 0
+                                },
+                                "zlevel": 0,
+                                "z": 0,
+                                "rippleEffect": {
+                                    "show": true,
+                                    "brushType": "stroke",
+                                    "scale": 2.5,
+                                    "period": 4
+                                }
+                            }
+                        ],
+                        "legend": [
+                            {
+                                "data": [
+                                    "Western Australia",
+                                    "Victoria",
+                                    "South Australia",
+                                    "Queensland",
+                                    "New South Wales",
+                                    "Northern Territory",
+                                    "Tasmania"
+                                ],
+                                "selected": {
+                                    "Western Australia": true,
+                                    "Victoria": true,
+                                    "South Australia": true,
+                                    "Queensland": true,
+                                    "New South Wales": true,
+                                    "Northern Territory": true,
+                                    "Tasmania": true
+                                },
+                                "show": true,
+                                "bottom": "bottom",
+                                "padding": 5,
+                                "itemGap": 10,
+                                "itemWidth": 25,
+                                "itemHeight": 14
+                            }
+                        ],
+                        "tooltip": {
+                            "show": true,
+                            "trigger": "item",
+                            "triggerOn": "mousemove|click",
+                            "axisPointer": {
+                                "type": "line"
+                            },
+                            "showContent": true,
+                            "alwaysShowContent": false,
+                            "showDelay": 0,
+                            "hideDelay": 100,
+                            "textStyle": {
+                                "fontSize": 14
+                            },
+                            "borderWidth": 0,
+                            "padding": 5
+                        },
+                        "xAxis": [
+                            {
+                                "show": true,
+                                "scale": false,
+                                "nameLocation": "end",
+                                "nameGap": 15,
+                                "gridIndex": 0,
+                                "inverse": false,
+                                "offset": 0,
+                                "splitNumber": 5,
+                                "minInterval": 0,
+                                "splitLine": {
+                                    "show": false,
+                                    "lineStyle": {
+                                        "show": true,
+                                        "width": 1,
+                                        "opacity": 1,
+                                        "curveness": 0,
+                                        "type": "solid"
+                                    }
+                                },
+                                "data": [
+                                    "1950",
+                                    "1951",
+                                    "1952",
+                                    "1953",
+                                    "1954",
+                                    "1955",
+                                    "1956",
+                                    "1957",
+                                    "1958",
+                                    "1959",
+                                    "1960",
+                                    "1961",
+                                    "1962",
+                                    "1963",
+                                    "1964",
+                                    "1965",
+                                    "1966",
+                                    "1967",
+                                    "1968",
+                                    "1969",
+                                    "1970",
+                                    "1971",
+                                    "1972",
+                                    "1973",
+                                    "1974",
+                                    "1975",
+                                    "1976",
+                                    "1977",
+                                    "1978",
+                                    "1979",
+                                    "1980",
+                                    "1981",
+                                    "1982",
+                                    "1983",
+                                    "1984",
+                                    "1985",
+                                    "1986",
+                                    "1987",
+                                    "1988",
+                                    "1989",
+                                    "1990",
+                                    "1991",
+                                    "1992",
+                                    "1993",
+                                    "1994",
+                                    "1995",
+                                    "1996",
+                                    "1997",
+                                    "1998",
+                                    "1999",
+                                    "2000",
+                                    "2001",
+                                    "2002",
+                                    "2003",
+                                    "2004",
+                                    "2005",
+                                    "2006",
+                                    "2007",
+                                    "2008",
+                                    "2009",
+                                    "2010",
+                                    "2011",
+                                    "2012",
+                                    "2013",
+                                    "2014",
+                                    "2015",
+                                    "2016",
+                                    "2017",
+                                    "2018",
+                                    "2019",
+                                    "2020",
+                                    "2021",
+                                    "2022"
+                                ]
+                            }
+                        ],
+                        "yAxis": [
+                            {
+                                "show": true,
+                                "scale": false,
+                                "nameLocation": "end",
+                                "nameGap": 15,
+                                "gridIndex": 0,
+                                "inverse": false,
+                                "offset": 0,
+                                "splitNumber": 5,
+                                "minInterval": 0,
+                                "splitLine": {
+                                    "show": false,
+                                    "lineStyle": {
+                                        "show": true,
+                                        "width": 1,
+                                        "opacity": 1,
+                                        "curveness": 0,
+                                        "type": "solid"
+                                    }
+                                }
+                            }
+                        ],
+                        "title": [
+                            {
+                                "text": "Regional historical yield curve diagram",
+                                "padding": 5,
+                                "itemGap": 10
+                            }
+                        ]
+                    };
+                    chart_076a9ab5cd4a4815a694b0b2de22f66d.setOption(option_076a9ab5cd4a4815a694b0b2de22f66d);
+                </script>
+            </div>
+        </div>
+        <div id="weatherDiv">
+            <div id="d473fe7b63884f7e82aceffc28441398" class="chart-container" style="width:100%; height:100%;"></div>
+            <script>
+                var chart_d473fe7b63884f7e82aceffc28441398 = echarts.init(
+                    document.getElementById('d473fe7b63884f7e82aceffc28441398'), 'white', {renderer: 'canvas'});
+                var option_d473fe7b63884f7e82aceffc28441398 = {
+                    "animation": true,
+                    "animationThreshold": 2000,
+                    "animationDuration": 1000,
+                    "animationEasing": "cubicOut",
+                    "animationDelay": 0,
+                    "animationDurationUpdate": 300,
+                    "animationEasingUpdate": "cubicOut",
+                    "animationDelayUpdate": 0,
+                    "color": [
+                        "#427CC6",
+                        "#14DACA",
+                        "#c23531",
+                        "#2f4554",
+                        "#61a0a8",
+                        "#d48265",
+                        "#749f83",
+                        "#ca8622",
+                        "#bda29a",
+                        "#6e7074",
+                        "#546570",
+                        "#c4ccd3",
+                        "#f05b72",
+                        "#ef5b9c",
+                        "#f47920",
+                        "#905a3d",
+                        "#fab27b",
+                        "#2a5caa",
+                        "#444693",
+                        "#726930",
+                        "#b2d235",
+                        "#6d8346",
+                        "#ac6767",
+                        "#1d953f",
+                        "#6950a1",
+                        "#918597"
+                    ],
+                    "series": [
+                        {
+                            "type": "bar",
+                            "name": "Evaporation",
+                            "legendHoverLink": true,
+                            "data": [241.1,245.1,250.8,234,234.9,254.9,230.5,255.2,229.8,241.4,219.1,210.5,216.9,247.2,247.7,233.5,255.3,231.3,248.6,246.6,243.5,236.1,210.9,229.8,233,237.2,241.1,236.7,231.3,223
+                            ],
+                            "showBackground": false,
+                            "barMinHeight": 0,
+                            "barCategoryGap": "20%",
+                            "barGap": "30%",
+                            "large": false,
+                            "largeThreshold": 400,
+                            "seriesLayoutBy": "column",
+                            "datasetIndex": 0,
+                            "clip": true,
+                            "zlevel": 0,
+                            "z": 2,
+                            "label": {
+                                "show": false,
+                                "position": "top",
+                                "margin": 8
+                            }
+                        },
+                        {
+                            "type": "bar",
+                            "name": "Rainfall",
+                            "legendHoverLink": true,
+                            "data": [279.5,193.3,243.4,331.2,351.2,242.1,423,351.7,344.3,402.7,453.3,499.7,415,270.9,311.6,371.8,275,323.4,297.2,350.1,246.6,287,499.9,277.2,345.3,284.6,280.8,341.7,341.6,248.6,142.9,283.7,311.9
+                            ],
+                            "showBackground": false,
+                            "barMinHeight": 0,
+                            "barCategoryGap": "20%",
+                            "barGap": "30%",
+                            "large": false,
+                            "largeThreshold": 400,
+                            "seriesLayoutBy": "column",
+                            "datasetIndex": 0,
+                            "clip": true,
+                            "zlevel": 0,
+                            "z": 2,
+                            "label": {
+                                "show": false,
+                                "position": "top",
+                                "margin": 8
+                            }
+                        },
+                        {
+                            "type": "line",
+                            "name": "Average Temperature",
+                            "connectNulls": false,
+                            "yAxisIndex": 1,
+                            "symbolSize": 4,
+                            "showSymbol": true,
+                            "smooth": false,
+                            "clip": true,
+                            "step": false,
+                            "data": [
+                                ['1989', 21.71],
+                                ['1990', 22.39],
+                                ['1991', 22.37],
+                                ['1992', 21.88],
+                                ['1993', 22.19],
+                                ['1994', 22.07],
+                                ['1995', 22.03],
+                                ['1996', 22.38],
+                                ['1997', 22.01],
+                                ['1998', 22.74],
+                                ['1999', 22.23],
+                                ['2000', 21.7],
+                                ['2001', 21.93],
+                                ['2002', 22.57],
+                                ['2003', 22.49],
+                                ['2004', 22.32],
+                                ['2005', 22.96],
+                                ['2006', 22.36],
+                                ['2007', 22.43],
+                                ['2008', 22.41],
+                                ['2009', 22.74],
+                                ['2010', 22.14],
+                                ['2011', 21.89],
+                                ['2012', 22.08],
+                                ['2013', 23.24],
+                                ['2014', 22.93],
+                                ['2015', 22.6],
+                                ['2016', 22.74],
+                                ['2017', 22.88],
+                                ['2018', 22.95],
+                                ['2019', 23.43],
+                                ['2020', 22.97],
+                                ['2021', 22.4]]
+                                ,
+                            "hoverAnimation": true,
+                            "label": {
+                                "show": false,
+                                "position": "top",
+                                "margin": 8
+                            },
+                            "lineStyle": {
+                                "show": true,
+                                "width": 1,
+                                "opacity": 1,
+                                "curveness": 0,
+                                "type": "solid"
+                            },
+                            "areaStyle": {
+                                "opacity": 0
+                            },
+                            "zlevel": 0,
+                            "z": 0
+                        }
+                    ],
+                    "legend": [
+                        {
+                            "data": [
+                                "Evaporation",
+                                "Rainfall",
+                                "Average Temperature"
+                            ],
+                            "selected": {
+                                "Evaporation": true,
+                                "Rainfall": true,
+                                "Average Temperature": true
+                            },
+                            "show": true,
+                            "padding": 5,
+                            "itemGap": 10,
+                            "itemWidth": 25,
+                            "itemHeight": 14
+                        }
+                    ],
+                    "tooltip": {
+                        "show": true,
+                        "trigger": "axis",
+                        "triggerOn": "mousemove|click",
+                        "axisPointer": {
+                            "type": "cross"
+                        },
+                        "showContent": true,
+                        "alwaysShowContent": false,
+                        "showDelay": 0,
+                        "hideDelay": 100,
+                        "textStyle": {
+                            "fontSize": 14
+                        },
+                        "borderWidth": 0,
+                        "padding": 5
+                    },
+                    "xAxis": [
+                        {
+                            "type": "category",
+                            "show": true,
+                            "scale": false,
+                            "nameLocation": "end",
+                            "nameGap": 15,
+                            "gridIndex": 0,
+                            "axisPointer": {
+                                "show": true,
+                                "type": "shadow"
+                            },
+                            "inverse": false,
+                            "offset": 0,
+                            "splitNumber": 5,
+                            "minInterval": 0,
+                            "splitLine": {
+                                "show": false,
+                                "lineStyle": {
+                                    "show": true,
+                                    "width": 1,
+                                    "opacity": 1,
+                                    "curveness": 0,
+                                    "type": "solid"
+                                }
+                            },
+                            "data":
+                                ['1989',
+                                    '1990',
+                                    '1991',
+                                    '1992',
+                                    '1993',
+                                    '1994',
+                                    '1995',
+                                    '1996',
+                                    '1997',
+                                    '1998',
+                                    '1999',
+                                    '2000',
+                                    '2001',
+                                    '2002',
+                                    '2003',
+                                    '2004',
+                                    '2005',
+                                    '2006',
+                                    '2007',
+                                    '2008',
+                                    '2009',
+                                    '2010',
+                                    '2011',
+                                    '2012',
+                                    '2013',
+                                    '2014',
+                                    '2015',
+                                    '2016',
+                                    '2017',
+                                    '2018',
+                                    '2019',
+                                    '2020',
+                                    '2021']
+                        }
+                    ],
+                    "yAxis": [
+                        {
+                            "type": "value",
+                            "name": "water yield",
+                            "show": true,
+                            "scale": false,
+                            "nameLocation": "end",
+                            "nameGap": 15,
+                            "interval": 50,
+                            "gridIndex": 0,
+                            "axisTick": {
+                                "show": true,
+                                "alignWithLabel": false,
+                                "inside": false
+                            },
+                            "axisLabel": {
+                                "show": true,
+                                "position": "top",
+                                "margin": 8,
+                                "formatter": "{value} ml"
+                            },
+                            "inverse": false,
+                            "offset": 0,
+                            "splitNumber": 5,
+                            "min": 0,
+                            "max": 550,
+                            "minInterval": 0,
+                            "splitLine": {
+                                "show": true,
+                                "lineStyle": {
+                                    "show": true,
+                                    "width": 1,
+                                    "opacity": 1,
+                                    "curveness": 0,
+                                    "type": "solid"
+                                }
+                            }
+                        },
+                        {
+                            "type": "value",
+                            "name": "Temperature",
+                            "show": true,
+                            "scale": false,
+                            "nameLocation": "end",
+                            "nameGap": 15,
+                            "interval": 5,
+                            "gridIndex": 0,
+                            "axisLabel": {
+                                "show": true,
+                                "position": "top",
+                                "margin": 8,
+                                "formatter": "{value} \u00b0C"
+                            },
+                            "inverse": false,
+                            "offset": 0,
+                            "splitNumber": 5,
+                            "min": -10,
+                            "max": 25,
+                            "minInterval": 0,
+                            "splitLine": {
+                                "show": false,
+                                "lineStyle": {
+                                    "show": true,
+                                    "width": 1,
+                                    "opacity": 1,
+                                    "curveness": 0,
+                                    "type": "solid"
+                                }
+                            }
+                        }
+                    ],
+                    "title": [
+                        {
+                            "text": "Western Australia",
+                            "padding": 5,
+                            "itemGap": 10
+                        }
+                    ],
+                    "dataZoom": [
+                        {
+                            "show": true,
+                            "type": "slider",
+                            "realtime": true,
+                            "start": 80,
+                            "end": 100,
+                            "orient": "horizontal",
+                            "zoomLock": false,
+                            "filterMode": "filter"
+                        },
+                        {
+                            "show": true,
+                            "type": "inside",
+                            "realtime": true,
+                            "start": 20,
+                            "end": 80,
+                            "orient": "horizontal",
+                            "zoomLock": false,
+                            "filterMode": "filter"
+                        }
+                    ]
+                };
+                chart_d473fe7b63884f7e82aceffc28441398.setOption(option_d473fe7b63884f7e82aceffc28441398);
+            </script>
+        </div>
+        <div id="bushfireDiv">
+            <img src="resource/arrows.png" style="width: 100%; height: 100%">
+<!--            <img src="resource/fireMark.png" style="width: 50px; height: 70px; position: absolute; top: 5%">-->
+<!--            <button id="bushfireB" onclick="addElementImg()">test</button>-->
+<!--            <div id="fireMarkDiv" style="width: 100%; height: 100%; background-color:#fff;">-->
+
+<!--            </div>-->
+            <p style="font-size: 20px; color: #FF6600; position: absolute; left: 1%; top: 65%;">BushFire</p>
+        </div>
+        <script>
+            var size = 2022-1950+1
+            var bushfireDate = [1951, 1975, 1980, 1999, 2011, 2021]
+            function addElementImg() {
+                var div = document.getElementById("bushfireDiv");
+                //设置 img 图片地址
+                for (var i=0; i<bushfireDate.length; i++){
+                    var img = document.createElement("img");
+                    var offset = ((bushfireDate[i]-1950)/size*100) // the value before %
+                    offset = (offset*(9/10)+3).toFixed(2)  // map to (10, 90), and keep two decimals
+                    var img_style = "left: "+offset+"%; "+"width: 50px; height: 70px; position: absolute; top: 5%;"
+                    img.setAttribute("title", bushfireDate[i])
+                    img.setAttribute("style", img_style);
+                    img.setAttribute("id", bushfireDate[i])
+
+                    // img.setAttribute("class", "tooltip")
+
+                    // var spanNotify = document.createElement("span")
+                    // spanNotify.setAttribute("class", "tooltiptext")
+                    // img.appendChild(spanNotify)
+
+                    img.src = "resource/fireMark.png";
+                    div.appendChild(img);
+                }
+
+            }
+            addElementImg();
+        </script>
+    </div>
+</body>
+</html>
