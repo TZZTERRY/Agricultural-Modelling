@@ -2,10 +2,25 @@
 
 ## Introduction
 
-The algorithms used to predict crop yields are all machine learning algorithms including ElasticNet, Support Vector
-Machine, KNeighborsRegressor, GaussianProcessRegressor, DecisionTree and DeepNeuralNetwork. We will mainly evaluate the
-model from two aspects: performance and efficiency. We will use average margin of error as the measurement of
-performance. As for efficiency, calculation speed will be taken into consideration.
+30 models are built for the project. 26 models are utilized to predict crop yield in across the Australia and each state
+in Australia. 4 models are used to predict crop export price
+
+### Crop
+
+|Wheat| Oat | Corn | Barley |
+|:---:|:---:|:----:|:------:|
+
+### Input for crop yield prediction models
+
+Monthly data: Humidity, Wind, Ultraviolet A, Ultraviolet B, Temperature, Rainfall, Evaporation
+
+Single value data: Plating area, Fertilizer, Covid19 (binary value)
+
+### Input for export price prediction models
+
+Data in each continent(America, Asia, Europe,Oceania): Crop Production, Export volume, Trade value
+
+Single value data: Oil price, Covid19
 
 ## Dataset Preprocessing
 
@@ -16,6 +31,11 @@ preprocessing, we normalize the whole dataset into range [0,1] to avoid numerica
 training.
 
 ## Machine Learning Algorithms
+
+The algorithms used to predict crop yields are all machine learning algorithms including ElasticNet, Support Vector
+Machine, KNeighborsRegressor, GaussianProcessRegressor, DecisionTree and DeepNeuralNetwork. We will mainly evaluate the
+model from two aspects: performance and efficiency. We will use average margin of error as the measurement of
+performance. As for efficiency, calculation speed will be taken into consideration.
 
 ### ElasticNet
 
@@ -50,12 +70,115 @@ features. A tree can be seen as a piecewise constant approximation.
 Multi-layer Perceptron (MLP) is a supervised learning algorithm that learns a function by training on a dataset. Given a
 set of features and a target , it can learn a non-linear function approximator for either classification or regression.
 
-## Model details and performance
-|Model Name|                    Model Parameters                     | Average Margin of Error |             Evaluation             |
-|:---:|:-------------------------------------------------------:|:-----------------------:|:----------------------------------:|
-|ElasticNet|               alpha: 0.025 l1_ratio: 1.0                |          19.4%          |       Simple,Fast,Inaccurate       |
-|Support Vector Machine|                         C: 0.7                          |          11.9%          |       Simple, Fast, Accurate       |
-|KNeighborsRegressor|                 Number of neighbors: 7                  |          25.3%          | No need to train, Slow, Inaccurate |
-|GaussianProcessRegressor|                Prior:0 Kernel:DotProduct                |          13.2%          |      Complex, Fast, Accurate       |
-|Decision Tree| max_depth: 10 min_samples_split: 8  min_samples_leaf: 2 |          12.8%          |       Simple, Fast, Accurate       |
-|Deep Neural Network|              please review the source code              |          8.3%           |      Complex, Fast, Accurate       |
+### Convolutional Neural Network
+
+CNN is normally uesd in Computer Vision to extract features from a 2D image. We reshape out 1D input vector into 2D
+matrix and use CNN to extract features.
+
+### Recurrent Neural Network
+
+RNN is normally used in Natural Language Processing. The input of a RNN is normally a sentence with many words. Each
+word is a vecter with the same length. We split out input data in this way and feed it to a RNN.
+
+## Model Comparison
+
+We use the wheat yield prediction across Australia task to build and compare different models. Average margin of error(
+training error)
+is used to measure the performance of models.
+
+|          Model Name          |                    Model Parameters                     | Average Margin of Error |             Evaluation             |
+|:----------------------------:|:-------------------------------------------------------:|:-----------------------:|:----------------------------------:|
+|          ElasticNet          |               alpha: 0.025 l1_ratio: 1.0                |          19.4%          |       Simple,Fast,Inaccurate       |
+|    Support Vector Machine    |                         C: 0.7                          |          11.9%          |       Simple, Fast, Accurate       |
+|     KNeighborsRegressor      |                 Number of neighbors: 7                  |          25.3%          | No need to train, Slow, Inaccurate |
+|   GaussianProcessRegressor   |                Prior:0 Kernel:DotProduct                |          13.2%          |      Complex, Fast, Accurate       |
+|        Decision Tree         | max_depth: 10 min_samples_split: 8  min_samples_leaf: 2 |          12.8%          |       Simple, Fast, Accurate       |
+|     Deep Neural Network      |              please review the source code              |          8.3%           |      Complex, Fast, Accurate       |
+| Convolutional Neural Network |              please review the source code              |          15.8%          |      Complex, Fast, Accurate       |
+|   Recurrent Neural Network   |              please review the source code              |          12.6%          |      Complex, Fast, Accurate       |
+
+## Model Performance
+
+We use DNN as our final prediction models.
+
+### Prediction models for Australia
+
+|           Model Name           | Average Margin of Error |
+|:------------------------------:|:-----------------------:|
+|     Wheat Yield Prediction     |          6.74%          |
+|    Barley Yield Prediction     |          8.63%          |
+|      Oat Yield Prediction      |          7.23%          |
+|     Corn Yield Prediction      |          3.61%          |
+| Wheat Export Price Prediction  |          4.73%          |
+| Barley Export Price Prediction |          4.89%          |
+|  Oat Export Price Prediction   |          6.86%          |
+|  Corn Export Price Prediction  |         12.49%          |
+
+### Prediction models for NSW
+
+|           Model Name           | Average Margin of Error |
+|:------------------------------:|:-----------------------:|
+|     Wheat Yield Prediction     |         11.81%          |
+|    Barley Yield Prediction     |         13.22%          |
+|      Oat Yield Prediction      |         10.88%          |
+|     Corn Yield Prediction      |          6.08%          |
+
+### Prediction models for QLD
+
+|           Model Name           | Average Margin of Error |
+|:------------------------------:|:-----------------------:|
+|     Wheat Yield Prediction     |          6.26%          |
+|    Barley Yield Prediction     |         10.33%          |
+|      Oat Yield Prediction      |         13.20%          |
+|     Corn Yield Prediction      |          8.72%          |
+
+### Prediction models for SA
+
+|           Model Name           | Average Margin of Error |
+|:------------------------------:|:-----------------------:|
+|     Wheat Yield Prediction     |         10.25%          |
+|    Barley Yield Prediction     |          8.72%          |
+|      Oat Yield Prediction      |          7.83%          |
+
+### Prediction models for TA
+
+|           Model Name           | Average Margin of Error |
+|:------------------------------:|:-----------------------:|
+|     Wheat Yield Prediction     |         12.71%          |
+|    Barley Yield Prediction     |          8.88%          |
+|      Oat Yield Prediction      |         10.45%          |
+
+### Prediction models for Vic
+
+|           Model Name           | Average Margin of Error |
+|:------------------------------:|:-----------------------:|
+|     Wheat Yield Prediction     |         12.87%          |
+|    Barley Yield Prediction     |         13.63%          |
+|      Oat Yield Prediction      |          8.94%          |
+|     Corn Yield Prediction      |         15.26%          |
+
+### Prediction models for Wa
+
+|           Model Name           | Average Margin of Error |
+|:------------------------------:|:-----------------------:|
+|     Wheat Yield Prediction     |          8.15%          |
+|    Barley Yield Prediction     |         12.84%          |
+|      Oat Yield Prediction      |          4.18%          |
+|     Corn Yield Prediction      |          9.08%          |
+
+### Failure Case
+
+We plan to predict crop local price in each state. But we found that the data we have collected are not suitable for
+local price prediction.
+
+### Further improvement
+
+We think that the overall performance of our prediction models is descent. But we still give some directions that can
+further improve the models.
+
+1. Collect more data, more data means more possibility.
+
+2. Fully adjust the architecture and fine-tune a CNN or RNN.
+
+3. Apply double machine learning during the process of data preprocessing
+
