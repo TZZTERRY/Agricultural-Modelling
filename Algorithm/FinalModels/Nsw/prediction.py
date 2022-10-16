@@ -39,16 +39,10 @@ future_years_dataset = pd.DataFrame(X)
 future_years_dataset = future_years_dataset.drop(index=[0, 1])
 np.random.seed(10)
 for i in range(len(means)):
-    if i == len(means) - 1:
-        future_years_dataset.iloc[:, i] = np.random.normal(means[i], 500, size=(30, 1))
-    elif i % 2 == 0:
-        future_years_dataset.iloc[:, i] = np.random.normal(means[i], 1.5, size=(30, 1))
-    else:
-        future_years_dataset.iloc[:, i] = np.random.normal(means[i], 25, size=(30, 1))
+    future_years_dataset.iloc[:, i] = np.random.normal(means[i], means[i] / 50, size=(30, 1))
 
 future_years_dataset['Covid'] = np.ones(future_years_dataset.shape[0])
 future_years_dataset_scaled = standardize_scaler.transform(future_years_dataset)
-
 
 model = tf.keras.models.Sequential([
     layers.Dense(32, kernel_initializer='random_normal', input_shape=(X.shape[1],),
