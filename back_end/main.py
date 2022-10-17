@@ -11,6 +11,9 @@ from agri_service.s_weblink import SWeblink
 from agri_service.s_resource import SResource
 from flask import send_from_directory
 from flask import render_template, make_response
+import sqlite3
+from flask import g
+import json
 
 app = Flask(__name__)
 
@@ -20,6 +23,8 @@ REGION_SHORT_NAME = (("nsw", "NSW.html"),
                      ("tas", "TAS.html"),
                      ("wa", "WA.html"),
                      ("sa", "SA.html"))
+
+DATABASE = 'agri_database/agri_db'
 
 
 @app.route('/home/')
@@ -88,13 +93,20 @@ def get_yield_data():
     endy = request.args.get('endy')
     cropid = request.args.get('cropid')
 
-    print("region: ", region)
-    print("ispre: ", ispre)
-    print("starty: ", starty)
-    print("endy: ", endy)
-    print("cropid: ", cropid)
+    cropid = int(cropid)
+    ispre = int(ispre)
 
-    return my_response(yield_obj.get_data())
+    res = query_db(f"select * from yield_price "
+             f"where crop_id = {cropid} and region_name = '{region}' and is_predict = {ispre}")
+    years = []
+    values = []
+
+    crop_name = res[0]["crop_name"]
+    for r in res:
+        years.append(r["year"])
+        values.append(r['yield'])
+    json_obj = {"years": years, "values": values, "crop name": crop_name, "cropid": cropid, "isPredict": ispre, "regionName": region}
+    return my_response(json.dumps(json_obj))
 
 
 @app.route('/weblink', methods=['GET', 'POST'])
@@ -118,6 +130,34 @@ def my_response(my_body):
     res.headers['Access-Control-Allow-Origin'] = "*"
     res.headers['Access-Control-Allow-Methods'] = 'PUT,GET'
     return res
+
+
+def get_db():
+    db = getattr(g, '_database', None)
+    if db is None:
+        db = g._database = sqlite3.connect(DATABASE)
+        db.row_factory = sqlite3.Row
+    return db
+
+
+@app.teardown_appcontext
+def close_connection(exception):
+    db = getattr(g, '_database', None)
+    if db is not None:
+        db.close()
+
+
+def query_db(query, args=(), one=False):
+    cur = get_db().execute(query, args)
+    rv = cur.fetchall()
+    cur.close()
+    return (rv[0] if rv else None) if one else rv
+
+
+def make_dicts(cursor, row):
+    return dict((cursor.description[idx][0], value)
+                for idx, value in enumerate(row))
+
 
 if __name__ == "__main__":
     weather_obj = SWeather()
