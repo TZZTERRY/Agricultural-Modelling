@@ -96,10 +96,10 @@
                     <a class="nav-link" href="http://13.211.157.235:5000/about/"><p class="m-auto">About</p></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="http://13.211.157.235:5000/overview/"><p class="m-auto">Australia overview</p></a>
+                    <a class="nav-link" href="http://13.211.157.235:5000/overview/"><p class="m-auto">Overview</p></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="http://13.211.157.235:5000/download/"><p class="m-auto">Download</p></a>
+                    <a class="nav-link" href="http://13.211.157.235:5000/download/"><p class="m-auto">Resource</p></a>
                 </li>
                 <!-- Dropdown -->
                 <li class="nav-item dropdown">
@@ -295,6 +295,26 @@
             <div class="col-7">
                 <div id="dd39e0ecfe3a473889b60610f1258f30" class="chart-container" style="width:100%; height:500px;"></div>
                 <script>
+                    var xmlhttp_0;
+                    var data_package_rainfall = [];
+                    var data_package_temperature = [];
+                    var data_package_evaporation = [];
+                    xmlhttp_0 = new XMLHttpRequest();
+                    xmlhttp_0.onreadystatechange=function()
+                    {
+                        if (xmlhttp_0.readyState==4 && xmlhttp_0.status==200)
+                        {
+                            var jasonData_0 = JSON.parse(xmlhttp_0.responseText);
+                            for (let i=0; i<jasonData_0.years.length; i++){
+                                data_package_rainfall.push(jasonData_0.rainfalls[i].toString())
+                                data_package_temperature.push([jasonData_0.years[i].toString(), jasonData_0.temperatures[i].toString()])
+                                data_package_evaporation.push(jasonData_0.evaporations[i].toString())
+                            }
+                        }
+                    }
+                    xmlhttp_0.open("GET","http://13.211.157.235:5000/weather?region=aus",false);
+                    //xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                    xmlhttp_0.send();
                     var chart_dd39e0ecfe3a473889b60610f1258f30 = echarts.init(
                         document.getElementById('dd39e0ecfe3a473889b60610f1258f30'), 'white', {renderer: 'canvas'});
                     var option_dd39e0ecfe3a473889b60610f1258f30 = {
@@ -339,38 +359,7 @@
                                 "type": "bar",
                                 "name": "Evaporation",
                                 "legendHoverLink": true,
-                                "data": [
-                                    241.1,
-                                    245.1,
-                                    250.8,
-                                    234,
-                                    234.9,
-                                    254.9,
-                                    230.5,
-                                    255.2,
-                                    229.8,
-                                    241.4,
-                                    219.1,
-                                    210.5,
-                                    216.9,
-                                    247.2,
-                                    247.7,
-                                    233.5,
-                                    255.3,
-                                    231.3,
-                                    248.6,
-                                    246.6,
-                                    243.5,
-                                    236.1,
-                                    210.9,
-                                    229.8,
-                                    233,
-                                    237.2,
-                                    241.1,
-                                    236.7,
-                                    231.3,
-                                    223
-                                ],
+                                "data": data_package_evaporation,
                                 "showBackground": false,
                                 "barMinHeight": 0,
                                 "barCategoryGap": "20%",
@@ -392,41 +381,7 @@
                                 "type": "bar",
                                 "name": "Rainfall",
                                 "legendHoverLink": true,
-                                "data": [
-                                    279.5,
-                                    193.3,
-                                    243.4,
-                                    331.2,
-                                    351.2,
-                                    242.1,
-                                    423,
-                                    351.7,
-                                    344.3,
-                                    402.7,
-                                    453.3,
-                                    499.7,
-                                    415,
-                                    270.9,
-                                    311.6,
-                                    371.8,
-                                    275,
-                                    323.4,
-                                    297.2,
-                                    350.1,
-                                    246.6,
-                                    287,
-                                    499.9,
-                                    277.2,
-                                    345.3,
-                                    284.6,
-                                    280.8,
-                                    341.7,
-                                    341.6,
-                                    248.6,
-                                    142.9,
-                                    283.7,
-                                    311.9
-                                ],
+                                "data": data_package_rainfall,
                                 "showBackground": false,
                                 "barMinHeight": 0,
                                 "barCategoryGap": "20%",
@@ -454,140 +409,7 @@
                                 "smooth": false,
                                 "clip": true,
                                 "step": false,
-                                "data": [
-                                    [
-                                        "1989",
-                                        21.71
-                                    ],
-                                    [
-                                        "1990",
-                                        22.39
-                                    ],
-                                    [
-                                        "1991",
-                                        22.37
-                                    ],
-                                    [
-                                        "1992",
-                                        21.88
-                                    ],
-                                    [
-                                        "1993",
-                                        22.19
-                                    ],
-                                    [
-                                        "1994",
-                                        22.07
-                                    ],
-                                    [
-                                        "1995",
-                                        22.03
-                                    ],
-                                    [
-                                        "1996",
-                                        22.38
-                                    ],
-                                    [
-                                        "1997",
-                                        22.01
-                                    ],
-                                    [
-                                        "1998",
-                                        22.74
-                                    ],
-                                    [
-                                        "1999",
-                                        22.23
-                                    ],
-                                    [
-                                        "2000",
-                                        21.7
-                                    ],
-                                    [
-                                        "2001",
-                                        21.93
-                                    ],
-                                    [
-                                        "2002",
-                                        22.57
-                                    ],
-                                    [
-                                        "2003",
-                                        22.49
-                                    ],
-                                    [
-                                        "2004",
-                                        22.32
-                                    ],
-                                    [
-                                        "2005",
-                                        22.96
-                                    ],
-                                    [
-                                        "2006",
-                                        22.36
-                                    ],
-                                    [
-                                        "2007",
-                                        22.43
-                                    ],
-                                    [
-                                        "2008",
-                                        22.41
-                                    ],
-                                    [
-                                        "2009",
-                                        22.74
-                                    ],
-                                    [
-                                        "2010",
-                                        22.14
-                                    ],
-                                    [
-                                        "2011",
-                                        21.89
-                                    ],
-                                    [
-                                        "2012",
-                                        22.08
-                                    ],
-                                    [
-                                        "2013",
-                                        23.24
-                                    ],
-                                    [
-                                        "2014",
-                                        22.93
-                                    ],
-                                    [
-                                        "2015",
-                                        22.6
-                                    ],
-                                    [
-                                        "2016",
-                                        22.74
-                                    ],
-                                    [
-                                        "2017",
-                                        22.88
-                                    ],
-                                    [
-                                        "2018",
-                                        22.95
-                                    ],
-                                    [
-                                        "2019",
-                                        23.43
-                                    ],
-                                    [
-                                        "2020",
-                                        22.97
-                                    ],
-                                    [
-                                        "2021",
-                                        22.4
-                                    ]
-                                ],
+                                "data": data_package_temperature,
                                 "hoverAnimation": true,
                                 "label": {
                                     "show": false,
@@ -830,6 +652,67 @@
         <div class="col-8">
             <div id="e36594fcee3c4532b08edf23bee93722" class="chart-container" style="width:900px; height:500px;"></div>
             <script>
+                var xmlhttp_0;
+                var xmlhttp_1;
+                var xmlhttp_2;
+                var xmlhttp_3;
+                var data_package_wheat = [];
+                var data_package_oat = [];
+                var data_package_corn = [];
+                var data_package_barley = [];
+                xmlhttp_0 = new XMLHttpRequest();
+                xmlhttp_1 = new XMLHttpRequest();
+                xmlhttp_2 = new XMLHttpRequest();
+                xmlhttp_3 = new XMLHttpRequest();
+                xmlhttp_0.onreadystatechange=function()
+                {
+                    if (xmlhttp_0.readyState==4 && xmlhttp_0.status==200)
+                    {
+                        var jasonData_0 = JSON.parse(xmlhttp_0.responseText);
+                        for (let i=0; i<jasonData_0.values.length; i++){
+                            data_package_wheat.push([jasonData_0.years[i].toString(), jasonData_0.values[i].toString()])
+                        }
+                    }
+                }
+                xmlhttp_1.onreadystatechange=function()
+                {
+                    if (xmlhttp_1.readyState==4 && xmlhttp_1.status==200)
+                    {
+                        var jasonData_1 = JSON.parse(xmlhttp_1.responseText);
+                        for (let i=0; i<jasonData_1.values.length; i++){
+                            data_package_oat.push([jasonData_1.years[i].toString(), jasonData_1.values[i].toString()])
+                        }
+                    }
+                }
+                xmlhttp_2.onreadystatechange=function()
+                {
+                    if (xmlhttp_2.readyState==4 && xmlhttp_2.status==200)
+                    {
+                        var jasonData_2 = JSON.parse(xmlhttp_2.responseText);
+                        for (let i=0; i<jasonData_2.values.length; i++){
+                            data_package_corn.push([jasonData_2.years[i].toString(), jasonData_2.values[i].toString()])
+                        }
+                    }
+                }
+                xmlhttp_3.onreadystatechange=function()
+                {
+                    if (xmlhttp_3.readyState==4 && xmlhttp_3.status==200)
+                    {
+                        var jasonData_3 = JSON.parse(xmlhttp_3.responseText);
+                        for (let i=0; i<jasonData_3.values.length; i++){
+                            data_package_barley.push([jasonData_3.years[i].toString(), jasonData_3.values[i].toString()])
+                        }
+                    }
+                }
+                xmlhttp_0.open("GET","http://13.211.157.235:5000/yield?region=aus&ispre=1&cropid=0",false);
+                xmlhttp_1.open("GET","http://13.211.157.235:5000/yield?region=aus&ispre=1&cropid=1",false);
+                xmlhttp_2.open("GET","http://13.211.157.235:5000/yield?region=aus&ispre=1&cropid=2",false);
+                xmlhttp_3.open("GET","http://13.211.157.235:5000/yield?region=aus&ispre=1&cropid=3",false);
+                //xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                xmlhttp_0.send();
+                xmlhttp_1.send();
+                xmlhttp_2.send();
+                xmlhttp_3.send();
         var chart_e36594fcee3c4532b08edf23bee93722 = echarts.init(
             document.getElementById('e36594fcee3c4532b08edf23bee93722'), 'white', {renderer: 'canvas'});
         var option_e36594fcee3c4532b08edf23bee93722 = {
@@ -877,136 +760,7 @@
             "smooth": false,
             "clip": true,
             "step": false,
-            "data": [
-                [
-                    "1990",
-                    "14214.6"
-                ],
-                [
-                    "1991",
-                    "15066.1"
-                ],
-                [
-                    "1992",
-                    "10557.3"
-                ],
-                [
-                    "1993",
-                    "14738.7"
-                ],
-                [
-                    "1994",
-                    "16479.2"
-                ],
-                [
-                    "1995",
-                    "8961.4"
-                ],
-                [
-                    "1996",
-                    "16503.9"
-                ],
-                [
-                    "1997",
-                    "22924.2"
-                ],
-                [
-                    "1998",
-                    "19226.7"
-                ],
-                [
-                    "1999",
-                    "21464.8"
-                ],
-                [
-                    "2000",
-                    "24757.4"
-                ],
-                [
-                    "2001",
-                    "22108.2"
-                ],
-                [
-                    "2002",
-                    "24299.4"
-                ],
-                [
-                    "2003",
-                    "10131.8"
-                ],
-                [
-                    "2004",
-                    "26131.8"
-                ],
-                [
-                    "2005",
-                    "21905.1"
-                ],
-                [
-                    "2006",
-                    "25150.4"
-                ],
-                [
-                    "2007",
-                    "10821.7"
-                ],
-                [
-                    "2008",
-                    "13569.4"
-                ],
-                [
-                    "2009",
-                    "21420.1"
-                ],
-                [
-                    "2010",
-                    "21834"
-                ],
-                [
-                    "2011",
-                    "27410"
-                ],
-                [
-                    "2012",
-                    "29905.01"
-                ],
-                [
-                    "2013",
-                    "22855.17"
-                ],
-                [
-                    "2014",
-                    "25302.71"
-                ],
-                [
-                    "2015",
-                    "23742.56"
-                ],
-                [
-                    "2016",
-                    "22274.51"
-                ],
-                [
-                    "2017",
-                    "31818.74"
-                ],
-                [
-                    "2018",
-                    "20941.13"
-                ],
-                [
-                    "2019",
-                    "17597.56"
-                ],
-                [
-                    "2020",
-                    "14480.22"
-                ],
-                [
-                    "2021",
-                    "33336.5"
-                ]
-            ],
+            "data": data_package_wheat,
             "hoverAnimation": true,
             "label": {
                 "show": false,
@@ -1041,136 +795,7 @@
             "smooth": false,
             "clip": true,
             "step": false,
-            "data": [
-                [
-                    "1990",
-                    "1640.3"
-                ],
-                [
-                    "1991",
-                    "1529.8"
-                ],
-                [
-                    "1992",
-                    "1689.8"
-                ],
-                [
-                    "1993",
-                    "1936.4"
-                ],
-                [
-                    "1994",
-                    "1646.5"
-                ],
-                [
-                    "1995",
-                    "924.08"
-                ],
-                [
-                    "1996",
-                    "1874.81"
-                ],
-                [
-                    "1997",
-                    "1652.8"
-                ],
-                [
-                    "1998",
-                    "1634.28"
-                ],
-                [
-                    "1999",
-                    "1798.23"
-                ],
-                [
-                    "2000",
-                    "1117.68"
-                ],
-                [
-                    "2001",
-                    "1049.75"
-                ],
-                [
-                    "2002",
-                    "1433.53"
-                ],
-                [
-                    "2003",
-                    "956.98"
-                ],
-                [
-                    "2004",
-                    "2017.88"
-                ],
-                [
-                    "2005",
-                    "1282.45"
-                ],
-                [
-                    "2006",
-                    "1688.02"
-                ],
-                [
-                    "2007",
-                    "748.29"
-                ],
-                [
-                    "2008",
-                    "1502.3"
-                ],
-                [
-                    "2009",
-                    "1160"
-                ],
-                [
-                    "2010",
-                    "1161.52"
-                ],
-                [
-                    "2011",
-                    "1127.68"
-                ],
-                [
-                    "2012",
-                    "1262.03"
-                ],
-                [
-                    "2013",
-                    "1121.14"
-                ],
-                [
-                    "2014",
-                    "1254.66"
-                ],
-                [
-                    "2015",
-                    "1198.01"
-                ],
-                [
-                    "2016",
-                    "1299.68"
-                ],
-                [
-                    "2017",
-                    "2265.5"
-                ],
-                [
-                    "2018",
-                    "1227.39"
-                ],
-                [
-                    "2019",
-                    "1134.62"
-                ],
-                [
-                    "2020",
-                    "1142.93"
-                ],
-                [
-                    "2021",
-                    "1664.64"
-                ]
-            ],
+            "data":data_package_oat,
             "hoverAnimation": true,
             "label": {
                 "show": false,
@@ -1205,136 +830,7 @@
             "smooth": false,
             "clip": true,
             "step": false,
-            "data": [
-                [
-                    "1990",
-                    "218"
-                ],
-                [
-                    "1991",
-                    "192.9"
-                ],
-                [
-                    "1992",
-                    "268.2"
-                ],
-                [
-                    "1993",
-                    "198.2"
-                ],
-                [
-                    "1994",
-                    "203.42"
-                ],
-                [
-                    "1995",
-                    "241.74"
-                ],
-                [
-                    "1996",
-                    "310.92"
-                ],
-                [
-                    "1997",
-                    "397.54"
-                ],
-                [
-                    "1998",
-                    "271.37"
-                ],
-                [
-                    "1999",
-                    "337.3"
-                ],
-                [
-                    "2000",
-                    "405.82"
-                ],
-                [
-                    "2001",
-                    "344.56"
-                ],
-                [
-                    "2002",
-                    "453.3"
-                ],
-                [
-                    "2003",
-                    "310"
-                ],
-                [
-                    "2004",
-                    "394.95"
-                ],
-                [
-                    "2005",
-                    "419.67"
-                ],
-                [
-                    "2006",
-                    "361.92"
-                ],
-                [
-                    "2007",
-                    "239.45"
-                ],
-                [
-                    "2008",
-                    "387"
-                ],
-                [
-                    "2009",
-                    "375.67"
-                ],
-                [
-                    "2010",
-                    "328.03"
-                ],
-                [
-                    "2011",
-                    "356.9"
-                ],
-                [
-                    "2012",
-                    "448.94"
-                ],
-                [
-                    "2013",
-                    "505.9"
-                ],
-                [
-                    "2014",
-                    "389.53"
-                ],
-                [
-                    "2015",
-                    "494.59"
-                ],
-                [
-                    "2016",
-                    "400.03"
-                ],
-                [
-                    "2017",
-                    "436.19"
-                ],
-                [
-                    "2018",
-                    "387.24"
-                ],
-                [
-                    "2019",
-                    "327.21"
-                ],
-                [
-                    "2020",
-                    "267.55"
-                ],
-                [
-                    "2021",
-                    "356.13"
-                ]
-            ],
+            "data": data_package_corn,
             "hoverAnimation": true,
             "label": {
                 "show": false,
@@ -1369,136 +865,7 @@
             "smooth": false,
             "clip": true,
             "step": false,
-            "data": [
-                [
-                    "1990",
-                    "4044.15"
-                ],
-                [
-                    "1991",
-                    "4107.83"
-                ],
-                [
-                    "1992",
-                    "4529.68"
-                ],
-                [
-                    "1993",
-                    "5396.76"
-                ],
-                [
-                    "1994",
-                    "6668.23"
-                ],
-                [
-                    "1995",
-                    "2913.19"
-                ],
-                [
-                    "1996",
-                    "5822.68"
-                ],
-                [
-                    "1997",
-                    "6694.8"
-                ],
-                [
-                    "1998",
-                    "6481.67"
-                ],
-                [
-                    "1999",
-                    "5987.24"
-                ],
-                [
-                    "2000",
-                    "5032.02"
-                ],
-                [
-                    "2001",
-                    "6743.46"
-                ],
-                [
-                    "2002",
-                    "8279.77"
-                ],
-                [
-                    "2003",
-                    "3864.83"
-                ],
-                [
-                    "2004",
-                    "10381.83"
-                ],
-                [
-                    "2005",
-                    "7739.77"
-                ],
-                [
-                    "2006",
-                    "9481.74"
-                ],
-                [
-                    "2007",
-                    "4257.03"
-                ],
-                [
-                    "2008",
-                    "7160.17"
-                ],
-                [
-                    "2009",
-                    "7996.51"
-                ],
-                [
-                    "2010",
-                    "7864.55"
-                ],
-                [
-                    "2011",
-                    "7994.72"
-                ],
-                [
-                    "2012",
-                    "8220.86"
-                ],
-                [
-                    "2013",
-                    "7471.38"
-                ],
-                [
-                    "2014",
-                    "9174.21"
-                ],
-                [
-                    "2015",
-                    "8646.32"
-                ],
-                [
-                    "2016",
-                    "8992.27"
-                ],
-                [
-                    "2017",
-                    "13505.99"
-                ],
-                [
-                    "2018",
-                    "9253.83"
-                ],
-                [
-                    "2019",
-                    "8818.95"
-                ],
-                [
-                    "2020",
-                    "10127.18"
-                ],
-                [
-                    "2021",
-                    "13093.2"
-                ]
-            ],
+            "data": data_package_barley,
             "hoverAnimation": true,
             "label": {
                 "show": false,
@@ -1586,39 +953,36 @@
                 }
             },
             "data": [
-                "1990",
-                "1991",
-                "1992",
-                "1993",
-                "1994",
-                "1995",
-                "1996",
-                "1997",
-                "1998",
-                "1999",
-                "2000",
-                "2001",
-                "2002",
-                "2003",
-                "2004",
-                "2005",
-                "2006",
-                "2007",
-                "2008",
-                "2009",
-                "2010",
-                "2011",
-                "2012",
-                "2013",
-                "2014",
-                "2015",
-                "2016",
-                "2017",
-                "2018",
-                "2019",
-                "2020",
-                "2021",
-                "2022"
+                "2022",
+                "2023",
+                "2024",
+                "2025",
+                "2026",
+                "2027",
+                "2028",
+                "2029",
+                "2030",
+                "2031",
+                "2032",
+                "2033",
+                "2034",
+                "2035",
+                "2036",
+                "2037",
+                "2038",
+                "2039",
+                "2040",
+                "2041",
+                "2042",
+                "2043",
+                "2044",
+                "2045",
+                "2046",
+                "2047",
+                "2048",
+                "2049",
+                "2050",
+                "2051",
             ]
         }
     ],
@@ -1647,7 +1011,7 @@
     ],
     "title": [
         {
-            "text": "Australia historical yield (T)",
+            "text": "Australia yield prediction(T)",
             "padding": 5,
             "itemGap": 10
         }
@@ -1707,6 +1071,67 @@
                         </p>
                             <div id="fcebd60b859f48d8a176690232424bef" class="chart-container" style="width:900px; height:500px;"></div>
                             <script>
+                                var xmlhttp_0;
+                                var xmlhttp_1;
+                                var xmlhttp_2;
+                                var xmlhttp_3;
+                                var data_package_wheat = [];
+                                var data_package_oat = [];
+                                var data_package_corn = [];
+                                var data_package_barley = [];
+                                xmlhttp_0 = new XMLHttpRequest();
+                                xmlhttp_1 = new XMLHttpRequest();
+                                xmlhttp_2 = new XMLHttpRequest();
+                                xmlhttp_3 = new XMLHttpRequest();
+                                xmlhttp_0.onreadystatechange=function()
+                                {
+                                    if (xmlhttp_0.readyState==4 && xmlhttp_0.status==200)
+                                    {
+                                        var jasonData_0 = JSON.parse(xmlhttp_0.responseText);
+                                        for (let i=0; i<jasonData_0.values.length; i++){
+                                            data_package_wheat.push([jasonData_0.years[i].toString(), jasonData_0.values[i].toString()])
+                                        }
+                                    }
+                                }
+                                xmlhttp_1.onreadystatechange=function()
+                                {
+                                    if (xmlhttp_1.readyState==4 && xmlhttp_1.status==200)
+                                    {
+                                        var jasonData_1 = JSON.parse(xmlhttp_1.responseText);
+                                        for (let i=0; i<jasonData_1.values.length; i++){
+                                            data_package_oat.push([jasonData_1.years[i].toString(), jasonData_1.values[i].toString()])
+                                        }
+                                    }
+                                }
+                                xmlhttp_2.onreadystatechange=function()
+                                {
+                                    if (xmlhttp_2.readyState==4 && xmlhttp_2.status==200)
+                                    {
+                                        var jasonData_2 = JSON.parse(xmlhttp_2.responseText);
+                                        for (let i=0; i<jasonData_2.values.length; i++){
+                                            data_package_corn.push([jasonData_2.years[i].toString(), jasonData_2.values[i].toString()])
+                                        }
+                                    }
+                                }
+                                xmlhttp_3.onreadystatechange=function()
+                                {
+                                    if (xmlhttp_3.readyState==4 && xmlhttp_3.status==200)
+                                    {
+                                        var jasonData_3 = JSON.parse(xmlhttp_3.responseText);
+                                        for (let i=0; i<jasonData_3.values.length; i++){
+                                            data_package_barley.push([jasonData_3.years[i].toString(), jasonData_3.values[i].toString()])
+                                        }
+                                    }
+                                }
+                                xmlhttp_0.open("GET","http://13.211.157.235:5000/yield?region=aus&ispre=1&cropid=0",false);
+                                xmlhttp_1.open("GET","http://13.211.157.235:5000/yield?region=aus&ispre=1&cropid=1",false);
+                                xmlhttp_2.open("GET","http://13.211.157.235:5000/yield?region=aus&ispre=1&cropid=2",false);
+                                xmlhttp_3.open("GET","http://13.211.157.235:5000/yield?region=aus&ispre=1&cropid=3",false);
+                                //xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                                xmlhttp_0.send();
+                                xmlhttp_1.send();
+                                xmlhttp_2.send();
+                                xmlhttp_3.send();
         var chart_fcebd60b859f48d8a176690232424bef = echarts.init(
             document.getElementById('fcebd60b859f48d8a176690232424bef'), 'white', {renderer: 'canvas'});
         var option_fcebd60b859f48d8a176690232424bef = {
@@ -2387,13 +1812,7 @@
             <div class="col-md-4">
                 <div class="pr-lg-5">
                     <h1 class="heading h6 text-uppercase font-weight-700 mb-3"><strong>Agriculture</strong>&nbsp;<lighter style="background-color: white; color: black">Modeling</lighter></h1>
-                    <p style="font-size: 13px; color: #CDBA96">In NSW, winter crops commonly include cereals such as wheat, barley, oats and triticale; oilseeds such as canola, mustard and safflower and
-
-                        pulses such as lupins, chickpeas, fababeans and fieldpeas.
-
-                        The Winter crop variety sowing guide helps to select the most suitable variety and contains updated technical information from the latest
-
-                        research, extension and industry programs.</p>
+                    <p style="font-size: 14px; color: #CDBA96">Agricultural modelling is a projection tool that utlises predictive models to estimate agricultural outputs and prices based on multiple external factors.</p>
                 </div>
             </div>
             <div class="col-md-4"></div>
@@ -2402,8 +1821,8 @@
                 <ul class="list-unstyled text-small">
                     <li><a class="foot_link" href="http://13.211.157.235:5000/home/">Home</a></li>
                     <li><a class="foot_link" href="http://13.211.157.235:5000/about/">About</a></li>
-                    <li><a class="foot_link" href="http://13.211.157.235:5000/overview/">Australia Overview</a></li>
-                    <li><a class="foot_link" href="http://13.211.157.235:5000/download/">Download</a></li>
+                    <li><a class="foot_link" href="http://13.211.157.235:5000/overview/">Overview</a></li>
+                    <li><a class="foot_link" href="http://13.211.157.235:5000/download/">Resource</a></li>
                 </ul>
             </div>
             <div class="col-md-2">

@@ -94,14 +94,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="http://13.211.157.235:5000/about/"><p class="m-auto">About</p></a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="http://13.211.157.235:5000/overview/"><p class="m-auto">Australia overview</p></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://13.211.157.235:5000/overview/"><p class="m-auto">Overview</p></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="http://13.211.157.235:5000/download/"><p class="m-auto">Download</p></a>
+                    <a class="nav-link" href="http://13.211.157.235:5000/download/"><p class="m-auto">Resource</p></a>
                 </li>
                 <!-- Dropdown -->
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown active">
                     <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><span class="m-auto">Region</span></a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="http://13.211.157.235:5000/region/nsw/">NSW</a>
@@ -148,6 +148,18 @@
             <div class="col-8">
                 <div id="5e0161c78b2045c193eade6d8909632d" class="chart-container" style="width:900px; height:500px;"></div>
                 <script>
+                    var xmlhttp;
+                    xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange=function()
+                    {
+                        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                        {
+                            var jasonData = JSON.parse(this.responseText);
+                        }
+                    }
+                    xmlhttp.open("GET","http://13.211.157.235:5000/yield?region=nsw&ispre=1&starty=2023&endy=2025&cropid=1",false);
+                    //xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                    xmlhttp.send();
                     var chart_5e0161c78b2045c193eade6d8909632d = echarts.init(
                         document.getElementById('5e0161c78b2045c193eade6d8909632d'), 'white', {renderer: 'canvas'});
                     var option_5e0161c78b2045c193eade6d8909632d = {
@@ -196,134 +208,7 @@
                         "clip": true,
                         "step": false,
                         "data": [
-                            [
-                                "1990",
-                                "173.95"
-                            ],
-                            [
-                                "1991",
-                                "114.76"
-                            ],
-                            [
-                                "1992",
-                                "174.41"
-                            ],
-                            [
-                                "1993",
-                                "151.25"
-                            ],
-                            [
-                                "1994",
-                                "144.08"
-                            ],
-                            [
-                                "1995",
-                                "213.06"
-                            ],
-                            [
-                                "1996",
-                                "235.87"
-                            ],
-                            [
-                                "1997",
-                                "185.74"
-                            ],
-                            [
-                                "1998",
-                                "224.7"
-                            ],
-                            [
-                                "1999",
-                                "224.7"
-                            ],
-                            [
-                                "2000",
-                                "224.7"
-                            ],
-                            [
-                                "2001",
-                                "224.7"
-                            ],
-                            [
-                                "2002",
-                                "240.92"
-                            ],
-                            [
-                                "2003",
-                                "237.62"
-                            ],
-                            [
-                                "2004",
-                                "197.23"
-                            ],
-                            [
-                                "2005",
-                                "174.23"
-                            ],
-                            [
-                                "2006",
-                                "179.2"
-                            ],
-                            [
-                                "2007",
-                                "215.08"
-                            ],
-                            [
-                                "2008",
-                                "378.31"
-                            ],
-                            [
-                                "2009",
-                                "236.31"
-                            ],
-                            [
-                                "2010",
-                                "187.12"
-                            ],
-                            [
-                                "2011",
-                                "269.56"
-                            ],
-                            [
-                                "2012",
-                                "217.89"
-                            ],
-                            [
-                                "2013",
-                                "295.01"
-                            ],
-                            [
-                                "2014",
-                                "307.47"
-                            ],
-                            [
-                                "2015",
-                                "270.01"
-                            ],
-                            [
-                                "2016",
-                                "235.3"
-                            ],
-                            [
-                                "2017",
-                                "184.34"
-                            ],
-                            [
-                                "2018",
-                                "219.72"
-                            ],
-                            [
-                                "2019",
-                                "319.8"
-                            ],
-                            [
-                                "2020",
-                                "300.19"
-                            ],
-                            [
-                                "2021",
-                                "233.11"
-                            ]
+
                         ],
                         "hoverAnimation": true,
                         "label": {
@@ -833,6 +718,26 @@
             <div class="col-7">
                 <div id="dd39e0ecfe3a473889b60610f1258f30" class="chart-container" style="width:100%; height:500px;"></div>
                 <script>
+                    var xmlhttp_0;
+                    var data_package_rainfall = [];
+                    var data_package_temperature = [];
+                    var data_package_evaporation = [];
+                    xmlhttp_0 = new XMLHttpRequest();
+                    xmlhttp_0.onreadystatechange=function()
+                    {
+                        if (xmlhttp_0.readyState==4 && xmlhttp_0.status==200)
+                        {
+                            var jasonData_0 = JSON.parse(xmlhttp_0.responseText);
+                            for (let i=0; i<jasonData_0.years.length; i++){
+                                data_package_rainfall.push(jasonData_0.rainfalls[i].toString())
+                                data_package_temperature.push([jasonData_0.years[i].toString(), jasonData_0.temperatures[i].toString()])
+                                data_package_evaporation.push(jasonData_0.evaporations[i].toString())
+                            }
+                        }
+                    }
+                    xmlhttp_0.open("GET","http://13.211.157.235:5000/weather?region=sa",false);
+                    //xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                    xmlhttp_0.send();
                     var chart_dd39e0ecfe3a473889b60610f1258f30 = echarts.init(
                         document.getElementById('dd39e0ecfe3a473889b60610f1258f30'), 'white', {renderer: 'canvas'});
                     var option_dd39e0ecfe3a473889b60610f1258f30 = {
@@ -877,38 +782,7 @@
                                 "type": "bar",
                                 "name": "Evaporation",
                                 "legendHoverLink": true,
-                                "data": [
-                                    241.1,
-                                    245.1,
-                                    250.8,
-                                    234,
-                                    234.9,
-                                    254.9,
-                                    230.5,
-                                    255.2,
-                                    229.8,
-                                    241.4,
-                                    219.1,
-                                    210.5,
-                                    216.9,
-                                    247.2,
-                                    247.7,
-                                    233.5,
-                                    255.3,
-                                    231.3,
-                                    248.6,
-                                    246.6,
-                                    243.5,
-                                    236.1,
-                                    210.9,
-                                    229.8,
-                                    233,
-                                    237.2,
-                                    241.1,
-                                    236.7,
-                                    231.3,
-                                    223
-                                ],
+                                "data": data_package_evaporation,
                                 "showBackground": false,
                                 "barMinHeight": 0,
                                 "barCategoryGap": "20%",
@@ -930,41 +804,7 @@
                                 "type": "bar",
                                 "name": "Rainfall",
                                 "legendHoverLink": true,
-                                "data": [
-                                    279.5,
-                                    193.3,
-                                    243.4,
-                                    331.2,
-                                    351.2,
-                                    242.1,
-                                    423,
-                                    351.7,
-                                    344.3,
-                                    402.7,
-                                    453.3,
-                                    499.7,
-                                    415,
-                                    270.9,
-                                    311.6,
-                                    371.8,
-                                    275,
-                                    323.4,
-                                    297.2,
-                                    350.1,
-                                    246.6,
-                                    287,
-                                    499.9,
-                                    277.2,
-                                    345.3,
-                                    284.6,
-                                    280.8,
-                                    341.7,
-                                    341.6,
-                                    248.6,
-                                    142.9,
-                                    283.7,
-                                    311.9
-                                ],
+                                "data": data_package_rainfall,
                                 "showBackground": false,
                                 "barMinHeight": 0,
                                 "barCategoryGap": "20%",
@@ -992,140 +832,7 @@
                                 "smooth": false,
                                 "clip": true,
                                 "step": false,
-                                "data": [
-                                    [
-                                        "1989",
-                                        21.71
-                                    ],
-                                    [
-                                        "1990",
-                                        22.39
-                                    ],
-                                    [
-                                        "1991",
-                                        22.37
-                                    ],
-                                    [
-                                        "1992",
-                                        21.88
-                                    ],
-                                    [
-                                        "1993",
-                                        22.19
-                                    ],
-                                    [
-                                        "1994",
-                                        22.07
-                                    ],
-                                    [
-                                        "1995",
-                                        22.03
-                                    ],
-                                    [
-                                        "1996",
-                                        22.38
-                                    ],
-                                    [
-                                        "1997",
-                                        22.01
-                                    ],
-                                    [
-                                        "1998",
-                                        22.74
-                                    ],
-                                    [
-                                        "1999",
-                                        22.23
-                                    ],
-                                    [
-                                        "2000",
-                                        21.7
-                                    ],
-                                    [
-                                        "2001",
-                                        21.93
-                                    ],
-                                    [
-                                        "2002",
-                                        22.57
-                                    ],
-                                    [
-                                        "2003",
-                                        22.49
-                                    ],
-                                    [
-                                        "2004",
-                                        22.32
-                                    ],
-                                    [
-                                        "2005",
-                                        22.96
-                                    ],
-                                    [
-                                        "2006",
-                                        22.36
-                                    ],
-                                    [
-                                        "2007",
-                                        22.43
-                                    ],
-                                    [
-                                        "2008",
-                                        22.41
-                                    ],
-                                    [
-                                        "2009",
-                                        22.74
-                                    ],
-                                    [
-                                        "2010",
-                                        22.14
-                                    ],
-                                    [
-                                        "2011",
-                                        21.89
-                                    ],
-                                    [
-                                        "2012",
-                                        22.08
-                                    ],
-                                    [
-                                        "2013",
-                                        23.24
-                                    ],
-                                    [
-                                        "2014",
-                                        22.93
-                                    ],
-                                    [
-                                        "2015",
-                                        22.6
-                                    ],
-                                    [
-                                        "2016",
-                                        22.74
-                                    ],
-                                    [
-                                        "2017",
-                                        22.88
-                                    ],
-                                    [
-                                        "2018",
-                                        22.95
-                                    ],
-                                    [
-                                        "2019",
-                                        23.43
-                                    ],
-                                    [
-                                        "2020",
-                                        22.97
-                                    ],
-                                    [
-                                        "2021",
-                                        22.4
-                                    ]
-                                ],
+                                "data": data_package_temperature,
                                 "hoverAnimation": true,
                                 "label": {
                                     "show": false,
@@ -1379,7 +1086,52 @@
                             Through the line graph can be intuitive discovery of the history of agricultural output potential law
                         </p>
                             <div id="9dbf604430be46f29815d56f76b6ed43" class="chart-container" style="width:900px; height:500px;"></div>
-                            <script>
+                            <script>var xmlhttp_0;
+                            var xmlhttp_1;
+                            var xmlhttp_3;
+                            var data_package_wheat = [];
+                            var data_package_oat = [];
+                            var data_package_barley = [];
+                            xmlhttp_0 = new XMLHttpRequest();
+                            xmlhttp_1 = new XMLHttpRequest();
+                            xmlhttp_3 = new XMLHttpRequest();
+                            xmlhttp_0.onreadystatechange=function()
+                            {
+                                if (xmlhttp_0.readyState==4 && xmlhttp_0.status==200)
+                                {
+                                    var jasonData_0 = JSON.parse(xmlhttp_0.responseText);
+                                    for (let i=0; i<jasonData_0.values.length; i++){
+                                        data_package_wheat.push([jasonData_0.years[i].toString(), jasonData_0.values[i].toString()])
+                                    }
+                                }
+                            }
+                            xmlhttp_1.onreadystatechange=function()
+                            {
+                                if (xmlhttp_1.readyState==4 && xmlhttp_1.status==200)
+                                {
+                                    var jasonData_1 = JSON.parse(xmlhttp_1.responseText);
+                                    for (let i=0; i<jasonData_1.values.length; i++){
+                                        data_package_oat.push([jasonData_1.years[i].toString(), jasonData_1.values[i].toString()])
+                                    }
+                                }
+                            }
+                            xmlhttp_3.onreadystatechange=function()
+                            {
+                                if (xmlhttp_3.readyState==4 && xmlhttp_3.status==200)
+                                {
+                                    var jasonData_3 = JSON.parse(xmlhttp_3.responseText);
+                                    for (let i=0; i<jasonData_3.values.length; i++){
+                                        data_package_barley.push([jasonData_3.years[i].toString(), jasonData_3.values[i].toString()])
+                                    }
+                                }
+                            }
+                            xmlhttp_0.open("GET","http://13.211.157.235:5000/yield?region=sa&ispre=0&cropid=0",false);
+                            xmlhttp_1.open("GET","http://13.211.157.235:5000/yield?region=sa&ispre=0&cropid=1",false);
+                            xmlhttp_3.open("GET","http://13.211.157.235:5000/yield?region=sa&ispre=0&cropid=3",false);
+                            //xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                            xmlhttp_0.send();
+                            xmlhttp_1.send();
+                            xmlhttp_3.send();
                                 var chart_9dbf604430be46f29815d56f76b6ed43 = echarts.init(
                                     document.getElementById('9dbf604430be46f29815d56f76b6ed43'), 'white', {renderer: 'canvas'});
                                 var option_9dbf604430be46f29815d56f76b6ed43 = {
@@ -1427,136 +1179,7 @@
                                     "smooth": false,
                                     "clip": true,
                                     "step": false,
-                                    "data": [
-                                        [
-                                            "1990",
-                                            "2607.2"
-                                        ],
-                                        [
-                                            "1991",
-                                            "2020.8"
-                                        ],
-                                        [
-                                            "1992",
-                                            "2141"
-                                        ],
-                                        [
-                                            "1993",
-                                            "2421.2"
-                                        ],
-                                        [
-                                            "1994",
-                                            "2121.1"
-                                        ],
-                                        [
-                                            "1995",
-                                            "1487.4"
-                                        ],
-                                        [
-                                            "1996",
-                                            "2724"
-                                        ],
-                                        [
-                                            "1997",
-                                            "2794.9"
-                                        ],
-                                        [
-                                            "1998",
-                                            "2689.2"
-                                        ],
-                                        [
-                                            "1999",
-                                            "3310.4"
-                                        ],
-                                        [
-                                            "2000",
-                                            "2585.5"
-                                        ],
-                                        [
-                                            "2001",
-                                            "4162.4"
-                                        ],
-                                        [
-                                            "2002",
-                                            "4778.5"
-                                        ],
-                                        [
-                                            "2003",
-                                            "2071.8"
-                                        ],
-                                        [
-                                            "2004",
-                                            "3490.4"
-                                        ],
-                                        [
-                                            "2005",
-                                            "2620.8"
-                                        ],
-                                        [
-                                            "2006",
-                                            "3852.8"
-                                        ],
-                                        [
-                                            "2007",
-                                            "1446"
-                                        ],
-                                        [
-                                            "2008",
-                                            "2296"
-                                        ],
-                                        [
-                                            "2009",
-                                            "2376.1"
-                                        ],
-                                        [
-                                            "2010",
-                                            "4001.3"
-                                        ],
-                                        [
-                                            "2011",
-                                            "5948.7"
-                                        ],
-                                        [
-                                            "2012",
-                                            "4524.81"
-                                        ],
-                                        [
-                                            "2013",
-                                            "3678.97"
-                                        ],
-                                        [
-                                            "2014",
-                                            "4254.32"
-                                        ],
-                                        [
-                                            "2015",
-                                            "4602.09"
-                                        ],
-                                        [
-                                            "2016",
-                                            "3679.35"
-                                        ],
-                                        [
-                                            "2017",
-                                            "6132.51"
-                                        ],
-                                        [
-                                            "2018",
-                                            "4051.96"
-                                        ],
-                                        [
-                                            "2019",
-                                            "3024.53"
-                                        ],
-                                        [
-                                            "2020",
-                                            "2689.08"
-                                        ],
-                                        [
-                                            "2021",
-                                            "4800"
-                                        ]
-                                    ],
+                                    "data": data_package_wheat,
                                     "hoverAnimation": true,
                                     "label": {
                                         "show": false,
@@ -1591,136 +1214,7 @@
                                     "smooth": false,
                                     "clip": true,
                                     "step": false,
-                                    "data": [
-                                        [
-                                            "1990",
-                                            "249.9"
-                                        ],
-                                        [
-                                            "1991",
-                                            "147.6"
-                                        ],
-                                        [
-                                            "1992",
-                                            "172.5"
-                                        ],
-                                        [
-                                            "1993",
-                                            "164.5"
-                                        ],
-                                        [
-                                            "1994",
-                                            "135.06"
-                                        ],
-                                        [
-                                            "1995",
-                                            "86.99"
-                                        ],
-                                        [
-                                            "1996",
-                                            "161.9"
-                                        ],
-                                        [
-                                            "1997",
-                                            "155.76"
-                                        ],
-                                        [
-                                            "1998",
-                                            "153.02"
-                                        ],
-                                        [
-                                            "1999",
-                                            "178.09"
-                                        ],
-                                        [
-                                            "2000",
-                                            "77.54"
-                                        ],
-                                        [
-                                            "2001",
-                                            "117.21"
-                                        ],
-                                        [
-                                            "2002",
-                                            "202.95"
-                                        ],
-                                        [
-                                            "2003",
-                                            "69.9"
-                                        ],
-                                        [
-                                            "2004",
-                                            "137.4"
-                                        ],
-                                        [
-                                            "2005",
-                                            "89.72"
-                                        ],
-                                        [
-                                            "2006",
-                                            "119.56"
-                                        ],
-                                        [
-                                            "2007",
-                                            "51.52"
-                                        ],
-                                        [
-                                            "2008",
-                                            "115.29"
-                                        ],
-                                        [
-                                            "2009",
-                                            "81.34"
-                                        ],
-                                        [
-                                            "2010",
-                                            "144.02"
-                                        ],
-                                        [
-                                            "2011",
-                                            "124.57"
-                                        ],
-                                        [
-                                            "2012",
-                                            "78.04"
-                                        ],
-                                        [
-                                            "2013",
-                                            "88.43"
-                                        ],
-                                        [
-                                            "2014",
-                                            "82.18"
-                                        ],
-                                        [
-                                            "2015",
-                                            "89.44"
-                                        ],
-                                        [
-                                            "2016",
-                                            "102.55"
-                                        ],
-                                        [
-                                            "2017",
-                                            "179.38"
-                                        ],
-                                        [
-                                            "2018",
-                                            "93.92"
-                                        ],
-                                        [
-                                            "2019",
-                                            "140.28"
-                                        ],
-                                        [
-                                            "2020",
-                                            "91.8"
-                                        ],
-                                        [
-                                            "2021",
-                                            "140"
-                                        ]
-                                    ],
+                                    "data": data_package_oat,
                                     "hoverAnimation": true,
                                     "label": {
                                         "show": false,
@@ -1755,136 +1249,7 @@
                                     "smooth": false,
                                     "clip": true,
                                     "step": false,
-                                    "data": [
-                                        [
-                                            "1990",
-                                            "1724.48"
-                                        ],
-                                        [
-                                            "1991",
-                                            "1505.72"
-                                        ],
-                                        [
-                                            "1992",
-                                            "1881.55"
-                                        ],
-                                        [
-                                            "1993",
-                                            "1855.32"
-                                        ],
-                                        [
-                                            "1994",
-                                            "2242.36"
-                                        ],
-                                        [
-                                            "1995",
-                                            "1158.72"
-                                        ],
-                                        [
-                                            "1996",
-                                            "1851.08"
-                                        ],
-                                        [
-                                            "1997",
-                                            "1923.22"
-                                        ],
-                                        [
-                                            "1998",
-                                            "2027.09"
-                                        ],
-                                        [
-                                            "1999",
-                                            "2050.98"
-                                        ],
-                                        [
-                                            "2000",
-                                            "1409.18"
-                                        ],
-                                        [
-                                            "2001",
-                                            "2320.33"
-                                        ],
-                                        [
-                                            "2002",
-                                            "2781.76"
-                                        ],
-                                        [
-                                            "2003",
-                                            "1439.87"
-                                        ],
-                                        [
-                                            "2004",
-                                            "2691.1"
-                                        ],
-                                        [
-                                            "2005",
-                                            "1979.22"
-                                        ],
-                                        [
-                                            "2006",
-                                            "2547.8"
-                                        ],
-                                        [
-                                            "2007",
-                                            "995.97"
-                                        ],
-                                        [
-                                            "2008",
-                                            "1672.37"
-                                        ],
-                                        [
-                                            "2009",
-                                            "1876.76"
-                                        ],
-                                        [
-                                            "2010",
-                                            "2068.23"
-                                        ],
-                                        [
-                                            "2011",
-                                            "2122.42"
-                                        ],
-                                        [
-                                            "2012",
-                                            "1815.51"
-                                        ],
-                                        [
-                                            "2013",
-                                            "1794.44"
-                                        ],
-                                        [
-                                            "2014",
-                                            "1892.29"
-                                        ],
-                                        [
-                                            "2015",
-                                            "1941.05"
-                                        ],
-                                        [
-                                            "2016",
-                                            "1719.37"
-                                        ],
-                                        [
-                                            "2017",
-                                            "3002.01"
-                                        ],
-                                        [
-                                            "2018",
-                                            "1860.79"
-                                        ],
-                                        [
-                                            "2019",
-                                            "1614.99"
-                                        ],
-                                        [
-                                            "2020",
-                                            "1995.14"
-                                        ],
-                                        [
-                                            "2021",
-                                            "2400"
-                                        ]
-                                    ],
+                                    "data": data_package_barley,
                                     "hoverAnimation": true,
                                     "label": {
                                         "show": false,
@@ -2046,6 +1411,52 @@
                         </p>
                             <div id="9a217245891d4f1f8758d300aad94c83" class="chart-container" style="width:900px; height:500px;"></div>
                             <script>
+                                var xmlhttp_0;
+                                var xmlhttp_1;
+                                var xmlhttp_3;
+                                var data_package_wheat = [];
+                                var data_package_oat = [];
+                                var data_package_barley = [];
+                                xmlhttp_0 = new XMLHttpRequest();
+                                xmlhttp_1 = new XMLHttpRequest();
+                                xmlhttp_3 = new XMLHttpRequest();
+                                xmlhttp_0.onreadystatechange=function()
+                                {
+                                    if (xmlhttp_0.readyState==4 && xmlhttp_0.status==200)
+                                    {
+                                        var jasonData_0 = JSON.parse(xmlhttp_0.responseText);
+                                        for (let i=0; i<jasonData_0.values.length; i++){
+                                            data_package_wheat.push([jasonData_0.years[i].toString(), jasonData_0.values[i].toString()])
+                                        }
+                                    }
+                                }
+                                xmlhttp_1.onreadystatechange=function()
+                                {
+                                    if (xmlhttp_1.readyState==4 && xmlhttp_1.status==200)
+                                    {
+                                        var jasonData_1 = JSON.parse(xmlhttp_1.responseText);
+                                        for (let i=0; i<jasonData_1.values.length; i++){
+                                            data_package_oat.push([jasonData_1.years[i].toString(), jasonData_1.values[i].toString()])
+                                        }
+                                    }
+                                }
+                                xmlhttp_3.onreadystatechange=function()
+                                {
+                                    if (xmlhttp_1.readyState==4 && xmlhttp_1.status==200)
+                                    {
+                                        var jasonData_3 = JSON.parse(xmlhttp_3.responseText);
+                                        for (let i=0; i<jasonData_3.values.length; i++){
+                                            data_package_barley.push([jasonData_3.years[i].toString(), jasonData_3.values[i].toString()])
+                                        }
+                                    }
+                                }
+                                xmlhttp_0.open("GET","http://13.211.157.235:5000/yield?region=sa&ispre=1&cropid=0",false);
+                                xmlhttp_1.open("GET","http://13.211.157.235:5000/yield?region=sa&ispre=1&cropid=1",false);
+                                xmlhttp_3.open("GET","http://13.211.157.235:5000/yield?region=sa&ispre=1&cropid=3",false);
+                                //xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                                xmlhttp_0.send();
+                                xmlhttp_1.send();
+                                xmlhttp_3.send();
                                 var chart_9a217245891d4f1f8758d300aad94c83 = echarts.init(
                                     document.getElementById('9a217245891d4f1f8758d300aad94c83'), 'white', {renderer: 'canvas'});
                                 var option_9a217245891d4f1f8758d300aad94c83 = {
@@ -2093,128 +1504,7 @@
                                     "smooth": false,
                                     "clip": true,
                                     "step": false,
-                                    "data": [
-                                        [
-                                            "2022",
-                                            591.76
-                                        ],
-                                        [
-                                            "2023",
-                                            864.72
-                                        ],
-                                        [
-                                            "2024",
-                                            375.7
-                                        ],
-                                        [
-                                            "2025",
-                                            2038.0
-                                        ],
-                                        [
-                                            "2026",
-                                            1092.68
-                                        ],
-                                        [
-                                            "2027",
-                                            724.71
-                                        ],
-                                        [
-                                            "2028",
-                                            1621.56
-                                        ],
-                                        [
-                                            "2029",
-                                            1293.55
-                                        ],
-                                        [
-                                            "2030",
-                                            259.37
-                                        ],
-                                        [
-                                            "2031",
-                                            1618.62
-                                        ],
-                                        [
-                                            "2032",
-                                            1473.41
-                                        ],
-                                        [
-                                            "2033",
-                                            689.61
-                                        ],
-                                        [
-                                            "2034",
-                                            314.68
-                                        ],
-                                        [
-                                            "2035",
-                                            1067.67
-                                        ],
-                                        [
-                                            "2036",
-                                            1737.64
-                                        ],
-                                        [
-                                            "2037",
-                                            1304.91
-                                        ],
-                                        [
-                                            "2038",
-                                            441.76
-                                        ],
-                                        [
-                                            "2039",
-                                            1131.52
-                                        ],
-                                        [
-                                            "2040",
-                                            331.36
-                                        ],
-                                        [
-                                            "2041",
-                                            393.18
-                                        ],
-                                        [
-                                            "2042",
-                                            2361.58
-                                        ],
-                                        [
-                                            "2043",
-                                            1868.73
-                                        ],
-                                        [
-                                            "2044",
-                                            2132.82
-                                        ],
-                                        [
-                                            "2045",
-                                            1073.84
-                                        ],
-                                        [
-                                            "2046",
-                                            465.74
-                                        ],
-                                        [
-                                            "2047",
-                                            655.6
-                                        ],
-                                        [
-                                            "2048",
-                                            687.09
-                                        ],
-                                        [
-                                            "2049",
-                                            635.56
-                                        ],
-                                        [
-                                            "2050",
-                                            1152.54
-                                        ],
-                                        [
-                                            "2051",
-                                            342.3
-                                        ]
-                                    ],
+                                    "data":data_package_wheat,
                                     "hoverAnimation": true,
                                     "label": {
                                         "show": false,
@@ -2249,128 +1539,7 @@
                                     "smooth": false,
                                     "clip": true,
                                     "step": false,
-                                    "data": [
-                                        [
-                                            "2022",
-                                            23.39
-                                        ],
-                                        [
-                                            "2023",
-                                            40.51
-                                        ],
-                                        [
-                                            "2024",
-                                            29.84
-                                        ],
-                                        [
-                                            "2025",
-                                            87.02
-                                        ],
-                                        [
-                                            "2026",
-                                            52.71
-                                        ],
-                                        [
-                                            "2027",
-                                            36.53
-                                        ],
-                                        [
-                                            "2028",
-                                            79.4
-                                        ],
-                                        [
-                                            "2029",
-                                            48.74
-                                        ],
-                                        [
-                                            "2030",
-                                            30.87
-                                        ],
-                                        [
-                                            "2031",
-                                            39.49
-                                        ],
-                                        [
-                                            "2032",
-                                            50.11
-                                        ],
-                                        [
-                                            "2033",
-                                            36.47
-                                        ],
-                                        [
-                                            "2034",
-                                            34.76
-                                        ],
-                                        [
-                                            "2035",
-                                            42.79
-                                        ],
-                                        [
-                                            "2036",
-                                            62.33
-                                        ],
-                                        [
-                                            "2037",
-                                            63.76
-                                        ],
-                                        [
-                                            "2038",
-                                            27.78
-                                        ],
-                                        [
-                                            "2039",
-                                            45.76
-                                        ],
-                                        [
-                                            "2040",
-                                            22.74
-                                        ],
-                                        [
-                                            "2041",
-                                            15.95
-                                        ],
-                                        [
-                                            "2042",
-                                            77.63
-                                        ],
-                                        [
-                                            "2043",
-                                            91.6
-                                        ],
-                                        [
-                                            "2044",
-                                            95.71
-                                        ],
-                                        [
-                                            "2045",
-                                            78.97
-                                        ],
-                                        [
-                                            "2046",
-                                            18.87
-                                        ],
-                                        [
-                                            "2047",
-                                            53.33
-                                        ],
-                                        [
-                                            "2048",
-                                            45.88
-                                        ],
-                                        [
-                                            "2049",
-                                            25.3
-                                        ],
-                                        [
-                                            "2050",
-                                            45.44
-                                        ],
-                                        [
-                                            "2051",
-                                            21.55
-                                        ]
-                                    ],
+                                    "data": data_package_oat,
                                     "hoverAnimation": true,
                                     "label": {
                                         "show": false,
@@ -2405,128 +1574,7 @@
                                     "smooth": false,
                                     "clip": true,
                                     "step": false,
-                                    "data": [
-                                        [
-                                            "2022",
-                                            184.69
-                                        ],
-                                        [
-                                            "2023",
-                                            558.57
-                                        ],
-                                        [
-                                            "2024",
-                                            329.98
-                                        ],
-                                        [
-                                            "2025",
-                                            723.56
-                                        ],
-                                        [
-                                            "2026",
-                                            332.4
-                                        ],
-                                        [
-                                            "2027",
-                                            477.21
-                                        ],
-                                        [
-                                            "2028",
-                                            589.77
-                                        ],
-                                        [
-                                            "2029",
-                                            473.73
-                                        ],
-                                        [
-                                            "2030",
-                                            235.07
-                                        ],
-                                        [
-                                            "2031",
-                                            406.48
-                                        ],
-                                        [
-                                            "2032",
-                                            580.13
-                                        ],
-                                        [
-                                            "2033",
-                                            295.04
-                                        ],
-                                        [
-                                            "2034",
-                                            216.31
-                                        ],
-                                        [
-                                            "2035",
-                                            439.77
-                                        ],
-                                        [
-                                            "2036",
-                                            656.27
-                                        ],
-                                        [
-                                            "2037",
-                                            518.97
-                                        ],
-                                        [
-                                            "2038",
-                                            335.47
-                                        ],
-                                        [
-                                            "2039",
-                                            184.3
-                                        ],
-                                        [
-                                            "2040",
-                                            289.18
-                                        ],
-                                        [
-                                            "2041",
-                                            119.06
-                                        ],
-                                        [
-                                            "2042",
-                                            619.46
-                                        ],
-                                        [
-                                            "2043",
-                                            864.37
-                                        ],
-                                        [
-                                            "2044",
-                                            572.54
-                                        ],
-                                        [
-                                            "2045",
-                                            671.06
-                                        ],
-                                        [
-                                            "2046",
-                                            284.7
-                                        ],
-                                        [
-                                            "2047",
-                                            368.22
-                                        ],
-                                        [
-                                            "2048",
-                                            298.48
-                                        ],
-                                        [
-                                            "2049",
-                                            351.76
-                                        ],
-                                        [
-                                            "2050",
-                                            270.99
-                                        ],
-                                        [
-                                            "2051",
-                                            268.39
-                                        ]
-                                    ],
+                                    "data": data_package_barley,
                                     "hoverAnimation": true,
                                     "label": {
                                         "show": false,
@@ -2692,13 +1740,7 @@
             <div class="col-md-4">
                 <div class="pr-lg-5">
                     <h1 class="heading h6 text-uppercase font-weight-700 mb-3"><strong>Agriculture</strong>&nbsp;<lighter style="background-color: white; color: black">Modeling</lighter></h1>
-                    <p style="font-size: 13px; color: #CDBA96">In NSW, winter crops commonly include cereals such as wheat, barley, oats and triticale; oilseeds such as canola, mustard and safflower and
-
-                        pulses such as lupins, chickpeas, fababeans and fieldpeas.
-
-                        The Winter crop variety sowing guide helps to select the most suitable variety and contains updated technical information from the latest
-
-                        research, extension and industry programs.</p>
+                    <p style="font-size: 14px; color: #CDBA96">Agricultural modelling is a projection tool that utlises predictive models to estimate agricultural outputs and prices based on multiple external factors.</p>
                 </div>
             </div>
             <div class="col-md-4"></div>
